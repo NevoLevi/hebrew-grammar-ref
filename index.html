@@ -191,6 +191,17 @@
     padding-inline-start:9px;border-inline-start:2px solid var(--line);margin-top:1px;line-height:1.4}
   .exq.tr-open .tr{display:block}
   .ex-tr{font-family:var(--sans);font-size:.8rem;color:var(--muted);font-style:italic;margin-top:4px;line-height:1.4}
+  /* solution link → jump to the reference table (shown only with the answer) */
+  .ref-link{display:none;font-family:var(--sans);font-size:.68rem;font-weight:600;color:var(--steel);
+    text-decoration:none;border-bottom:1px dotted var(--steel);white-space:nowrap;align-self:center;unicode-bidi:plaintext}
+  .ref-link:hover{color:var(--ink);border-color:var(--ink)}
+  .exam-sec .ref-link{color:var(--accent);border-color:var(--accent)}
+  .exam-sec .ref-link:hover{color:var(--ink);border-color:var(--ink)}
+  .ans.revealed ~ .ref-link,.exercise.show-ans .ref-link,.exam-sec.show-ans .ref-link,body.show-ans .ref-link{display:inline}
+  .pcard{scroll-margin-top:66px}
+  .pcard:target{outline:2px solid var(--accent);outline-offset:3px;animation:flashcard 1.8s ease-out}
+  @keyframes flashcard{0%,35%{background:var(--accent-tint)}100%{background:var(--card)}}
+  @media (prefers-reduced-motion:reduce){.pcard:target{animation:none}}
   .exwrap{margin-top:14px}
   .ans-toggle{margin-inline-start:auto;font-family:var(--sans);font-size:.8rem;font-weight:600;cursor:pointer;
     color:var(--bg);background:var(--steel);border:none;padding:6px 13px;border-radius:8px;transition:opacity .15s;white-space:nowrap}
@@ -270,9 +281,15 @@
   <section id="verbs">
     <div class="sec-head"><span class="sec-num">01</span>
       <h2>The Verb System <span class="sec-he" lang="he" dir="rtl">· הַפּוֹעַל</span></h2></div>
-    <p class="sec-intro">The heart of the book: each binyan is carried into the <b>future</b>, across sound roots and the weak root-types (גְּזָרוֹת). Then the imperative and the passive participle, and finally the Nif'al in all three tenses.</p>
+    <p class="sec-intro">The whole verb system, across both books. <b>Part 1</b> gave the <b>present</b> and <b>past</b> of every binyan; <b>Part 2</b> adds the <b>future</b>, the <b>imperative</b>, the passive participle and the whole <b>Nif'al</b>. Each card is one full paradigm — and the exam links straight back to these tables.</p>
 
-    <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">פָּעַל / קַל</span> <span class="en">— Pa'al · future, imperative &amp; passive participle</span></h3></div>
+    <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">הוֹוֶה · חֵלֶק א׳</span> <span class="en">— Present tense of every binyan (Part 1)</span></h3></div>
+    <div class="cardgrid" id="v-present"></div>
+
+    <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">עָבָר · חֵלֶק א׳</span> <span class="en">— Past tense of every binyan (Part 1)</span></h3></div>
+    <div class="cardgrid" id="v-past"></div>
+
+    <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">עָתִיד · פָּעַל / קַל</span> <span class="en">— Pa'al future, imperative &amp; passive participle (Part 2)</span></h3></div>
     <div class="cardgrid" id="paal"></div>
 
     <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">פִּיעֵל</span> <span class="en">— Pi'el · future</span></h3></div>
@@ -363,7 +380,7 @@
     var t='';
     if(v.gz) t+='<span class="tag gz" lang="he" dir="rtl">'+v.gz+'</span>';
     if(v.tense) t+='<span class="tag t" lang="he" dir="rtl">'+v.tense+'</span>';
-    t+='<span class="pgtag">p'+v.page+'</span>';
+    t+= v.src ? '<span class="pgtag" lang="he" dir="rtl">'+v.src+'</span>' : '<span class="pgtag">p'+v.page+'</span>';
     return t;
   }
   function paraCard(v){
@@ -422,6 +439,53 @@
      note:'Pattern <b>CaCuC</b> — an adjective from a Pa\'al verb: <span class="note-he" lang="he" dir="rtl">כָּתוּב · פָּתוּחַ · עָסוּק · יָדוּעַ · תָּפוּס</span>. Final-ה verbs: <span class="note-he" lang="he" dir="rtl">בָּנוּי · עָשׂוּי · תָּלוּי</span> (p208).'}
   ];
   fill('paal',paal);
+
+  /* ---------------- PRESENT (Part 1) ---------------- */
+  fill('v-present',[
+    {verb:'לוֹמֵד',gl:'to study',gz:'פָּעַל · שלמים',tense:'הווה',src:'חֵלֶק א׳',
+     forms:['לוֹמֵד','לוֹמֶדֶת','לוֹמְדִים','לוֹמְדוֹת'],
+     note:'Present has only <b>4</b> forms — it agrees with the subject in gender &amp; number, not person.'},
+    {verb:'גָּר',gl:'to live / reside',gz:'פָּעַל · ע״ו',tense:'הווה',src:'חֵלֶק א׳',
+     forms:['גָּר','גָּרָה','גָּרִים','גָּרוֹת'],
+     note:'Hollow verbs. Same shape: <span class="note-he" lang="he" dir="rtl">קָם · רָץ · שָׁר · בָּא · שָׂם</span>.'},
+    {verb:'רוֹצֶה',gl:'to want',gz:'פָּעַל · ל״ה',tense:'הווה',src:'חֵלֶק א׳',
+     forms:['רוֹצֶה','רוֹצָה','רוֹצִים','רוֹצוֹת'],
+     note:'Final-ה verbs. Also <span class="note-he" lang="he" dir="rtl">שׁוֹתֶה · עוֹשֶׂה · קוֹנֶה · רוֹאֶה · בּוֹנֶה</span>.'},
+    {verb:'מְדַבֵּר',gl:'to speak',gz:'פִּיעֵל',tense:'הווה',src:'חֵלֶק א׳',
+     forms:['מְדַבֵּר','מְדַבֶּרֶת','מְדַבְּרִים','מְדַבְּרוֹת'],
+     note:'Pi\'el present begins with <b>מְ־</b>. Also <span class="note-he" lang="he" dir="rtl">מְסַדֵּר · מְבַשֵּׁל · מְטַיֵּיל · מְשַׂחֵק</span>.'},
+    {verb:'מַרְגִּישׁ',gl:'to feel',gz:'הִפְעִיל',tense:'הווה',src:'חֵלֶק א׳',
+     forms:['מַרְגִּישׁ','מַרְגִּישָׁה','מַרְגִּישִׁים','מַרְגִּישׁוֹת'],
+     note:'Hif\'il present begins with <b>מַ־</b>. Also <span class="note-he" lang="he" dir="rtl">מַתְחִיל · מַסְבִּיר · מַזְמִין · מַכִּיר</span>.'},
+    {verb:'מִתְלַבֵּשׁ',gl:'to get dressed',gz:'הִתְפַּעֵל',tense:'הווה',src:'חֵלֶק א׳',
+     forms:['מִתְלַבֵּשׁ','מִתְלַבֶּשֶׁת','מִתְלַבְּשִׁים','מִתְלַבְּשׁוֹת'],
+     note:'Hitpa\'el present begins with <b>מִתְ־</b>. Also <span class="note-he" lang="he" dir="rtl">מִתְרַגֵּשׁ · מִתְגַּעְגֵּעַ · מִסְתַּכֵּל · מִשְׁתַּמֵּשׁ</span>.'}
+  ]);
+
+  /* ---------------- PAST (Part 1) ---------------- */
+  fill('v-past',[
+    {verb:'כָּתַב',gl:'to write',gz:'פָּעַל · שלמים',tense:'עבר',src:'חֵלֶק א׳',
+     forms:['כָּתַבְתִּי','כָּתַבְתָּ','כָּתַבְתְּ','כָּתַב','כָּתְבָה','כָּתַבְנוּ','כְּתַבְתֶּם','כָּתְבוּ'],
+     note:'Past adds person endings to the stem; the <b>3rd-person</b> forms (הוא/היא/הם) have the fewest changes.'},
+    {verb:'גָּר',gl:'to live / reside',gz:'פָּעַל · ע״ו',tense:'עבר',src:'חֵלֶק א׳',
+     forms:['גַּרְתִּי','גַּרְתָּ','גַּרְתְּ','גָּר','גָּרָה','גַּרְנוּ','גַּרְתֶּם','גָּרוּ'],
+     note:'Hollow-verb past — the first taught in Part 1. Also <span class="note-he" lang="he" dir="rtl">קַמְתִּי · רַצְתִּי · שַׂמְתִּי · בָּאתִי</span>.'},
+    {verb:'קָנָה',gl:'to buy',gz:'פָּעַל · ל״ה',tense:'עבר',src:'חֵלֶק א׳',
+     forms:['קָנִיתִי','קָנִיתָ','קָנִית','קָנָה','קָנְתָה','קָנִינוּ','קְנִיתֶם','קָנוּ'],
+     note:'Final-ה past. Also <span class="note-he" lang="he" dir="rtl">שָׁתִיתִי · עָשִׂיתִי · רָאִיתִי · הָיִיתִי</span>.'},
+    {verb:'דִּיבֵּר',gl:'to speak',gz:'פִּיעֵל',tense:'עבר',src:'חֵלֶק א׳',
+     forms:['דִּיבַּרְתִּי','דִּיבַּרְתָּ','דִּיבַּרְתְּ','דִּיבֵּר','דִּיבְּרָה','דִּיבַּרְנוּ','דִּיבַּרְתֶּם','דִּיבְּרוּ'],
+     note:'Pi\'el past. Also <span class="note-he" lang="he" dir="rtl">סִידַּרְתִּי · בִּישַּׁלְתִּי · טִיַּילְתִּי · שִׂיחַקְתִּי</span>.'},
+    {verb:'הִרְגִּישׁ',gl:'to feel',gz:'הִפְעִיל',tense:'עבר',src:'חֵלֶק א׳',
+     forms:['הִרְגַּשְׁתִּי','הִרְגַּשְׁתָּ','הִרְגַּשְׁתְּ','הִרְגִּישׁ','הִרְגִּישָׁה','הִרְגַּשְׁנוּ','הִרְגַּשְׁתֶּם','הִרְגִּישׁוּ'],
+     note:'Hif\'il past begins with <b>הִ־</b>. Also <span class="note-he" lang="he" dir="rtl">הִתְחַלְתִּי · הִסְבַּרְתִּי · הִזְמַנְתִּי · הִכַּרְתִּי</span>.'},
+    {verb:'הִתְלַבֵּשׁ',gl:'to get dressed',gz:'הִתְפַּעֵל',tense:'עבר',src:'חֵלֶק א׳',
+     forms:['הִתְלַבַּשְׁתִּי','הִתְלַבַּשְׁתָּ','הִתְלַבַּשְׁתְּ','הִתְלַבֵּשׁ','הִתְלַבְּשָׁה','הִתְלַבַּשְׁנוּ','הִתְלַבַּשְׁתֶּם','הִתְלַבְּשׁוּ'],
+     note:'Hitpa\'el past begins with <b>הִתְ־</b>. Also <span class="note-he" lang="he" dir="rtl">הִתְרַגַּשְׁתִּי · הִתְגַּעְגַּעְתִּי · הִסְתַּכַּלְתִּי</span>.'},
+    {verb:'הָיָה',gl:'to be (past)',gz:'הפועל לִהְיוֹת',tense:'עבר',src:'חֵלֶק א׳',
+     forms:['הָיִיתִי','הָיִיתָ','הָיִית','הָיָה','הָיְתָה','הָיִינוּ','הֱיִיתֶם','הָיוּ'],
+     note:'“to be” has no present — <span class="note-he" lang="he" dir="rtl">הָיָה/הָיְתָה/הָיוּ</span> make past nominal sentences and past <span class="note-he" lang="he" dir="rtl">יש/אין</span>.'}
+  ]);
 
   /* ---------------- PI'EL ---------------- */
   fill('piel',[
@@ -891,97 +955,131 @@
 
   /* ---------------- the mini exam ---------------- */
   var EXAM=[
-    {he:'חֵלֶק א׳ · הוֹוֶה — כָּל הַבִּנְיָנִים',en:'Present tense — all binyanim (Book 1)',
+    {he:'חֵלֶק א׳ · הוֹוֶה',en:'Present tense — every binyan (2 of each)',
      instr:'כתבו את הפועל בזמן הווה:',
      items:[
-      ['אֲנִי ___ עִבְרִית בָּאוּלְפָּן. (לִלְמוֹד)','לוֹמֵד / לוֹמֶדֶת','I study Hebrew at the ulpan.'],
-      ['הֵם ___ בְּתֵל אָבִיב. (לָגוּר)','גָּרִים','They live in Tel Aviv.'],
-      ['הַיְלָדִים ___ בֶּחָצֵר. (לְשַׂחֵק — פיעל)','מְשַׂחֲקִים','The children are playing in the yard.'],
-      ['הַמּוֹרָה ___ אֶת הַשִּׁיעוּר. (לְהַסְבִּיר — הפעיל)','מַסְבִּירָה','The teacher explains the lesson.'],
-      ['בַּבּוֹקֶר אֲנַחְנוּ ___ מַהֵר. (לְהִתְלַבֵּשׁ — התפעל)','מִתְלַבְּשִׁים','In the morning we get dressed quickly.'],
-      ['אַתָּה ___ קָפֶה אוֹ תֵּה? (לִשְׁתּוֹת)','שׁוֹתֶה','Do you drink coffee or tea?']]},
-    {he:'חֵלֶק ב׳ · עָבָר — כָּל הַבִּנְיָנִים',en:'Past tense — all binyanim (Book 1)',
+      ['אֲנִי ___ עִבְרִית כָּל בּוֹקֶר. (ללמוד)','לוֹמֵד / לוֹמֶדֶת','I study Hebrew every morning.','v-paal-pres-shlemim|פָּעַל · הווה · שלמים'],
+      ['הַסְּטוּדֶנְטִים ___ בַּסִּפְרִיָּיה. (לעבוד)','עוֹבְדִים','The students work in the library.','v-paal-pres-shlemim|פָּעַל · הווה · שלמים'],
+      ['אֲנַחְנוּ ___ בְּתֵל אָבִיב. (לגור)','גָּרִים','We live in Tel Aviv.','v-paal-pres-ayv|פָּעַל · הווה · ע״ו'],
+      ['הִיא ___ בַּמַּקְהֵלָה. (לשיר)','שָׁרָה','She sings in the choir.','v-paal-pres-ayv|פָּעַל · הווה · ע״ו'],
+      ['מָה אַתָּה ___ לִשְׁתּוֹת? (לרצות)','רוֹצֶה','What do you want to drink?','v-paal-pres-lh|פָּעַל · הווה · ל״ה'],
+      ['הַיְלָדוֹת ___ טֶלֵוִיזְיָה. (לראות)','רוֹאוֹת','The girls are watching television.','v-paal-pres-lh|פָּעַל · הווה · ל״ה'],
+      ['הוּא ___ שָׁלוֹשׁ שָׂפוֹת. (לדבר)','מְדַבֵּר','He speaks three languages.','v-piel-pres|פִּיעֵל · הווה'],
+      ['הַשַּׁפִּים ___ אֲרוּחָה טְעִימָה. (לבשל)','מְבַשְּׁלִים','The chefs are cooking a tasty meal.','v-piel-pres|פִּיעֵל · הווה'],
+      ['הַמּוֹרָה ___ אֶת הַכְּלָלִים. (להסביר)','מַסְבִּירָה','The teacher explains the rules.','v-hifil-pres|הִפְעִיל · הווה'],
+      ['אֲנַחְנוּ ___ אוֹרְחִים לַמְּסִיבָּה. (להזמין)','מַזְמִינִים','We are inviting guests to the party.','v-hifil-pres|הִפְעִיל · הווה'],
+      ['הַתִּינוֹק ___ לְבַד. (להתלבש)','מִתְלַבֵּשׁ','The baby gets dressed by himself.','v-hitpael-pres|הִתְפַּעֵל · הווה'],
+      ['הֵם ___ מֵהַחֲדָשׁוֹת הַטּוֹבוֹת. (להתרגש)','מִתְרַגְּשִׁים','They get excited by the good news.','v-hitpael-pres|הִתְפַּעֵל · הווה']]},
+    {he:'חֵלֶק ב׳ · עָבָר',en:'Past tense — every binyan (2 of each)',
      instr:'כתבו את הפועל בזמן עבר:',
      items:[
-      ['אֶתְמוֹל אֲנִי ___ מִכְתָּב אָרוֹךְ. (לִכְתּוֹב)','כָּתַבְתִּי','Yesterday I wrote a long letter.'],
-      ['הֵם ___ בְּאֵילָת בַּקַּיִץ. (לָגוּר)','גָּרוּ','They lived in Eilat in the summer.'],
-      ['הִיא ___ שִׂמְלָה חֲדָשָׁה. (לִקְנוֹת)','קָנְתָה','She bought a new dress.'],
-      ['אֶמֶשׁ אֲנַחְנוּ ___ עַל הַטִּיּוּל. (לְדַבֵּר — פיעל)','דִּיבַּרְנוּ','Last night we talked about the trip.'],
-      ['הַאִם ___ טוֹב אַחֲרֵי הַשֵּׁינָה? (אתה, לְהַרְגִּישׁ — הפעיל)','הִרְגַּשְׁתָּ','Did you feel good after the sleep?'],
-      ['הֵם ___ בַּשָּׁנָה שֶׁעָבְרָה. (לְהִתְחַתֵּן — התפעל)','הִתְחַתְּנוּ','They got married last year.'],
-      ['אֶתְמוֹל ___ חַם מְאוֹד בַּחוּץ. (לִהְיוֹת)','הָיָה','Yesterday it was very hot outside.']]},
-    {he:'חֵלֶק ג׳ · שֵׁם הַפּוֹעַל וּפְעָלִים מוֹדָלִיִּים',en:'Infinitive & modal verbs (Book 1)',
+      ['אֶתְמוֹל אֲנִי ___ מִכְתָּב אָרוֹךְ. (לכתוב)','כָּתַבְתִּי','Yesterday I wrote a long letter.','v-paal-past-shlemim|פָּעַל · עבר · שלמים'],
+      ['הֵם ___ אֶת כָּל הָעוּגָה. (לאכול)','אָכְלוּ','They ate the whole cake.','v-paal-past-shlemim|פָּעַל · עבר · שלמים'],
+      ['בַּיַּלְדוּת שֶׁלִּי ___ בְּאֵילָת. (אנחנו, לגור)','גַּרְנוּ','In my childhood we lived in Eilat.','v-paal-past-ayv|פָּעַל · עבר · ע״ו'],
+      ['הִיא ___ מוּקְדָּם אֶתְמוֹל. (לקום)','קָמָה','She got up early yesterday.','v-paal-past-ayv|פָּעַל · עבר · ע״ו'],
+      ['הַשָּׁבוּעַ הִיא ___ מְעִיל חָדָשׁ. (לקנות)','קָנְתָה','This week she bought a new coat.','v-paal-past-lh|פָּעַל · עבר · ל״ה'],
+      ['מָה ___ בַּקּוֹלְנוֹעַ? (אתם, לראות)','רְאִיתֶם','What did you see at the cinema?','v-paal-past-lh|פָּעַל · עבר · ל״ה'],
+      ['אֶמֶשׁ אֲנַחְנוּ ___ עַל הֶעָתִיד. (לדבר)','דִּיבַּרְנוּ','Last night we talked about the future.','v-piel-past|פִּיעֵל · עבר'],
+      ['הַיֶּלֶד ___ צִיּוּר יָפֶה. (לצייר)','צִייֵּר','The boy drew a beautiful picture.','v-piel-past|פִּיעֵל · עבר'],
+      ['אַחֲרֵי הַשֵּׁינָה ___ טוֹב. (אני, להרגיש)','הִרְגַּשְׁתִּי','After the sleep I felt good.','v-hifil-past|הִפְעִיל · עבר'],
+      ['הַמְּנַהֵל ___ אֶת הָעוֹבְדִים. (להזמין)','הִזְמִין','The manager invited the workers.','v-hifil-past|הִפְעִיל · עבר'],
+      ['הֵם ___ בַּקַּיִץ שֶׁעָבַר. (להתחתן)','הִתְחַתְּנוּ','They got married last summer.','v-hitpael-past|הִתְפַּעֵל · עבר'],
+      ['אֶתְמוֹל ___ חַם מְאוֹד בַּחוּץ. (להיות)','הָיָה','Yesterday it was very hot outside.','v-hayah-past|הפועל להיות · עבר']]},
+    {he:'חֵלֶק ג׳ · שֵׁם הַפּוֹעַל וּמוֹדָלִים',en:'Infinitive & modal verbs',
      instr:'השלימו בשם הפועל:',
      items:[
-      ['אֲנִי רוֹצֶה ___ הַבַּיְתָה. (הלך)','לָלֶכֶת','I want to go home.'],
-      ['אָסוּר ___ כָּאן! (עישן)','לְעַשֵּׁן','It is forbidden to smoke here!'],
+      ['אֲנִי רוֹצֶה ___ הַבַּיְתָה מוּקְדָּם. (הלך)','לָלֶכֶת','I want to go home early.'],
+      ['אָסוּר ___ בָּאוּלָם! (עישן)','לְעַשֵּׁן','It is forbidden to smoke in the hall!'],
       ['צָרִיךְ ___ הַרְבֵּה מַיִם בַּקַּיִץ. (שתה)','לִשְׁתּוֹת','One must drink a lot of water in summer.'],
-      ['אֶפְשָׁר ___ אֶת הַחַלּוֹן, בְּבַקָּשָׁה? (פתח)','לִפְתּוֹחַ','May I open the window, please?'],
-      ['הַיֶּלֶד כְּבָר יוֹדֵעַ ___ וְלִכְתּוֹב. (קרא)','לִקְרוֹא','The child already knows how to read and write.']]},
-    {he:'חֵלֶק ד׳ · עָתִיד — כָּל הַבִּנְיָנִים',en:'Future tense — all binyanim (Book 2)',
-     instr:'כתבו את הפועל בזמן עתיד — שימו לב לבניין ולגזרה:',
+      ['אֶפְשָׁר ___ אֶת הַדֶּלֶת, בְּבַקָּשָׁה? (פתח)','לִפְתּוֹחַ','May I open the door, please?'],
+      ['הַיֶּלֶד אוֹהֵב ___ סִיפּוּרִים. (קרא)','לִקְרוֹא','The boy loves to read stories.'],
+      ['כְּדַאי ___ מוּקְדָּם לִשְׂדֵה הַתְּעוּפָה. (הגיע)','לְהַגִּיעַ','It is worth arriving early at the airport.']]},
+    {he:'חֵלֶק ד׳ · עָתִיד · פָּעַל',en:'Future — Pa‘al across the gzarot (2 of each)',
+     instr:'כתבו את הפועל בזמן עתיד:',
      items:[
-      ['מָחָר הוּא ___ לְיַד הַבַּיִת שֶׁלִּי. (לַעֲבוֹר)','יַעֲבוֹר','Tomorrow he will pass by my house.'],
-      ['אֲנַחְנוּ ___ דִּירָה בַּשָּׁנָה הַבָּאָה. (לִקְנוֹת)','נִקְנֶה','We will buy an apartment next year.'],
-      ['אַתְּ ___ אֵלַיי מָחָר בַּבּוֹקֶר? (לְהִתְקַשֵּׁר)','תִּתְקַשְּׁרִי','Will you (f.) call me tomorrow morning?'],
-      ['הֵם ___ אֶת הַשִּׁיעוּר בְּעוֹד רֶגַע. (לְהַתְחִיל)','יַתְחִילוּ','They will start the lesson in a moment.'],
-      ['מָתַי אַתָּה ___ מֵהַבַּיִת? (לָצֵאת)','תֵּצֵא','When will you leave the house?'],
-      ['בָּעֶרֶב אֲנִי ___ אֶת הַחֶדֶר. (לְסַדֵּר)','אֲסַדֵּר','In the evening I will tidy the room.']]},
-    {he:'חֵלֶק ה׳ · נִפְעַל וְצִיווּי',en:'Nif‘al & imperative (Book 2)',
-     instr:'השלימו בבניין נפעל (בזמן המבוקש) או בציווי:',
+      ['מָחָר הוּא ___ אֶת הַחֲנוּת. (לסגור)','יִסְגּוֹר','Tomorrow he will close the store.','v-paal-fut-efol|פָּעַל · עתיד · אֶפְעוֹל'],
+      ['אֲנַחְנוּ ___ אֶת הַסֵּפֶר יַחַד. (לכתוב)','נִכְתּוֹב','We will write the book together.','v-paal-fut-efol|פָּעַל · עתיד · אֶפְעוֹל'],
+      ['אֲנִי ___ מוּזִיקָה בָּעֶרֶב. (לשמוע)','אֶשְׁמַע','I will listen to music in the evening.','v-paal-fut-efal|פָּעַל · עתיד · אֶפְעַל'],
+      ['הֵם ___ אֶת הַחַלּוֹנוֹת. (לפתוח)','יִפְתְּחוּ','They will open the windows.','v-paal-fut-efal|פָּעַל · עתיד · אֶפְעַל'],
+      ['מָה אַתָּה ___ עַל זֶה? (לחשוב)','תַּחְשׁוֹב','What will you think about this?','v-paal-fut-gutt|פָּעַל · עתיד · פ׳ גרונית'],
+      ['אֲנִי ___ לְךָ בְּשִׂמְחָה. (לעזור)','אֶעֱזוֹר','I will gladly help you.','v-paal-fut-gutt|פָּעַל · עתיד · פ׳ גרונית'],
+      ['בַּשָּׁנָה הַבָּאָה אֲנַחְנוּ ___ בְּאֵילָת. (לגור)','נָגוּר','Next year we will live in Eilat.','v-paal-fut-ayv|פָּעַל · עתיד · ע״ו'],
+      ['מָתַי אַתֶּם ___ לַמְּסִיבָּה? (לבוא)','תָּבוֹאוּ','When will you come to the party?','v-paal-fut-ayv|פָּעַל · עתיד · ע״ו'],
+      ['מָחָר אֲנִי ___ מַתָּנָה לְאִימָּא. (לקנות)','אֶקְנֶה','Tomorrow I will buy a present for mom.','v-paal-fut-lh|פָּעַל · עתיד · ל״ה'],
+      ['הַאִם אַתְּ ___ אֶת הַסֶּרֶט? (לראות)','תִּרְאִי','Will you (f.) see the movie?','v-paal-fut-lh|פָּעַל · עתיד · ל״ה'],
+      ['הַיֶּלֶד ___ לְיַד סַבְתָּא. (לשבת)','יֵשֵׁב','The boy will sit next to grandma.','v-paal-fut-py|פָּעַל · עתיד · פ״י'],
+      ['מָתַי אַתָּה ___ מֵהָעֲבוֹדָה? (לצאת)','תֵּצֵא','When will you leave work?','v-paal-fut-py|פָּעַל · עתיד · פ״י'],
+      ['אֲנִי ___ לְךָ אֶת הַכֶּסֶף מָחָר. (לתת)','אֶתֵּן','I will give you the money tomorrow.','v-paal-fut-pn|פָּעַל · עתיד · פ״נ'],
+      ['הֵם ___ לְחוּ״ל בַּקַּיִץ. (לנסוע)','יִסְּעוּ','They will travel abroad in the summer.','v-paal-fut-pn|פָּעַל · עתיד · פ״נ']]},
+    {he:'חֵלֶק ה׳ · עָתִיד · פִּיעֵל / הִפְעִיל / הִתְפַּעֵל / נִפְעַל',en:'Future — the other binyanim + Nif‘al',
+     instr:'כתבו את הפועל בבניין ובזמן המבוקש:',
      items:[
-      ['כָּל בּוֹקֶר הִיא ___ לַמִּשְׂרָד בְּשֶׁמוֹנֶה. (לְהִיכָּנֵס — הווה)','נִכְנֶסֶת','Every morning she enters the office at eight.'],
-      ['אֶתְמוֹל הַמִּכְתָּבִים ___ בַּדּוֹאַר. (לְהִישָּׁלַח — עבר)','נִשְׁלְחוּ','Yesterday the letters were sent by mail.'],
-      ['מָחָר אֲנִי ___ לַפְּגִישָׁה בַּזְּמַן. (לְהִיכָּנֵס — עתיד)','אֶכָּנֵס','Tomorrow I will enter the meeting on time.'],
-      ['(אתה, לָשֶׁבֶת) ___ בְּבַקָּשָׁה! (ציווי)','שֵׁב!','Sit down, please!'],
-      ['(אתם, לָשִׂים) שלילי: ___ אֶת זֶה כָּאן! (ציווי)','אַל תָּשִׂימוּ!','Do not put that here!'],
-      ['(את, לָבוֹא) ___ הֵנָּה מַהֵר! (ציווי)','בּוֹאִי!','Come here quickly!']]},
-    {he:'חֵלֶק ו׳ · מִילּוֹת יַחַס',en:'Prepositions — choose & conjugate (the person is in bold)',
-     instr:'השלימו במילת היחס הנתונה, בנטייה. הגוף מסומן בהדגשה במשפט:',
+      ['בָּעֶרֶב אֲנִי ___ אֶת הַחֶדֶר. (לסדר)','אֲסַדֵּר','In the evening I will tidy the room.','v-piel-fut|פִּיעֵל · עתיד'],
+      ['הֵם ___ עַל יַד הַיָּם. (לטייל)','יְטַיְּלוּ','They will stroll by the sea.','v-piel-fut|פִּיעֵל · עתיד'],
+      ['אֲנִי ___ טוֹב יוֹתֵר מָחָר. (להרגיש)','אַרְגִּישׁ','I will feel better tomorrow.','v-hifil-fut|הִפְעִיל · עתיד'],
+      ['מָתַי אַתְּ ___ אוֹתָנוּ? (להזמין)','תַּזְמִינִי','When will you (f.) invite us?','v-hifil-fut|הִפְעִיל · עתיד'],
+      ['אֲנִי ___ מֵהַהַפְתָּעָה. (להתרגש)','אֶתְרַגֵּשׁ','I will get excited by the surprise.','v-hitpael-fut|הִתְפַּעֵל · עתיד'],
+      ['הֵם ___ בַּקַּיִץ הַבָּא. (להתחתן)','יִתְחַתְּנוּ','They will get married next summer.','v-hitpael-fut|הִתְפַּעֵל · עתיד'],
+      ['כָּל בּוֹקֶר הִיא ___ לַמִּשְׂרָד. (להיכנס · הווה)','נִכְנֶסֶת','Every morning she enters the office.','v-nifal-pres|נִפְעַל · הווה'],
+      ['הַמִּכְתָּבִים ___ אֶתְמוֹל. (להישלח · עבר)','נִשְׁלְחוּ','The letters were sent yesterday.','v-nifal-past|נִפְעַל · עבר'],
+      ['מָחָר אֲנִי ___ לַפְּגִישָׁה בַּזְּמַן. (להיכנס · עתיד)','אֶכָּנֵס','Tomorrow I will enter the meeting on time.','v-nifal-fut|נִפְעַל · עתיד'],
+      ['הַדֶּלֶת ___ אוֹטוֹמָטִית. (להיסגר · עתיד)','תִּיסָּגֵר','The door will close automatically.','v-nifal-fut|נִפְעַל · עתיד']]},
+    {he:'חֵלֶק ו׳ · צִיווּי',en:'Imperative',
+     instr:'כתבו בציווי:',
      items:[
-      ['חִיכִּיתִי <b>לְךָ</b> שָׁעָתַיִים! חָשַׁבְתִּי הַרְבֵּה ___ . (על)','עָלֶיךָ','I waited for you two hours! I thought about you a lot.'],
-      ['אַל תֵּלֵךְ ___ ! <b>אֲנִי</b> רוֹצֶה לָבוֹא אִיתְּךָ. (בלי)','בִּלְעָדַיי','Do not go without me! I want to come with you.'],
-      ['פָּגַשְׁתִּי <b>אֶת דָּנָה</b> וְדִיבַּרְתִּי ___ שָׁעָה. (עם)','אִיתָּהּ','I met Dana and talked with her for an hour.'],
-      ['<b>הַיְלָדִים</b> רְעֵבִים — תָּכִין אֹכֶל ___ ? (בשביל)','בִּשְׁבִילָם','The children are hungry — will you make food for them?'],
-      ['<b>הֶחָבֵר שֶׁלִּי</b> חוֹלֶה, אָז הָיִיתִי ___ אֶתְמוֹל. (אצל)','אֶצְלוֹ','My friend is sick, so I was at his place yesterday.'],
-      ['<b>רִינָה</b> תָּמִיד מְאַחֶרֶת, וַאֲנִי כּוֹעֵס ___ . (על)','עָלֶיהָ','Rina is always late, and I am angry at her.']]},
-    {he:'חֵלֶק ז׳ · שֵׁם עֶצֶם, סְמִיכוּת וּמִסְפָּרִים',en:'Nouns, construct state & numbers (both books)',
+      ['(אתה, לקום) ___ מוּקְדָּם, כְּבָר שְׁמוֹנֶה!','קוּם!','Get up, it is already eight!','v-paal-imp-hollow|ציווי · ע״ו'],
+      ['(אתם, לרוץ) שלילי: ___ בַּמִּסְדְּרוֹן!','אַל תָּרוּצוּ!','Do not run in the corridor!','v-paal-imp-hollow|ציווי · ע״ו'],
+      ['(את, לשבת) ___ בְּבַקָּשָׁה!','שְׁבִי!','Sit down, please!','v-paal-imp-pypn|ציווי · פ״י/פ״נ'],
+      ['(אתם, לתת) ___ לוֹ הִזְדַּמְּנוּת!','תְּנוּ!','Give him a chance!','v-paal-imp-pypn|ציווי · פ״י/פ״נ']]},
+    {he:'חֵלֶק ז׳ · מִילּוֹת יַחַס',en:'Prepositions — the person is in bold; use the given preposition',
+     instr:'השלימו במילת היחס הנתונה, בנטייה. הגוף מסומן בהדגשה:',
+     items:[
+      ['חִיכִּיתִי <b>לְךָ</b> שָׁעָתַיִים! חָשַׁבְתִּי הַרְבֵּה ___ . (על)','עָלֶיךָ','I waited for you two hours! I thought about you a lot.','p-al|נטיית עַל'],
+      ['אַל תֵּלֵךְ ___ ! <b>אֲנִי</b> רוֹצֶה לָבוֹא. (בלי)','בִּלְעָדַיי','Do not go without me! I want to come.','p-bli|נטיית בְּלִי / בִּלְעֲדֵי'],
+      ['פָּגַשְׁתִּי <b>אֶת דָּנָה</b> וְדִיבַּרְתִּי ___ שָׁעָה. (עם)','אִיתָּהּ','I met Dana and talked with her for an hour.','p-im|נטיית עִם'],
+      ['<b>הַיְלָדִים</b> רְעֵבִים — תָּכִין אֹכֶל ___ ? (בשביל)','בִּשְׁבִילָם','The children are hungry — will you make food for them?','p-bishvil|נטיית בִּשְׁבִיל'],
+      ['<b>הֶחָבֵר שֶׁלִּי</b> חוֹלֶה, אָז הָיִיתִי ___ אֶתְמוֹל. (אצל)','אֶצְלוֹ','My friend is sick, so I was at his place yesterday.','p-etzel|נטיית אֵצֶל'],
+      ['<b>רִינָה</b> תָּמִיד מְאַחֶרֶת, וַאֲנִי כּוֹעֵס ___ . (על)','עָלֶיהָ','Rina is always late, and I am angry at her.','p-al|נטיית עַל'],
+      ['<b>הַסַּבָּא וְהַסַּבְתָּא</b> נְדִיבִים — קִיבַּלְנוּ מַתָּנָה יָפָה ___ . (מן)','מֵהֶם','Grandpa and grandma are generous — we got a nice gift from them.','p-min|נטיית מִן'],
+      ['הַסּוֹד יִישָׁאֵר <b>בֵּינִי וּבֵין דָּן</b> — יִישָׁאֵר ___ . (בין)','בֵּינֵינוּ','The secret will stay between Dan and me — between us.','p-bein|נטיית בֵּין']]},
+    {he:'חֵלֶק ח׳ · שֵׁם עֶצֶם, סְמִיכוּת וּמִסְפָּרִים',en:'Nouns, construct state & numbers',
      instr:'השלימו:',
      items:[
-      ['שֻׁלְחָן → ___ (רבים)','שֻׁלְחָנוֹת','tables (irregular plural)'],
-      ['שְׁתֵּי שָׁעוֹת = ___ (זוגי)','שְׁעָתַיִים','two hours (dual)'],
-      ['עוּגָה שֶׁל יוֹם הֻלֶּדֶת = ___ יוֹם הֻלֶּדֶת (סמיכות)','עוּגַת','a birthday cake (construct)'],
+      ['שֻׁלְחָן → ___ (רבים)','שֻׁלְחָנוֹת','tables (irregular plural)','t-irrplural|רבים חריגים'],
+      ['שְׁתֵּי שָׁעוֹת = ___ (זוגי)','שְׁעָתַיִים','two hours (dual)','t-dual|צורת הזוגי'],
+      ['עוּגָה שֶׁל יוֹם הֻלֶּדֶת = ___ יוֹם הֻלֶּדֶת (סמיכות)','עוּגַת','a birthday cake (construct)','t-smichut|צירוף סמיכות'],
       ['יֵשׁ לִי ___ סְפָרִים בַּתִּיק. (3)','שְׁלוֹשָׁה','I have three books in the bag (masc.).'],
       ['בַּכִּיתָּה יֵשׁ ___ בָּנוֹת. (5)','חָמֵשׁ','There are five girls in the class (fem.).'],
       ['יוֹם ___ הוּא הַיּוֹם הָרִאשׁוֹן בַּשָּׁבוּעַ. (1st)','רִאשׁוֹן','Sunday is the first day of the week (ordinal).'],
-      ['שָׁלוֹשׁ בְּחוּרוֹת ___ גָּרוֹת פֹּה. (young)','צְעִירוֹת','Three young women live here (adjective agreement).']]},
-    {he:'חֵלֶק ח׳ · יֵשׁ/אֵין, שַׁיָּיכוּת וְאוֹגֵד — בְּכָל הַזְּמַנִּים',en:'Existence, possession & copula across tenses (both books)',
+      ['הֵן לוֹמְדוֹת בְּ___ כִּיתָּה. (the same)','אוֹתָהּ','They (f.) study in the same class.','t-oto|אותו / אותה'],
+      ['תֵּל אָבִיב גְּדוֹלָה ___ מִיְּרוּשָׁלַיִם. (more)','יוֹתֵר','Tel Aviv is bigger than Jerusalem.','t-comparison|השוואה']]},
+    {he:'חֵלֶק ט׳ · יֵשׁ/אֵין, שַׁיָּיכוּת וְאוֹגֵד',en:'Existence, possession & copula across tenses',
      instr:'כתבו בזמן המבוקש:',
      items:[
-      ['יֵשׁ שְׁבִיתָה הַיּוֹם → מָחָר ___ שְׁבִיתָה. (עתיד)','תִּהְיֶה','Tomorrow there will be a strike.'],
-      ['יֵשׁ לִי זְמַן → אֶתְמוֹל לֹא ___ לִי זְמַן. (עבר)','הָיָה','Yesterday I did not have time.'],
-      ['יֵשׁ לִי חֲבֵרִים → בַּקַּיִץ ___ לִי אוֹרְחִים. (עתיד)','יִהְיוּ','In the summer I will have guests.'],
-      ['הַיּוֹם צָרִיךְ לַעֲבוֹד → אֶתְמוֹל ___ לַעֲבוֹד. (משפט סתמי, עבר)','הָיָה צָרִיךְ','Yesterday one had to work.'],
-      ['הַשַּׁבָּת ___ יוֹם שֶׁל מְנוּחָה. (אוגד)','הִיא','Shabbat is a day of rest (copula).'],
-      ['כָּל קַיִץ אֲנַחְנוּ נוֹסְעִים לַיָּם → כָּל קַיִץ ___ נוֹסְעִים. (פעולה רגילה בעבר / used to)','הָיִינוּ','Every summer we used to travel to the sea.']]},
-    {he:'חֵלֶק ט׳ · תַּחְבִּיר — אֵיזוֹ מִילַּת קִישּׁוּר?',en:'Syntax — which connector fits? (both books)',
+      ['יֵשׁ שְׁבִיתָה הַיּוֹם → מָחָר ___ שְׁבִיתָה. (עתיד)','תִּהְיֶה','Tomorrow there will be a strike.','t-nominal|משפט שמני'],
+      ['יֵשׁ לִי זְמַן → אֶתְמוֹל לֹא ___ לִי זְמַן. (עבר)','הָיָה','Yesterday I did not have time.','t-futurehave|שייכות'],
+      ['יֵשׁ לִי חֲבֵרִים → בַּקַּיִץ ___ לִי אוֹרְחִים. (עתיד)','יִהְיוּ','In the summer I will have guests.','t-futurehave|שייכות'],
+      ['הַשַּׁבָּת ___ יוֹם שֶׁל מְנוּחָה. (אוגד)','הִיא','Shabbat is a day of rest.','t-copula|הָאוֹגֵד'],
+      ['יְמֵי רִאשׁוֹן ___ בְּעָיָה בִּשְׁבִילִי. (אוגד)','הֵם','Sundays are a problem for me.','t-copula|הָאוֹגֵד'],
+      ['כָּל קַיִץ אֲנַחְנוּ נוֹסְעִים לַיָּם → כָּל קַיִץ ___ נוֹסְעִים. (used to)','הָיִינוּ','Every summer we used to travel to the sea.','t-habitual|פעולה רגילה בעבר']]},
+    {he:'חֵלֶק י׳ · תַּחְבִּיר — אֵיזוֹ מִילַּת קִישּׁוּר?',en:'Syntax — which connector fits?',
      instr:'בחרו את מילת הקישור הנכונה:',
      items:[
-      ['לֹא הָלַכְנוּ לַיָּם ___ יָרַד גֶּשֶׁם כָּל הַיּוֹם. (סיבה)','מִפְּנֵי שֶׁ / כִּי','We didn’t go to the sea because it rained all day.'],
-      ['הִדְלַקְתִּי אֶת הָאוֹר ___ הַיְלָדִים יִרְאוּ אֶת הַדֶּרֶךְ. (תכלית — נושא אחר)','כְּדֵי שֶׁ','I turned on the light so that the children would see the way.'],
-      ['בָּאתִי לָאוּלְפָּן ___ לִלְמוֹד עִבְרִית. (תכלית — אותו נושא)','כְּדֵי','I came to the ulpan in order to learn Hebrew.'],
-      ['הוּא לֹא רוֹפֵא ___ מוֹרֶה. (לא… ?)','אֶלָּא','He is not a doctor but a teacher.'],
-      ['רָצִיתִי לַעֲזוֹר, ___ לֹא יָדַעְתִּי אֵיךְ.','אֲבָל','I wanted to help, but I did not know how.'],
-      ['___ אֲנִי קָם בַּבּוֹקֶר, אֲנִי שׁוֹתֶה קָפֶה. (זמן — when)','כְּשֶׁ','When I get up in the morning, I drink coffee.'],
-      ['___ יִהְיֶה לִי זְמַן מָחָר, אֶעֱזוֹר לְךָ. (תנאי — if)','אִם','If I have time tomorrow, I’ll help you.'],
-      ['זֶה הַסֵּפֶר ___ קָנִיתִי אֶתְמוֹל. (זיקה — that)','שֶׁ','This is the book that I bought yesterday.']]},
-    {he:'חֵלֶק י׳ · שַׁנּוּ וְתַרְגְּמוּ',en:'Rewrite & translate — the hard part (both books)',
+      ['לֹא הָלַכְנוּ לַיָּם ___ יָרַד גֶּשֶׁם. (סיבה)','מִפְּנֵי שֶׁ / כִּי','We did not go to the sea because it rained.','t-causal|מילות סיבה'],
+      ['הִדְלַקְתִּי אוֹר ___ הֵם יִרְאוּ אוֹתָנוּ. (נושא אחר)','כְּדֵי שֶׁ','I turned on a light so that they would see us.','t-purpose|תיאור תכלית'],
+      ['בָּאתִי לָאוּלְפָּן ___ לִלְמוֹד עִבְרִית. (אותו נושא)','כְּדֵי','I came to the ulpan in order to study Hebrew.','t-purpose|תיאור תכלית'],
+      ['הוּא לֹא רוֹפֵא ___ מוֹרֶה.','אֶלָּא','He is not a doctor but a teacher.','t-ela|לא… אלא'],
+      ['רָצִיתִי לַעֲזוֹר, ___ לֹא יָדַעְתִּי אֵיךְ.','אֲבָל','I wanted to help, but I did not know how.','t-ela|לא… אלא'],
+      ['___ אֲנִי קָם בַּבּוֹקֶר, אֲנִי שׁוֹתֶה קָפֶה. (when)','כְּשֶׁ','When I get up in the morning, I drink coffee.','t-temporal|משפטי זמן'],
+      ['___ יִהְיֶה לִי זְמַן מָחָר, אֶעֱזוֹר לְךָ. (if)','אִם','If I have time tomorrow, I will help you.','t-conditional|תנאי קיים'],
+      ['זֶה הַסֵּפֶר ___ קָנִיתִי אֶתְמוֹל. (that)','שֶׁ','This is the book that I bought yesterday.','t-relative|משפטי לוואי']]},
+    {he:'חֵלֶק יא׳ · שַׁנּוּ וְתַרְגְּמוּ',en:'Rewrite & translate — the hard part',
      instr:'שנו את המשפטים לפי ההוראה, או תרגמו לעברית:',
      items:[
-      ['שַׁנּוּ לֶעָתִיד (change to future): “יֵשׁ לָנוּ מִבְחָן מָחָר.”','יִהְיֶה לָנוּ מִבְחָן מָחָר.','We will have a test tomorrow.'],
-      ['שַׁנּוּ לְסָבִיל / נִפְעַל (change to passive): “הַמּוֹרֶה בָּדַק אֶת הַמִּבְחָנִים.” → הַמִּבְחָנִים ___ .','נִבְדְּקוּ','The tests were checked.'],
-      ['פְּעוּלָה רְגִילָה בֶּעָבָר (habitual past / “used to”): “כָּל שַׁבָּת אֲנַחְנוּ הוֹלְכִים לְסַבְתָּא.” → כָּל שַׁבָּת ___ הוֹלְכִים.','הָיִינוּ','Every Shabbat we used to go to grandma’s.'],
-      ['חַבְּרוּ בְּעֶזְרַת שֶׁ (join with “that”): “זֹאת הַמִּסְעָדָה. אָכַלְנוּ בָּהּ אֶתְמוֹל.”','זֹאת הַמִּסְעָדָה שֶׁאָכַלְנוּ בָּהּ אֶתְמוֹל.','This is the restaurant that we ate at yesterday.'],
+      ['שַׁנּוּ לֶעָתִיד (to future): “יֵשׁ לָנוּ מִבְחָן מָחָר.”','יִהְיֶה לָנוּ מִבְחָן מָחָר.','We will have a test tomorrow.'],
+      ['שַׁנּוּ לְסָבִיל / נִפְעַל (to passive): “הַמּוֹרֶה בָּדַק אֶת הַמִּבְחָנִים.” → הַמִּבְחָנִים ___ .','נִבְדְּקוּ','The tests were checked.','v-nifal-past|נִפְעַל · עבר'],
+      ['פְּעוּלָה רְגִילָה בֶּעָבָר (habitual past): “כָּל שַׁבָּת אֲנַחְנוּ הוֹלְכִים לְסַבְתָּא.” → כָּל שַׁבָּת ___ הוֹלְכִים.','הָיִינוּ','Every Shabbat we used to go to grandma’s.','t-habitual|פעולה רגילה בעבר'],
+      ['חַבְּרוּ בְּעֶזְרַת שֶׁ (join with “that”): “זֹאת הַמִּסְעָדָה. אָכַלְנוּ בָּהּ אֶתְמוֹל.”','זֹאת הַמִּסְעָדָה שֶׁאָכַלְנוּ בָּהּ אֶתְמוֹל.','This is the restaurant that we ate at yesterday.','t-relative|משפטי לוואי'],
       ['תַּרְגְּמוּ לְעִבְרִית: “If you come early, we will start the movie.”','אִם תָּבוֹא מוּקְדָּם, נַתְחִיל אֶת הַסֶּרֶט.'],
       ['תַּרְגְּמוּ לְעִבְרִית: “She wants us to help her.”','הִיא רוֹצָה שֶׁנַּעֲזוֹר לָהּ.'],
       ['תַּרְגְּמוּ לְעִבְרִית: “I have been living here for two years.”','אֲנִי גָּר פֹּה שְׁנָתַיִים.'],
@@ -992,14 +1090,16 @@
   document.body.insertAdjacentHTML('afterbegin','<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="eyeIcon" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></symbol></svg>');
   function itemsHtml(items){
     return items.map(function(it){
-      var q=it[0], a=it[1], tr=it[2];
+      var q=it[0], a=it[1], tr=it[2], ref=it[3];
       var trBtn = tr ? '<button class="tr-btn" type="button" aria-label="Show translation">EN</button>' : '';
       var trLine = tr ? '<div class="tr">'+tr+'</div>' : '';
+      var refLink='';
+      if(ref){ var p=ref.split('|'); refLink='<a class="ref-link" href="#'+p[0]+'" title="Go to the table"><span lang="he" dir="rtl">'+(p[1]||'לוח')+'</span> ↗</a>'; }
       return '<li class="exq"><div class="exq-main"><span class="q" lang="he" dir="rtl">'+q+'</span>'+
              '<span class="ans" role="button" tabindex="0" aria-label="Reveal answer" title="Click to reveal">'+
                '<svg class="ans-eye" aria-hidden="true"><use href="#eyeIcon"/></svg>'+
                '<span class="ans-word" lang="he" dir="rtl">'+a+'</span></span>'+
-             trBtn+'</div>'+trLine+'</li>';
+             refLink+trBtn+'</div>'+trLine+'</li>';
     }).join('');
   }
   function practiceBlock(ex){
@@ -1015,9 +1115,70 @@
       if(exArr[i]) cards[i].insertAdjacentHTML('beforeend', practiceBlock(exArr[i]));
     }
   }
+  /* stable anchors on the reference cards, so exam solutions can link to them */
+  var IDMAP={
+    'v-present':['v-paal-pres-shlemim','v-paal-pres-ayv','v-paal-pres-lh','v-piel-pres','v-hifil-pres','v-hitpael-pres'],
+    'v-past':['v-paal-past-shlemim','v-paal-past-ayv','v-paal-past-lh','v-piel-past','v-hifil-past','v-hitpael-past','v-hayah-past'],
+    'paal':['v-paal-fut-efol','v-paal-fut-efal','v-paal-fut-gutt','v-paal-fut-ayv','v-paal-fut-lh','v-paal-fut-py','v-paal-fut-pn','v-paal-fut-pa','v-paal-fut-lihyot','v-paal-imp-hollow','v-paal-imp-pypn','v-paal-passive'],
+    'piel':['v-piel-fut'],'hifil':['v-hifil-fut'],'hitpael':['v-hitpael-fut'],
+    'nifal':['v-nifal-pres','v-nifal-past','v-nifal-fut'],
+    'preps':['p-al','p-el','p-etzel','p-min','p-be','p-kmo','p-bein','p-bishvil','p-biglal','p-bli','p-etzem'],
+    'preps-review':['p-shel','p-le','p-et','p-im'],
+    'nouns-t':['t-oto','t-dual','t-irrplural','t-femendings','t-smichut','t-comparison'],
+    'syntax-t':['t-impersonal','t-nominal','t-futurehave','t-relative','t-causal','t-conditional','t-temporal','t-purpose','t-subjunctive','t-ela','t-copula','t-adverb','t-habitual'],
+    'words-t':['t-pos','t-particles','t-shehu','t-homograph','t-ivritizm']
+  };
+  Object.keys(IDMAP).forEach(function(c){
+    var cards=document.querySelectorAll('#'+c+' > .pcard, #'+c+' > .tcard');
+    IDMAP[c].forEach(function(id,i){ if(cards[i] && !cards[i].id) cards[i].id=id; });
+  });
+
   attach('paal',PAAL); attach('piel',PIEL); attach('hifil',HIFIL);
   attach('hitpael',HITPAEL); attach('nifal',NIFAL); attach('preps',PREPS);
   attach('nouns-t',NOUNS); attach('syntax-t',SYNTAX); attach('words-t',WORDS);
+  attach('v-present',[
+    E('השלימו בהווה:',[
+      ['אֲנִי ___ עִבְרִית בָּאוּלְפָּן. (ללמוד)','לוֹמֵד / לוֹמֶדֶת','I study Hebrew at the ulpan.'],
+      ['הֵן ___ בָּאוּנִיבֶרְסִיטָה. (ללמוד)','לוֹמְדוֹת','They (f.) study at the university.']]),
+    E('השלימו בהווה:',[
+      ['אֲנַחְנוּ ___ בְּחֵיפָה. (לגור)','גָּרִים','We live in Haifa.'],
+      ['הִיא ___ לְבַד. (לגור)','גָּרָה','She lives alone.']]),
+    E('השלימו בהווה:',[
+      ['מָה אַתָּה ___ לֶאֱכוֹל? (לרצות)','רוֹצֶה','What do you want to eat?'],
+      ['הַיְלָדִים ___ לָלֶכֶת הַבַּיְתָה. (לרצות)','רוֹצִים','The children want to go home.']]),
+    E('השלימו בהווה:',[
+      ['הִיא ___ שָׁלוֹשׁ שָׂפוֹת. (לדבר)','מְדַבֶּרֶת','She speaks three languages.'],
+      ['אֲנַחְנוּ ___ בַּטֶּלֶפוֹן. (לדבר)','מְדַבְּרִים','We are talking on the phone.']]),
+    E('השלימו בהווה:',[
+      ['אֲנִי לֹא ___ טוֹב הַיּוֹם. (להרגיש)','מַרְגִּישׁ / מַרְגִּישָׁה','I don’t feel well today.'],
+      ['הֵם ___ שְׂמֵחִים. (להרגיש)','מַרְגִּישִׁים','They feel happy.']]),
+    E('השלימו בהווה:',[
+      ['הַיֶּלֶד ___ לְבַד. (להתלבש)','מִתְלַבֵּשׁ','The boy gets dressed by himself.'],
+      ['בַּבּוֹקֶר אֲנַחְנוּ ___ מַהֵר. (להתלבש)','מִתְלַבְּשִׁים','In the morning we get dressed quickly.']])
+  ]);
+  attach('v-past',[
+    E('השלימו בעבר:',[
+      ['אֶתְמוֹל אֲנִי ___ מִכְתָּב. (לכתוב)','כָּתַבְתִּי','Yesterday I wrote a letter.'],
+      ['הֵם ___ בַּמַּחְבֶּרֶת. (לכתוב)','כָּתְבוּ','They wrote in the notebook.']]),
+    E('השלימו בעבר:',[
+      ['פַּעַם אֲנַחְנוּ ___ בִּירוּשָׁלַיִם. (לגור)','גַּרְנוּ','We once lived in Jerusalem.'],
+      ['הִיא ___ שָׁם שָׁנָה. (לגור)','גָּרָה','She lived there for a year.']]),
+    E('השלימו בעבר:',[
+      ['אֶתְמוֹל הִיא ___ נַעֲלַיִים. (לקנות)','קָנְתָה','Yesterday she bought shoes.'],
+      ['מָה ___ בַּשּׁוּק? (אתם, לקנות)','קְנִיתֶם','What did you buy at the market?']]),
+    E('השלימו בעבר:',[
+      ['אֶמֶשׁ ___ עַל הָעֲבוֹדָה. (אנחנו, לדבר)','דִּיבַּרְנוּ','Last night we talked about work.'],
+      ['הוּא ___ עִם הַמְּנַהֵל. (לדבר)','דִּיבֵּר','He spoke with the manager.']]),
+    E('השלימו בעבר:',[
+      ['בַּבּוֹקֶר ___ עֲיֵפָה. (היא, להרגיש)','הִרְגִּישָׁה','In the morning she felt tired.'],
+      ['אֵיךְ ___ אַחֲרֵי הַמִּבְחָן? (אתה, להרגיש)','הִרְגַּשְׁתָּ','How did you feel after the test?']]),
+    E('השלימו בעבר:',[
+      ['הַיְלָדִים ___ לְבַד. (להתלבש)','הִתְלַבְּשׁוּ','The children got dressed by themselves.'],
+      ['אֲנִי ___ מַהֵר וְיָצָאתִי. (להתלבש)','הִתְלַבַּשְׁתִּי','I got dressed quickly and left.']]),
+    E('השלימו בעבר (הפועל להיות):',[
+      ['אֶתְמוֹל ___ לִי יוֹם קָשֶׁה. (להיות)','הָיָה','Yesterday I had a hard day.'],
+      ['הֵם ___ בַּבַּיִת כָּל הַיּוֹם. (להיות)','הָיוּ','They were at home all day.']])
+  ]);
 
   var rev=document.getElementById('preps-review');
   if(rev) rev.insertAdjacentHTML('afterend','<div class="exwrap">'+practiceBlock(PREP_REVIEW)+'</div>');
