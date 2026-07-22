@@ -316,6 +316,9 @@
 
     <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">נִפְעַל</span> <span class="en">— Nif'al · present · past · future (Lesson 11)</span></h3></div>
     <div class="cardgrid" id="nifal"></div>
+
+    <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">שֵׁם הַפְּעוּלָה</span> <span class="en">— the verbal noun: turning a verb into its noun (each cell: verb → noun)</span></h3></div>
+    <div class="cardgrid" id="v-gerund"></div>
   </section>
 
   <!-- ===================== PREPOSITIONS ===================== -->
@@ -335,6 +338,9 @@
       <h2>Nouns &amp; Adjectives <span class="sec-he" lang="he" dir="rtl">· שֵׁם עֶצֶם וְשֵׁם תּוֹאַר</span></h2></div>
     <p class="sec-intro">Number, gender, the dual, feminine plural patterns, the construct chain, and comparison.</p>
     <div class="topics" id="nouns-t"></div>
+
+    <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">רַבִּים חֲרִיגִים</span> <span class="en">— irregular plurals: the gender "flips" (each cell: singular → plural)</span></h3></div>
+    <div class="cardgrid" id="n-irrplural"></div>
   </section>
 
   <!-- ===================== SYNTAX ===================== -->
@@ -532,6 +538,38 @@
     {verb:'לְהִיכָּנֵס',gl:'to enter — future',gz:'שלמים',tense:'עתיד',page:267,
      forms:['אֶכָּנֵס','תִּיכָּנֵס','תִּיכָּנְסִי','יִיכָּנֵס','תִּיכָּנֵס','נִיכָּנֵס','תִּיכָּנְסוּ','יִיכָּנְסוּ'],
      note:'Some Nif\'al verbs are active with no Pa\'al pair: <span class="note-he" lang="he" dir="rtl">נכנס · נלחם · נשאר · נזהר · נעלם</span> (p259).'}
+  ]);
+
+  /* ---------------- שם הפעולה (verbal noun) ---------------- */
+  fill('v-gerund',[
+    {verb:'פִּיעֵל',gl:'verb → verbal noun',tense:'שם הפעולה',src:'פִּיעוּל',wide:true,cols:'c3',
+     prons:['לְסַדֵּר','לְטַיֵּיל','לְבַקֵּר','לְדַבֵּר','לְבַשֵּׁל','לְצַיֵּיר','לְחַפֵּשׂ','לְסַפֵּר','לְתַרְגֵּם'],
+     forms:['סִידּוּר','טִיּוּל','בִּיקּוּר','דִּיבּוּר','בִּישּׁוּל','צִיּוּר','חִיפּוּשׂ','סִיפּוּר','תִּרְגּוּם'],
+     note:'The <b>פִּיעוּל</b> pattern — regular for almost every Pi\'el verb. Each cell: the verb (small) → its noun (bold).'},
+    {verb:'הִפְעִיל',gl:'verb → verbal noun',tense:'שם הפעולה',src:'הַפְעָלָה',wide:true,cols:'c3',
+     prons:['לְהַצְלִיחַ','לְהַזְמִין','לְהַתְחִיל','לְהַרְגִּישׁ','לְהַסְבִּיר','לְהַדְלִיק','לְהַחְלִיט','לְהַפְסִיק','לְהָכִין'],
+     forms:['הַצְלָחָה','הַזְמָנָה','הַתְחָלָה','הַרְגָּשָׁה','הַסְבָּרָה','הַדְלָקָה','הַחְלָטָה','הַפְסָקָה','הֲכָנָה'],
+     note:'The <b>הַפְעָלָה</b> pattern. From ע״ו/ל״ה the vowel shifts: <span class="note-he" lang="he" dir="rtl">להכין → הֲכָנָה · להבין → הֲבָנָה</span>.'},
+    {verb:'הִתְפַּעֵל',gl:'verb → verbal noun',tense:'שם הפעולה',src:'הִתְפַּעֲלוּת',wide:true,cols:'c3',
+     prons:['לְהִתְרַגֵּשׁ','לְהִתְלַבֵּשׁ','לְהִתְקַדֵּם','לְהִתְנַהֵג','לְהִשְׁתַּתֵּף','לְהִתְפַּתֵּחַ','לְהִתְחַתֵּן','לְהִתְגַּעְגֵּעַ'],
+     forms:['הִתְרַגְּשׁוּת','הִתְלַבְּשׁוּת','הִתְקַדְּמוּת','הִתְנַהֲגוּת','הִשְׁתַּתְּפוּת','הִתְפַּתְּחוּת','הִתְחַתְּנוּת','הִתְגַּעְגְּעוּת'],
+     note:'The <b>הִתְפַּעֲלוּת</b> pattern — always ends in <span class="note-he" lang="he" dir="rtl">־וּת</span>.'},
+    {verb:'פָּעַל',gl:'verb → verbal noun',tense:'שם הפעולה',src:'פְּעִילָה',wide:true,cols:'c3',
+     prons:['לִכְתּוֹב','לִפְגּוֹשׁ','לִשְׁמוֹר','לִקְרוֹא','לֶאֱכוֹל','לִסְגּוֹר','לִבְחוֹר','לָשֶׁבֶת','לָלֶכֶת'],
+     forms:['כְּתִיבָה','פְּגִישָׁה','שְׁמִירָה','קְרִיאָה','אֲכִילָה','סְגִירָה','בְּחִירָה','יְשִׁיבָה','הֲלִיכָה'],
+     note:'The common <b>פְּעִילָה</b> pattern — but Pa\'al also has many <b>irregular</b> ones: <span class="note-he" lang="he" dir="rtl">לשבת → יְשִׁיבָה · ללכת → הֲלִיכָה · לשאול → שְׁאֵלָה</span>.'}
+  ]);
+
+  /* ---------------- irregular plurals ---------------- */
+  fill('n-irrplural',[
+    {verb:'זָכָר ← רַבִּים בְּ־וֹת',gl:'masculine noun, ־וֹת plural',tense:'רבים חריגים',src:'ז׳ → ־וֹת',wide:true,cols:'c3',
+     prons:['אַבָּא','שֵׁם','רְחוֹב','אָרוֹן','שֻׁלְחָן','כִּיסֵּא','חַלּוֹן','מָקוֹם','לַיְלָה','חֲלוֹם','פְּרִי','לֵב','אוֹר','נֵר','קוֹל'],
+     forms:['אַבּוֹת','שֵׁמוֹת','רְחוֹבוֹת','אֲרוֹנוֹת','שֻׁלְחָנוֹת','כִּסְאוֹת','חַלּוֹנוֹת','מְקוֹמוֹת','לֵילוֹת','חֲלוֹמוֹת','פֵּירוֹת','לְבָבוֹת','אוֹרוֹת','נֵרוֹת','קוֹלוֹת'],
+     note:'Look masculine, take <b>־וֹת</b> — but the adjective still agrees as <b>masculine</b>: <span class="note-he" lang="he" dir="rtl">שולחנות גְּדוֹלִים · מקומות יָפִים</span>.'},
+    {verb:'נְקֵבָה ← רַבִּים בְּ־ים',gl:'feminine noun, ־ים plural',tense:'רבים חריגים',src:'נ׳ → ־ים',wide:true,cols:'c3',
+     prons:['אִישָׁה','שָׁנָה','אֶבֶן','דֶּרֶךְ','עִיר','מִילָה','בֵּיצָה','צִיפּוֹר','פַּעַם','יוֹנָה','דְּבוֹרָה','עֵז'],
+     forms:['נָשִׁים','שָׁנִים','אֲבָנִים','דְּרָכִים','עָרִים','מִילִים','בֵּיצִים','צִיפּוֹרִים','פְּעָמִים','יוֹנִים','דְּבוֹרִים','עִיזִים'],
+     note:'Look feminine, take <b>־ים</b> — but the adjective still agrees as <b>feminine</b>: <span class="note-he" lang="he" dir="rtl">מילים חֲדָשׁוֹת · ערים גְּדוֹלוֹת</span>.'}
   ]);
 
   /* ---------------- PREPOSITIONS ---------------- */
@@ -1044,7 +1082,18 @@
       ['(אתם, לרוץ) שלילי: ___ בַּמִּסְדְּרוֹן!','אַל תָּרוּצוּ!','Do not run in the corridor!','v-paal-imp-hollow|ציווי · ע״ו'],
       ['(את, לשבת) ___ בְּבַקָּשָׁה!','שְׁבִי!','Sit down, please!','v-paal-imp-pypn|ציווי · פ״י/פ״נ'],
       ['(אתם, לתת) ___ לוֹ הִזְדַּמְּנוּת!','תְּנוּ!','Give him a chance!','v-paal-imp-pypn|ציווי · פ״י/פ״נ']]},
-    {he:'חֵלֶק ז׳ · מִילּוֹת יַחַס',en:'Prepositions — the person is in bold; use the given preposition',
+    {he:'חֵלֶק ז׳ · שֵׁם הַפְּעוּלָה',en:'Verbal nouns — turn the verb into its noun',
+     instr:'כתבו את שם הפעולה של הפועל:',
+     items:[
+      ['לְסַדֵּר → ___','סִידּוּר','arranging / tidying','v-ger-piel|שם הפעולה · פיעל'],
+      ['לְצַיֵּיר → ___','צִיּוּר','a drawing','v-ger-piel|שם הפעולה · פיעל'],
+      ['לְהַצְלִיחַ → ___','הַצְלָחָה','success','v-ger-hifil|שם הפעולה · הפעיל'],
+      ['לְהַזְמִין → ___','הַזְמָנָה','an invitation / order','v-ger-hifil|שם הפעולה · הפעיל'],
+      ['לְהִתְרַגֵּשׁ → ___','הִתְרַגְּשׁוּת','excitement','v-ger-hitpael|שם הפעולה · התפעל'],
+      ['לְהִשְׁתַּתֵּף → ___','הִשְׁתַּתְּפוּת','participation','v-ger-hitpael|שם הפעולה · התפעל'],
+      ['לִפְגּוֹשׁ → ___','פְּגִישָׁה','a meeting','v-ger-paal|שם הפעולה · פעל'],
+      ['לָשֶׁבֶת → ___','יְשִׁיבָה','sitting / a session (irregular)','v-ger-paal|שם הפעולה · פעל']]},
+    {he:'חֵלֶק ח׳ · מִילּוֹת יַחַס',en:'Prepositions — the person is in bold; use the given preposition',
      instr:'השלימו במילת היחס הנתונה, בנטייה. הגוף מסומן בהדגשה:',
      items:[
       ['חִיכִּיתִי <b>לְךָ</b> שָׁעָתַיִים! חָשַׁבְתִּי הַרְבֵּה ___ . (על)','עָלֶיךָ','I waited for you two hours! I thought about you a lot.','p-al|נטיית עַל'],
@@ -1055,10 +1104,13 @@
       ['<b>רִינָה</b> תָּמִיד מְאַחֶרֶת, וַאֲנִי כּוֹעֵס ___ . (על)','עָלֶיהָ','Rina is always late, and I am angry at her.','p-al|נטיית עַל'],
       ['<b>הַסַּבָּא וְהַסַּבְתָּא</b> נְדִיבִים — קִיבַּלְנוּ מַתָּנָה יָפָה ___ . (מן)','מֵהֶם','Grandpa and grandma are generous — we got a nice gift from them.','p-min|נטיית מִן'],
       ['הַסּוֹד יִישָׁאֵר <b>בֵּינִי וּבֵין דָּן</b> — יִישָׁאֵר ___ . (בין)','בֵּינֵינוּ','The secret will stay between Dan and me — between us.','p-bein|נטיית בֵּין']]},
-    {he:'חֵלֶק ח׳ · שֵׁם עֶצֶם, סְמִיכוּת וּמִסְפָּרִים',en:'Nouns, construct state & numbers',
+    {he:'חֵלֶק ט׳ · שֵׁם עֶצֶם: רַבִּים, סְמִיכוּת וּמִסְפָּרִים',en:'Nouns — irregular plurals, construct state & numbers',
      instr:'השלימו:',
      items:[
-      ['שֻׁלְחָן → ___ (רבים)','שֻׁלְחָנוֹת','tables (irregular plural)','t-irrplural|רבים חריגים'],
+      ['שֻׁלְחָן → ___ (רבים)','שֻׁלְחָנוֹת','tables — masc. noun, ־וֹת plural','n-irr-masc|רבים חריגים (ז)'],
+      ['אִישָׁה → ___ (רבים)','נָשִׁים','women — fem. noun, ־ים plural','n-irr-fem|רבים חריגים (נ)'],
+      ['עִיר → ___ (רבים)','עָרִים','cities — fem. noun, ־ים plural','n-irr-fem|רבים חריגים (נ)'],
+      ['לַיְלָה → ___ (רבים)','לֵילוֹת','nights — masc. noun, ־וֹת plural','n-irr-masc|רבים חריגים (ז)'],
       ['שְׁתֵּי שָׁעוֹת = ___ (זוגי)','שְׁעָתַיִים','two hours (dual)','t-dual|צורת הזוגי'],
       ['עוּגָה שֶׁל יוֹם הֻלֶּדֶת = ___ יוֹם הֻלֶּדֶת (סמיכות)','עוּגַת','a birthday cake (construct)','t-smichut|צירוף סמיכות'],
       ['יֵשׁ לִי ___ סְפָרִים בַּתִּיק. (3)','שְׁלוֹשָׁה','I have three books in the bag (masc.).'],
@@ -1066,7 +1118,7 @@
       ['יוֹם ___ הוּא הַיּוֹם הָרִאשׁוֹן בַּשָּׁבוּעַ. (1st)','רִאשׁוֹן','Sunday is the first day of the week (ordinal).'],
       ['הֵן לוֹמְדוֹת בְּ___ כִּיתָּה. (the same)','אוֹתָהּ','They (f.) study in the same class.','t-oto|אותו / אותה'],
       ['תֵּל אָבִיב גְּדוֹלָה ___ מִיְּרוּשָׁלַיִם. (more)','יוֹתֵר','Tel Aviv is bigger than Jerusalem.','t-comparison|השוואה']]},
-    {he:'חֵלֶק ט׳ · יֵשׁ/אֵין, שַׁיָּיכוּת וְאוֹגֵד',en:'Existence, possession & copula across tenses',
+    {he:'חֵלֶק י׳ · יֵשׁ/אֵין, שַׁיָּיכוּת וְאוֹגֵד',en:'Existence, possession & copula across tenses',
      instr:'כתבו בזמן המבוקש:',
      items:[
       ['יֵשׁ שְׁבִיתָה הַיּוֹם → מָחָר ___ שְׁבִיתָה. (עתיד)','תִּהְיֶה','Tomorrow there will be a strike.','t-nominal|משפט שמני'],
@@ -1075,7 +1127,7 @@
       ['הַשַּׁבָּת ___ יוֹם שֶׁל מְנוּחָה. (אוגד)','הִיא','Shabbat is a day of rest.','t-copula|הָאוֹגֵד'],
       ['יְמֵי רִאשׁוֹן ___ בְּעָיָה בִּשְׁבִילִי. (אוגד)','הֵם','Sundays are a problem for me.','t-copula|הָאוֹגֵד'],
       ['כָּל קַיִץ אֲנַחְנוּ נוֹסְעִים לַיָּם → כָּל קַיִץ ___ נוֹסְעִים. (used to)','הָיִינוּ','Every summer we used to travel to the sea.','t-habitual|פעולה רגילה בעבר']]},
-    {he:'חֵלֶק י׳ · תַּחְבִּיר — אֵיזוֹ מִילַּת קִישּׁוּר?',en:'Syntax — which connector fits?',
+    {he:'חֵלֶק יא׳ · תַּחְבִּיר — אֵיזוֹ מִילַּת קִישּׁוּר?',en:'Syntax — which connector fits?',
      instr:'בחרו את מילת הקישור הנכונה:',
      items:[
       ['לֹא הָלַכְנוּ לַיָּם ___ יָרַד גֶּשֶׁם. (סיבה)','מִפְּנֵי שֶׁ / כִּי','We did not go to the sea because it rained.','t-causal|מילות סיבה'],
@@ -1086,7 +1138,7 @@
       ['___ אֲנִי קָם בַּבּוֹקֶר, אֲנִי שׁוֹתֶה קָפֶה. (when)','כְּשֶׁ','When I get up in the morning, I drink coffee.','t-temporal|משפטי זמן'],
       ['___ יִהְיֶה לִי זְמַן מָחָר, אֶעֱזוֹר לְךָ. (if)','אִם','If I have time tomorrow, I will help you.','t-conditional|תנאי קיים'],
       ['זֶה הַסֵּפֶר ___ קָנִיתִי אֶתְמוֹל. (that)','שֶׁ','This is the book that I bought yesterday.','t-relative|משפטי לוואי']]},
-    {he:'חֵלֶק יא׳ · שַׁנּוּ וְתַרְגְּמוּ',en:'Rewrite & translate — the hard part',
+    {he:'חֵלֶק יב׳ · שַׁנּוּ וְתַרְגְּמוּ',en:'Rewrite & translate — the hard part',
      instr:'שנו את המשפטים לפי ההוראה, או תרגמו לעברית:',
      items:[
       ['שַׁנּוּ לֶעָתִיד (to future): “יֵשׁ לָנוּ מִבְחָן מָחָר.”','יִהְיֶה לָנוּ מִבְחָן מָחָר.','We will have a test tomorrow.'],
@@ -1177,6 +1229,8 @@
     'paal':['v-paal-fut-efol','v-paal-fut-efal','v-paal-fut-gutt','v-paal-fut-ayv','v-paal-fut-lh','v-paal-fut-py','v-paal-fut-pn','v-paal-fut-pa','v-paal-fut-lihyot','v-paal-imp-hollow','v-paal-imp-pypn','v-paal-passive'],
     'piel':['v-piel-fut'],'hifil':['v-hifil-fut'],'hitpael':['v-hitpael-fut'],
     'nifal':['v-nifal-pres','v-nifal-past','v-nifal-fut'],
+    'v-gerund':['v-ger-piel','v-ger-hifil','v-ger-hitpael','v-ger-paal'],
+    'n-irrplural':['n-irr-masc','n-irr-fem'],
     'preps':['p-al','p-el','p-etzel','p-min','p-be','p-kmo','p-bein','p-bishvil','p-biglal','p-bli','p-etzem'],
     'preps-review':['p-shel','p-le','p-et','p-im'],
     'nouns-t':['t-oto','t-dual','t-irrplural','t-femendings','t-smichut','t-comparison'],
@@ -1233,6 +1287,36 @@
     E('השלימו בעבר (הפועל להיות):',[
       ['אֶתְמוֹל ___ לִי יוֹם קָשֶׁה. (להיות)','הָיָה','Yesterday I had a hard day.'],
       ['הֵם ___ בַּבַּיִת כָּל הַיּוֹם. (להיות)','הָיוּ','They were at home all day.']])
+  ]);
+  attach('v-gerund',[
+    E('כתבו את שם הפעולה (הפועל ← השם):',[
+      ['לְטַיֵּיל → ___','טִיּוּל','a trip / hike'],
+      ['לְבַקֵּר → ___','בִּיקּוּר','a visit'],
+      ['לְסַפֵּר → ___','סִיפּוּר','a story']]),
+    E('כתבו את שם הפעולה:',[
+      ['לְהַזְמִין → ___','הַזְמָנָה','an invitation / order'],
+      ['לְהַתְחִיל → ___','הַתְחָלָה','a beginning'],
+      ['לְהַחְלִיט → ___','הַחְלָטָה','a decision']]),
+    E('כתבו את שם הפעולה:',[
+      ['לְהִתְלַבֵּשׁ → ___','הִתְלַבְּשׁוּת','getting dressed'],
+      ['לְהִשְׁתַּתֵּף → ___','הִשְׁתַּתְּפוּת','participation'],
+      ['לְהִתְפַּתֵּחַ → ___','הִתְפַּתְּחוּת','development']]),
+    E('כתבו את שם הפעולה (שימו לב לחריגים):',[
+      ['לִכְתּוֹב → ___','כְּתִיבָה','writing'],
+      ['לִפְגּוֹשׁ → ___','פְּגִישָׁה','a meeting'],
+      ['לָשֶׁבֶת → ___','יְשִׁיבָה','sitting / a session (irregular)']])
+  ]);
+  attach('n-irrplural',[
+    E('כתבו ברבים:',[
+      ['שֻׁלְחָן → ___','שֻׁלְחָנוֹת','tables'],
+      ['מָקוֹם → ___','מְקוֹמוֹת','places'],
+      ['לַיְלָה → ___','לֵילוֹת','nights'],
+      ['לֵב → ___','לְבָבוֹת','hearts']]),
+    E('כתבו ברבים:',[
+      ['אִישָׁה → ___','נָשִׁים','women'],
+      ['עִיר → ___','עָרִים','cities'],
+      ['מִילָה → ___','מִילִים','words'],
+      ['דֶּרֶךְ → ___','דְּרָכִים','roads / ways']])
   ]);
 
   var rev=document.getElementById('preps-review');
