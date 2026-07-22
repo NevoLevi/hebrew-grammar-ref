@@ -170,12 +170,18 @@
   .exq{display:flex;flex-direction:column;gap:3px}
   .exq-main{display:flex;flex-wrap:wrap;gap:5px 8px;align-items:baseline;direction:rtl}
   .exq .q{font-family:var(--he);direction:rtl;font-size:1.1rem;color:var(--ink);line-height:1.6;unicode-bidi:plaintext}
-  .exq .ans{font-family:var(--he);direction:rtl;font-size:1.06rem;font-weight:700;color:var(--steel);
-    background:var(--card);border:1px solid var(--line);padding:1px 9px;border-radius:6px;cursor:pointer;
-    filter:blur(5px);transition:filter .12s ease, box-shadow .12s ease;user-select:none;-webkit-user-select:none;unicode-bidi:plaintext}
-  .exq .ans:hover{box-shadow:0 0 0 2px var(--steel) inset}
-  .exq .ans.revealed,.exercise.show-ans .exq .ans,body.show-ans .exq .ans{filter:none}
-  .exq .ans:focus-visible{outline:2px solid var(--steel);outline-offset:2px;filter:none}
+  .exq .ans{display:inline-flex;align-items:center;gap:5px;color:var(--steel);background:var(--card);
+    border:1px solid var(--line);border-radius:6px;padding:1px 8px;cursor:pointer;vertical-align:baseline;
+    user-select:none;-webkit-user-select:none;transition:box-shadow .12s ease,border-color .12s ease}
+  .ans-eye{width:13px;height:13px;flex:none;stroke:currentColor;fill:none;stroke-width:2;opacity:.8}
+  .ans-word{font-family:var(--he);direction:rtl;font-size:1.06rem;font-weight:700;color:var(--steel);
+    filter:blur(5px);transition:filter .12s ease;unicode-bidi:plaintext}
+  .exq .ans:hover{box-shadow:0 0 0 2px var(--steel) inset;border-color:transparent}
+  .ans.revealed .ans-word,.exercise.show-ans .ans .ans-word,body.show-ans .ans .ans-word{filter:none}
+  .ans.revealed{gap:0}
+  .ans.revealed .ans-eye,.exercise.show-ans .ans .ans-eye,body.show-ans .ans .ans-eye{display:none}
+  .exercise.show-ans .ans,body.show-ans .ans{gap:0}
+  .exq .ans:focus-visible{outline:2px solid var(--steel);outline-offset:2px}
   .tr-btn{font-family:var(--sans);font-size:.6rem;font-weight:700;letter-spacing:.05em;cursor:pointer;color:var(--muted);
     background:transparent;border:1px solid var(--line);border-radius:5px;padding:1px 6px;line-height:1.4;white-space:nowrap;
     transition:color .14s,border-color .14s}
@@ -198,8 +204,11 @@
   .exam-sec .seg-toggle{color:var(--accent);border-color:var(--accent)}
   .exam-sec .seg-toggle:hover,.exam-sec .seg-toggle.on{background:var(--accent);color:var(--bg)}
   .exam-sec .exq .ans{color:var(--accent)}
+  .exam-sec .ans-word{color:var(--accent)}
   .exam-sec .exq .ans:hover{box-shadow:0 0 0 2px var(--accent) inset}
-  .exam-sec.show-ans .exq .ans{filter:none}
+  .exam-sec.show-ans .ans .ans-word{filter:none}
+  .exam-sec.show-ans .ans .ans-eye{display:none}
+  .exam-sec.show-ans .ans{gap:0}
   .exam-title{font-family:var(--he);direction:rtl;font-weight:700;font-size:1.14rem;color:var(--ink)}
   .exam-title .en{font-family:var(--sans);font-weight:500;font-size:.8rem;color:var(--muted);margin-inline-start:8px}
 
@@ -932,13 +941,16 @@
   ];
 
   /* ---------------- rendering ---------------- */
+  document.body.insertAdjacentHTML('afterbegin','<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="eyeIcon" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></symbol></svg>');
   function itemsHtml(items){
     return items.map(function(it){
       var q=it[0], a=it[1], tr=it[2];
       var trBtn = tr ? '<button class="tr-btn" type="button" aria-label="Show translation">EN</button>' : '';
       var trLine = tr ? '<div class="tr">'+tr+'</div>' : '';
       return '<li class="exq"><div class="exq-main"><span class="q" lang="he" dir="rtl">'+q+'</span>'+
-             '<span class="ans" lang="he" dir="rtl" role="button" tabindex="0" aria-label="Reveal answer">'+a+'</span>'+
+             '<span class="ans" role="button" tabindex="0" aria-label="Reveal answer" title="Click to reveal">'+
+               '<svg class="ans-eye" aria-hidden="true"><use href="#eyeIcon"/></svg>'+
+               '<span class="ans-word" lang="he" dir="rtl">'+a+'</span></span>'+
              trBtn+'</div>'+trLine+'</li>';
     }).join('');
   }
