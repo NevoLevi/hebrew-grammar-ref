@@ -1,440 +1,408 @@
-<title>עברית מן ההתחלה ב׳ — Grammar Reference (to p. 267)</title>
-<style>
-  :root{
-    --bg:#f3f1ea; --panel:#fbfaf6; --card:#ffffff;
-    --ink:#241f1b; --ink-soft:#4b443c; --muted:#857b6e; --faint:#a89e90;
-    --line:#e5dfd2; --line-strong:#d8d0be;
-    --accent:#9c2b23; --accent-ink:#7f231d; --accent-tint:#f3e2de; --accent-tint-2:#efd9d4;
-    --steel:#3c4a5e; --steel-tint:#e5e8ee;
-    --shadow:0 1px 2px rgba(40,30,20,.04),0 3px 10px rgba(40,30,20,.05);
-    --he:'Frank Ruehl','FrankRuehl','David Libre','David','Narkisim','Times New Roman','Arial Hebrew',serif;
-    --serif:'Palatino Linotype','Book Antiqua','Iowan Old Style',Georgia,'Times New Roman',serif;
-    --sans:'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
-    --mono:ui-monospace,'Cascadia Code','SF Mono',Consolas,'Liberation Mono',monospace;
-  }
-  @media (prefers-color-scheme:dark){
-    :root{
-      --bg:#17140f; --panel:#201c16; --card:#24201a;
-      --ink:#ece5d8; --ink-soft:#c9c0b0; --muted:#9a9082; --faint:#766c5f;
-      --line:#362f26; --line-strong:#453d31;
-      --accent:#e0776a; --accent-ink:#e88a7e; --accent-tint:#2e211d; --accent-tint-2:#38251f;
-      --steel:#9fb2cc; --steel-tint:#232a33;
-      --shadow:0 1px 2px rgba(0,0,0,.25),0 4px 14px rgba(0,0,0,.3);
-    }
-  }
-  :root[data-theme="light"]{
-    --bg:#f3f1ea; --panel:#fbfaf6; --card:#ffffff;
-    --ink:#241f1b; --ink-soft:#4b443c; --muted:#857b6e; --faint:#a89e90;
-    --line:#e5dfd2; --line-strong:#d8d0be;
-    --accent:#9c2b23; --accent-ink:#7f231d; --accent-tint:#f3e2de; --accent-tint-2:#efd9d4;
-    --steel:#3c4a5e; --steel-tint:#e5e8ee;
-    --shadow:0 1px 2px rgba(40,30,20,.04),0 3px 10px rgba(40,30,20,.05);
-  }
-  :root[data-theme="dark"]{
-    --bg:#17140f; --panel:#201c16; --card:#24201a;
-    --ink:#ece5d8; --ink-soft:#c9c0b0; --muted:#9a9082; --faint:#766c5f;
-    --line:#362f26; --line-strong:#453d31;
-    --accent:#e0776a; --accent-ink:#e88a7e; --accent-tint:#2e211d; --accent-tint-2:#38251f;
-    --steel:#9fb2cc; --steel-tint:#232a33;
-    --shadow:0 1px 2px rgba(0,0,0,.25),0 4px 14px rgba(0,0,0,.3);
-  }
-
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;
-    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
-  .wrap{max-width:1060px;margin:0 auto;padding:0 22px 96px;}
-
-  /* ---------- masthead ---------- */
-  .mast{padding:52px 0 30px;border-bottom:1px solid var(--line);margin-bottom:8px;}
-  .kicker{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);
-    font-weight:600;margin:0 0 14px;}
-  .he-title{font-family:var(--he);direction:rtl;font-size:clamp(2.3rem,6vw,3.7rem);line-height:1.15;
-    font-weight:700;margin:0;color:var(--ink);letter-spacing:.01em;}
-  .en-title{font-family:var(--serif);font-size:clamp(1.05rem,2.4vw,1.45rem);color:var(--ink-soft);
-    font-weight:500;margin:10px 0 0;font-style:italic;text-wrap:balance;}
-  .mast-meta{display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:22px;}
-  .chip{font-size:.76rem;color:var(--ink-soft);background:var(--panel);border:1px solid var(--line);
-    padding:5px 11px;border-radius:999px;}
-  .chip b{color:var(--accent);font-weight:600}
-
-  /* ---------- legend ---------- */
-  .legend{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
-    margin:26px 0 34px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px 26px;}
-  .legend h4{margin:0 0 6px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
-  .legend p{margin:0;font-size:.86rem;color:var(--ink-soft)}
-  .legend .heseq{font-family:var(--he);direction:rtl;font-size:1.02rem;color:var(--ink)}
-  .pgtag{font-family:var(--mono);font-size:.74rem;color:var(--accent);background:var(--accent-tint);
-    padding:1px 6px;border-radius:5px;font-variant-numeric:tabular-nums;white-space:nowrap}
-
-  /* ---------- nav ---------- */
-  nav.toc{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);
-    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 -22px 40px;padding:11px 22px;
-    display:flex;flex-wrap:wrap;gap:5px 4px;}
-  nav.toc a{font-size:.82rem;color:var(--ink-soft);text-decoration:none;padding:5px 12px;border-radius:7px;
-    font-weight:500;transition:background .15s,color .15s;}
-  nav.toc a:hover{background:var(--accent-tint);color:var(--accent)}
-  nav.toc a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-
-  /* ---------- sections ---------- */
-  section{margin:0 0 60px;scroll-margin-top:64px;}
-  .sec-head{display:flex;align-items:baseline;gap:14px;margin:0 0 6px;}
-  .sec-num{font-family:var(--mono);font-size:.8rem;color:var(--accent);font-weight:600}
-  .sec-head h2{font-family:var(--serif);font-size:clamp(1.5rem,3.4vw,2.05rem);margin:0;font-weight:600;
-    letter-spacing:-.01em;text-wrap:balance}
-  .sec-he{font-family:var(--he);direction:rtl;color:var(--accent);font-weight:700}
-  .sec-intro{color:var(--ink-soft);max-width:62ch;margin:2px 0 26px;font-size:.95rem}
-
-  .group-head{display:flex;align-items:center;gap:12px;margin:34px 0 16px;}
-  .group-head .bar{width:3px;height:24px;background:var(--accent);border-radius:2px;flex:none}
-  .group-head h3{margin:0;font-size:1.16rem;font-weight:600;font-family:var(--serif)}
-  .group-head .he{font-family:var(--he);direction:rtl;font-size:1.4rem;font-weight:700;color:var(--ink)}
-  .group-head .en{color:var(--muted);font-size:.9rem;font-weight:500}
-
-  /* ---------- paradigm cards ---------- */
-  .cardgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;}
-  .pcard{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:15px 15px 6px;
-    box-shadow:var(--shadow);display:flex;flex-direction:column;}
-  .pcard.wide{grid-column:1/-1}
-  .pcard-h{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;
-    padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid var(--line);}
-  .pcard-title{display:flex;flex-direction:column;gap:2px;min-width:0}
-  .he-lg{font-family:var(--he);direction:rtl;font-size:1.72rem;font-weight:700;line-height:1.25;color:var(--accent-ink)}
-  .gloss{font-size:.82rem;color:var(--muted);font-style:italic}
-  .tags{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex:none;text-align:right}
-  .tag{font-family:var(--he);direction:rtl;font-size:.82rem;color:var(--ink-soft);background:var(--panel);
-    border:1px solid var(--line);padding:2px 8px;border-radius:6px;white-space:nowrap}
-  .tag.t{color:var(--accent);background:var(--accent-tint);border-color:transparent;font-weight:600}
-  .tag.gz{color:var(--steel);background:var(--steel-tint);border-color:transparent}
-
-  .grid{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:9px;overflow:hidden;direction:rtl}
-  .grid.c4{grid-template-columns:repeat(4,1fr)}
-  .grid.c5{grid-template-columns:repeat(5,1fr)}
-  .grid.c3{grid-template-columns:repeat(3,1fr)}
-  .grid.c2{grid-template-columns:repeat(2,1fr)}
-  .cell{background:var(--card);padding:8px 6px 9px;display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center}
-  .cell .pron{font-family:var(--he);direction:rtl;font-size:.74rem;color:var(--faint);font-weight:400;line-height:1}
-  .cell .form{font-family:var(--he);direction:rtl;font-size:1.28rem;color:var(--ink);font-weight:600;line-height:1.5}
-  .note{font-size:.82rem;color:var(--ink-soft);margin:11px 2px 8px;padding:9px 11px;background:var(--panel);
-    border-radius:8px;border:1px solid var(--line);line-height:1.5}
-  .note b{color:var(--accent-ink);font-weight:600}
-  .note .he,.note-he{font-family:var(--he);direction:rtl;font-size:1.05rem;unicode-bidi:isolate}
-
-  /* imperative / free-form card */
-  .flline{display:flex;flex-wrap:wrap;gap:6px 8px;direction:rtl;margin:2px 0 12px}
-  .fbadge{font-family:var(--he);direction:rtl;background:var(--panel);border:1px solid var(--line);
-    border-radius:8px;padding:6px 11px;font-size:1.22rem;font-weight:600;color:var(--ink)}
-  .fbadge.neg{color:var(--accent-ink);background:var(--accent-tint);border-color:transparent}
-  .fbadge small{font-family:var(--he);font-size:.7rem;color:var(--faint);font-weight:400;display:block;text-align:center}
-
-  /* ---------- topic cards (prose grammar) ---------- */
-  .topics{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;}
-  .tcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 16px;box-shadow:var(--shadow);
-    display:flex;flex-direction:column;gap:8px}
-  .tcard-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
-  .tcard-h .he{font-family:var(--he);direction:rtl;font-size:1.3rem;font-weight:700;color:var(--ink);line-height:1.3}
-  .tcard-h .en{font-size:.82rem;color:var(--muted);font-style:italic;text-align:right;flex:none}
-  .tcard .rule{font-size:.9rem;color:var(--ink-soft);margin:0}
-  .tcard .rule b{color:var(--accent-ink);font-weight:600}
-  .tcard .ex{font-family:var(--he);direction:rtl;font-size:1.12rem;color:var(--ink);background:var(--panel);
-    border-right:3px solid var(--accent);border-radius:0 7px 7px 0;padding:7px 11px;line-height:1.7;unicode-bidi:plaintext}
-  .tcard .foot{display:flex;justify-content:flex-end;margin-top:auto;padding-top:2px}
-
-  /* ---------- lesson index ---------- */
-  .lessons{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px;}
-  .lcard{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:13px 15px;box-shadow:var(--shadow)}
-  .lcard .lh{display:flex;align-items:baseline;gap:9px;margin-bottom:7px;padding-bottom:7px;border-bottom:1px solid var(--line)}
-  .lcard .ln{font-family:var(--he);direction:rtl;font-weight:700;color:var(--accent-ink);font-size:1.06rem}
-  .lcard .lp{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-inline-start:auto;font-variant-numeric:tabular-nums}
-  .lcard ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px}
-  .lcard li{font-family:var(--he);direction:rtl;font-size:1rem;color:var(--ink-soft);line-height:1.4;
-    padding-inline-start:14px;position:relative}
-  .lcard li::before{content:"◂";position:absolute;inset-inline-start:0;color:var(--accent);font-size:.7rem;top:.28em}
-  .lcard li .en{font-family:var(--sans);font-size:.76rem;color:var(--faint);font-style:italic}
-
-  footer{border-top:1px solid var(--line);margin-top:20px;padding-top:22px;color:var(--muted);font-size:.84rem;line-height:1.6}
-  footer b{color:var(--ink-soft)}
-
-  /* ---------- exercises ---------- */
-  .exercise{margin:13px 0 4px;padding:12px 13px;background:var(--steel-tint);border:1px solid var(--line);
-    border-radius:9px;border-inline-start:3px solid var(--steel)}
-  .ex-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:7px 10px;margin-bottom:9px}
-  .ex-tag{font-family:var(--sans);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;
-    color:var(--bg);background:var(--steel);padding:3px 8px;border-radius:5px;white-space:nowrap}
-  .ex-instr{font-family:var(--he);direction:rtl;font-size:.92rem;color:var(--ink-soft)}
-  .ex-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
-  .exq{display:flex;flex-wrap:wrap;gap:5px 9px;align-items:baseline;direction:rtl}
-  .exq .q{font-family:var(--he);direction:rtl;font-size:1.1rem;color:var(--ink);line-height:1.6;unicode-bidi:plaintext}
-  .exq .ans{font-family:var(--he);direction:rtl;font-size:1.08rem;font-weight:700;color:var(--steel);
-    background:var(--card);border:1px solid var(--line);padding:1px 9px;border-radius:6px;cursor:pointer;
-    filter:blur(5px);transition:filter .12s ease, box-shadow .12s ease;user-select:none;-webkit-user-select:none;unicode-bidi:plaintext}
-  .exq .ans:hover{box-shadow:0 0 0 2px var(--steel) inset}
-  .exq .ans.revealed,body.show-ans .exq .ans{filter:none}
-  .exq .ans:focus-visible{outline:2px solid var(--steel);outline-offset:2px;filter:none}
-  .exwrap{margin-top:14px}
-  .ans-toggle{margin-inline-start:auto;font-family:var(--sans);font-size:.8rem;font-weight:600;cursor:pointer;
-    color:var(--bg);background:var(--steel);border:none;padding:6px 13px;border-radius:8px;transition:opacity .15s;white-space:nowrap}
-  .ans-toggle:hover{opacity:.88}
-  .ans-toggle.on{background:var(--accent)}
-  .ans-toggle:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-
-  .fade{opacity:0;transform:translateY(8px);animation:rise .5s ease forwards}
-  @keyframes rise{to{opacity:1;transform:none}}
-  @media (prefers-reduced-motion:reduce){.fade{animation:none;opacity:1;transform:none}}
-
-  @media (max-width:560px){
-    .grid.c4{grid-template-columns:repeat(2,1fr)}
-    .grid.c5{grid-template-columns:repeat(2,1fr)}
-    .grid.c3{grid-template-columns:repeat(3,1fr)}
-    .cell .form{font-size:1.18rem}
-    nav.toc{gap:3px}
-    nav.toc a{padding:5px 9px;font-size:.78rem}
-  }
-</style>
-
-<div class="wrap">
-
-  <header class="mast">
-    <p class="kicker">Hebrew Grammar · Study Reference</p>
-    <h1 class="he-title" lang="he" dir="rtl">עברית מן ההתחלה ב׳</h1>
-    <p class="en-title">Everything grammatical taught through page 267 — the binyanim across every tense &amp; root-type, the imperative, the passive &amp; Nif'al, all preposition conjugations, and the syntax of clauses.</p>
-    <div class="mast-meta">
-      <span class="chip">Chayat · Israeli · Kobliner</span>
-      <span class="chip">Lessons <b>1–10</b> complete · <b>11</b> (Nif'al) in progress</span>
-      <span class="chip">pp. <b>1–267</b></span>
-      <span class="chip">Vocabulary excluded — grammar only</span>
-    </div>
-  </header>
-
-  <nav class="toc" aria-label="Contents">
-    <a href="#verbs">① Verbs &amp; Binyanim</a>
-    <a href="#prepositions">② Prepositions</a>
-    <a href="#nouns">③ Nouns &amp; Adjectives</a>
-    <a href="#syntax">④ Syntax</a>
-    <a href="#words">⑤ Word-study</a>
-    <a href="#lessons">⑥ Lesson index</a>
-  </nav>
-
-  <div class="legend">
-    <div>
-      <h4>Reading the tables</h4>
-      <p>Every table reads <b>right-to-left</b>. Cells run in pronoun order:</p>
-      <p class="heseq" lang="he" dir="rtl">אֲנִי · אַתָּה · אַתְּ · הוּא · הִיא · אֲנַחְנוּ · אַתֶּם/ן · הֵם/ן</p>
-    </div>
-    <div>
-      <h4>Page tags</h4>
-      <p>A tag like <span class="pgtag">p90</span> is the printed book page where the point is taught. Nikud (vowels) shown throughout.</p>
-    </div>
-    <div>
-      <h4>Focus of this volume</h4>
-      <p>The through-line is the <b>future tense (עתיד)</b> built out binyan-by-binyan, plus the imperative and the whole Nif'al system.</p>
-    </div>
-  </div>
-
-  <!-- ===================== VERBS ===================== -->
-  <section id="verbs">
-    <div class="sec-head"><span class="sec-num">01</span>
-      <h2>The Verb System <span class="sec-he" lang="he" dir="rtl">· הַפּוֹעַל</span></h2></div>
-    <p class="sec-intro">The heart of the book: each binyan is carried into the <b>future</b>, across sound roots and the weak root-types (גְּזָרוֹת). Then the imperative and the passive participle, and finally the Nif'al in all three tenses.</p>
-
-    <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">פָּעַל / קַל</span> <span class="en">— Pa'al · future, imperative &amp; passive participle</span></h3></div>
-    <div class="cardgrid" id="paal"></div>
-
-    <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">פִּיעֵל</span> <span class="en">— Pi'el · future</span></h3></div>
-    <div class="cardgrid" id="piel"></div>
-
-    <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">הִפְעִיל</span> <span class="en">— Hif'il · future</span></h3></div>
-    <div class="cardgrid" id="hifil"></div>
-
-    <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">הִתְפַּעֵל</span> <span class="en">— Hitpa'el · future</span></h3></div>
-    <div class="cardgrid" id="hitpael"></div>
-
-    <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">נִפְעַל</span> <span class="en">— Nif'al · present · past · future (Lesson 11)</span></h3></div>
-    <div class="cardgrid" id="nifal"></div>
-  </section>
-
-  <!-- ===================== PREPOSITIONS ===================== -->
-  <section id="prepositions">
-    <div class="sec-head"><span class="sec-num">02</span>
-      <h2>Prepositions &amp; their conjugation <span class="sec-he" lang="he" dir="rtl">· נְטִיַּית מִילּוֹת הַיַּחַס</span></h2></div>
-    <p class="sec-intro">Each preposition takes pronoun endings. Full paradigms below in the order <span class="note-he" lang="he" dir="rtl">אֲנִי · אַתָּה · אַתְּ · הוּא · הִיא · אֲנַחְנוּ · אַתֶּם · אַתֶּן · הֵם · הֵן</span>.</p>
-    <div class="cardgrid" id="preps"></div>
-
-    <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">חֲזָרָה</span> <span class="en">— review paradigms carried over from Part A</span></h3></div>
-    <div class="cardgrid" id="preps-review"></div>
-  </section>
-
-  <!-- ===================== NOUNS ===================== -->
-  <section id="nouns">
-    <div class="sec-head"><span class="sec-num">03</span>
-      <h2>Nouns &amp; Adjectives <span class="sec-he" lang="he" dir="rtl">· שֵׁם עֶצֶם וְשֵׁם תּוֹאַר</span></h2></div>
-    <p class="sec-intro">Number, gender, the dual, feminine plural patterns, the construct chain, and comparison.</p>
-    <div class="topics" id="nouns-t"></div>
-  </section>
-
-  <!-- ===================== SYNTAX ===================== -->
-  <section id="syntax">
-    <div class="sec-head"><span class="sec-num">04</span>
-      <h2>Syntax — sentences &amp; clauses <span class="sec-he" lang="he" dir="rtl">· תַּחְבִּיר</span></h2></div>
-    <p class="sec-intro">How clauses combine: relative, causal, conditional, temporal, purpose and object clauses, the copula, and the impersonal.</p>
-    <div class="topics" id="syntax-t"></div>
-  </section>
-
-  <!-- ===================== WORD STUDY ===================== -->
-  <section id="words">
-    <div class="sec-head"><span class="sec-num">05</span>
-      <h2>Word-study &amp; morphology <span class="sec-he" lang="he" dir="rtl">· מִילּוֹן וְצוּרוֹת</span></h2></div>
-    <p class="sec-intro">Parts of speech, prefix particles, indefinite words, homographs.</p>
-    <div class="topics" id="words-t"></div>
-  </section>
-
-  <!-- ===================== LESSONS ===================== -->
-  <section id="lessons">
-    <div class="sec-head"><span class="sec-num">06</span>
-      <h2>Lesson-by-lesson index <span class="sec-he" lang="he" dir="rtl">· נוֹשְׂאִים לְשׁוֹנִיִּים</span></h2></div>
-    <p class="sec-intro">The grammar as the book packages it — each lesson's summary box (נוֹשְׂאִים לְשׁוֹנִיִּים), in order.</p>
-    <div class="lessons" id="lessons-g"></div>
-  </section>
-
-  <footer>
-    <p><b>Scope &amp; method.</b> Compiled from a page-by-page pass of pp. 1–267 of <i>עברית מן ההתחלה החדש · חלק ב׳</i>. Only grammar is listed — vocabulary, reading passages, songs and culture texts are omitted, except where a form illustrates a rule. Verb paradigms are given in full; page tags mark where each point is taught. Nikud follows the textbook's conventions.</p>
-  </footer>
-</div>
-
 <script>
+/* ---------- exercises + exam + translations (layer on top; tables untouched) ---------- */
 (function(){
-  var PRON8=['אֲנִי','אַתָּה','אַתְּ','הוּא','הִיא','אֲנַחְנוּ','אַתֶּם/ן','הֵם/ן'];
-  var PRON10=['אֲנִי','אַתָּה','אַתְּ','הוּא','הִיא','אֲנַחְנוּ','אַתֶּם','אַתֶּן','הֵם','הֵן'];
-  var PRES4=['ז׳ יחיד','נ׳ יחיד','ז׳ רבים','נ׳ רבים'];
+  function E(instr,items){return {instr:instr,items:items};}
 
-  function esc(s){return s;}
-  function cells(prons,forms){
-    var h='';
-    for(var i=0;i<forms.length;i++){
-      h+='<div class="cell"><span class="pron" lang="he" dir="rtl">'+prons[i]+'</span>'+
-         '<span class="form" lang="he" dir="rtl">'+forms[i]+'</span></div>';
-    }
-    return h;
-  }
-  function tagHtml(v){
-    var t='';
-    if(v.gz) t+='<span class="tag gz" lang="he" dir="rtl">'+v.gz+'</span>';
-    if(v.tense) t+='<span class="tag t" lang="he" dir="rtl">'+v.tense+'</span>';
-    t+='<span class="pgtag">p'+v.page+'</span>';
-    return t;
-  }
-  function paraCard(v){
-    var prons = v.prons || (v.forms.length===10?PRON10:(v.forms.length===4?PRES4:PRON8));
-    var cols = v.cols || (v.forms.length===10?'c5':(v.forms.length===4?'c4':'c4'));
-    return '<article class="pcard'+(v.wide?' wide':'')+'">'+
-      '<div class="pcard-h"><div class="pcard-title">'+
-        '<span class="he-lg" lang="he" dir="rtl">'+v.verb+'</span>'+
-        (v.gl?'<span class="gloss">'+v.gl+'</span>':'')+
-      '</div><div class="tags">'+tagHtml(v)+'</div></div>'+
-      '<div class="grid '+cols+'">'+cells(prons,v.forms)+'</div>'+
-      (v.note?'<p class="note">'+v.note+'</p>':'')+
-    '</article>';
-  }
-  function fill(id,arr){var el=document.getElementById(id);if(el)el.innerHTML=arr.map(paraCard).join('');}
-
-  /* ---------------- PA'AL ---------------- */
-  var paal=[
-    {verb:'לִסְגּוֹר',gl:'to close',gz:'שלמים',tense:'עתיד',page:109,
-     forms:['אֶסְגּוֹר','תִּסְגּוֹר','תִּסְגְּרִי','יִסְגּוֹר','תִּסְגּוֹר','נִסְגּוֹר','תִּסְגְּרוּ','יִסְגְּרוּ'],
-     note:'The main future pattern <b>אֶפְעוֹל</b> (theme vowel <i>o</i>). Same shape: <span class="note-he" lang="he" dir="rtl">לכתוב · לזכור · לשמור · לגמור · לפגוש</span>.'},
-    {verb:'לִשְׁמוֹעַ',gl:'to hear',gz:'ל׳/ע׳ גרונית',tense:'עתיד',page:114,
-     forms:['אֶשְׁמַע','תִּשְׁמַע','תִּשְׁמְעִי','יִשְׁמַע','תִּשְׁמַע','נִשְׁמַע','תִּשְׁמְעוּ','יִשְׁמְעוּ'],
-     note:'When a guttural (א ה ח ע) is 2nd/3rd radical → pattern <b>אֶפְעַל</b> (theme vowel <i>a</i>). Also <span class="note-he" lang="he" dir="rtl">לפתוח · לשלוח · לשכוח · לצחוק · ללמוד</span>.'},
-    {verb:'לַחְשׁוֹב',gl:'to think',gz:'פ׳ גרונית',tense:'עתיד',page:111,
-     forms:['אֶחְשׁוֹב','תַּחְשׁוֹב','תַּחְשְׁבִי','יַחְשׁוֹב','תַּחְשׁוֹב','נַחְשׁוֹב','תַּחְשְׁבוּ','יַחְשְׁבוּ'],
-     note:'1st-radical guttural takes an <i>a</i>-prefix. With א/ה/ע a reduced vowel appears: <span class="note-he" lang="he" dir="rtl">לַעֲזוֹר → אֶעֱזוֹר, יַעֲזוֹר · לַהֲרוֹג → אֶהֱרוֹג</span>.'},
-    {verb:'לָגוּר',gl:'to live / reside',gz:'ע״ו (נחי ע״ו)',tense:'עתיד',page:90,
-     forms:['אָגוּר','תָּגוּר','תָּגוּרִי','יָגוּר','תָּגוּר','נָגוּר','תָּגוּרוּ','יָגוּרוּ'],
-     note:'Hollow verbs keep the middle vowel. ע״י works the same: <span class="note-he" lang="he" dir="rtl">לָשִׁיר → אָשִׁיר · לָשִׂים → אָשִׂים · לָבוֹא → אָבוֹא</span>.'},
-    {verb:'לִקְנוֹת',gl:'to buy',gz:'ל״ה / ל״י',tense:'עתיד',page:151,
-     forms:['אֶקְנֶה','תִּקְנֶה','תִּקְנִי','יִקְנֶה','תִּקְנֶה','נִקְנֶה','תִּקְנוּ','יִקְנוּ'],
-     note:'Final-ה verbs end in <span class="note-he" lang="he" dir="rtl">־ֶה</span>. Also <span class="note-he" lang="he" dir="rtl">לשתות · לראות · לרצות · לבנות</span>. Guttural 1st radical: <span class="note-he" lang="he" dir="rtl">לעשות → אֶעֱשֶׂה · לחלות → אֶחֱלֶה</span>.'},
-    {verb:'לָשֶׁבֶת',gl:'to sit',gz:'פ״י',tense:'עתיד',page:180,
-     forms:['אֵשֵׁב','תֵּשֵׁב','תֵּשְׁבִי','יֵשֵׁב','תֵּשֵׁב','נֵשֵׁב','תֵּשְׁבוּ','יֵשְׁבוּ'],
-     note:'The initial י drops; prefix vowel is <i>tsere</i> (ֵ). Also <span class="note-he" lang="he" dir="rtl">לצאת → אֵצֵא · לרדת → אֵרֵד · ללכת → אֵלֵךְ · לדעת → אֵדַע</span>.'},
-    {verb:'לָתֵת',gl:'to give',gz:'פ״נ',tense:'עתיד',page:180,
-     forms:['אֶתֵּן','תִּתֵּן','תִּתְּנִי','יִתֵּן','תִּתֵּן','נִתֵּן','תִּתְּנוּ','יִתְּנוּ'],
-     note:'The נ assimilates (dagesh). Also <span class="note-he" lang="he" dir="rtl">לנסוע → אֶסַּע · לקחת → אֶקַּח</span> (behaves like פ״נ).'},
-    {verb:'לֶאֱהוֹב',gl:'to love',gz:'פ״א',tense:'עתיד',page:165,
-     forms:['אוֹהַב','תֹּאהַב','תֹּאהֲבִי','יֹאהַב','תֹּאהַב','נֹאהַב','תֹּאהֲבוּ','יֹאהֲבוּ'],
-     note:'1st-radical א → <i>o</i>-vowel; in 1st-person sing. the two alefs merge (אוֹהַב). Also <span class="note-he" lang="he" dir="rtl">לומר → אוֹמַר · לאכול → אוֹכַל</span>.'},
-    {verb:'לִהְיוֹת',gl:'to be',gz:'',tense:'עתיד',page:148,
-     forms:['אֶהְיֶה','תִּהְיֶה','תִּהְיִי','יִהְיֶה','תִּהְיֶה','נִהְיֶה','תִּהְיוּ','יִהְיוּ'],
-     note:'The future of “to be” drives future nominal sentences, future <i>have</i>, and impersonal/purpose clauses.'},
-    {verb:'קוּם! · אַל תָּקוּם!',gl:'imperative & negative — hollow',gz:'ע״ו',tense:'ציווי',page:94,wide:true,
-     forms:['קוּם','קוּמִי','קוּמוּ','אַל תָּקוּם','אַל תָּקוּמִי','אַל תָּקוּמוּ'],
-     prons:['אתה','את','אתם/ן','אתה','את','אתם/ן'],cols:'c3',
-     note:'Positive = short stem; negative = <b>אַל</b> + future. Also <span class="note-he" lang="he" dir="rtl">זוּז! רוּץ! שִׂים! בּוֹא!</span> — and <span class="note-he" lang="he" dir="rtl">בּוֹא/בּוֹאִי/בּוֹאוּ + עתיד</span> = “let’s…” (<span class="note-he" lang="he" dir="rtl">בוא נשיר יחד</span>).'},
-    {verb:'שֵׁב! · צֵא! · תֵּן!',gl:'imperative — פ״י & פ״נ',gz:'פ״י / פ״נ',tense:'ציווי',page:178,wide:true,
-     forms:['שֵׁב','צֵא','תֵּן','רֵד','לֵךְ','קַח','סַע','דַּע'],
-     prons:['לשבת','לצאת','לתת','לרדת','ללכת','לקחת','לנסוע','לדעת'],cols:'c4',
-     note:'The imperative is the future minus its prefix. Feminine/plural add endings: <span class="note-he" lang="he" dir="rtl">שְׁבִי! שְׁבוּ! · תְּנִי! תְּנוּ! · לְכִי! לְכוּ! · קְחִי! קְחוּ!</span>.'},
-    {verb:'סָגוּר',gl:'passive participle (verbal adjective)',gz:'בינוני פעול',tense:'ת׳ הפועל',page:207,wide:true,
-     forms:['סָגוּר','סְגוּרָה','סְגוּרִים','סְגוּרוֹת'],prons:PRES4,cols:'c4',
-     note:'Pattern <b>CaCuC</b> — an adjective from a Pa\'al verb: <span class="note-he" lang="he" dir="rtl">כָּתוּב · פָּתוּחַ · עָסוּק · יָדוּעַ · תָּפוּס</span>. Final-ה verbs: <span class="note-he" lang="he" dir="rtl">בָּנוּי · עָשׂוּי · תָּלוּי</span> (p208).'}
+  /* items: [hebrew_with_blank, answer, english_translation?] — order matches the cards */
+  var PAAL=[
+    E('השלימו בעתיד (פָּעַל, תבנית אֶפְעוֹל):',[
+      ['מָחָר הוּא ___ אֶת הַחֲנוּת בְּשֶׁבַע. (לסגור)','יִסְגּוֹר','Tomorrow he will close the store at seven.'],
+      ['אֲנַחְנוּ ___ אֶת הַדֶּלֶת כְּשֶׁנֵּצֵא. (לסגור)','נִסְגּוֹר','We will close the door when we leave.'],
+      ['מָתַי אַתְּ ___ לִי מִכְתָּב? (לכתוב)','תִּכְתְּבִי','When will you (f.) write me a letter?'],
+      ['הֵם ___ אֶת הַסְּפָרִים בַּתִּיק. (לשמור)','יִשְׁמְרוּ','They will keep the books in the bag.']]),
+    E('השלימו בעתיד (תבנית אֶפְעַל, גרונית):',[
+      ['אֲנִי ___ מוּזִיקָה בָּעֶרֶב. (לשמוע)','אֶשְׁמַע','I will listen to music in the evening.'],
+      ['הֵם ___ אֶת הַחֲנוּת מָחָר. (לפתוח)','יִפְתְּחוּ','They will open the store tomorrow.'],
+      ['הַאִם אַתְּ ___ לִי הוֹדָעָה? (לשלוח)','תִּשְׁלְחִי','Will you (f.) send me a message?']]),
+    E('השלימו בעתיד (פ׳ גרונית):',[
+      ['מָה אַתָּה ___ עַל הָרַעְיוֹן? (לחשוב)','תַּחְשׁוֹב','What will you think about the idea?'],
+      ['אֲנִי ___ לְךָ אִם תִּצְטָרֵךְ. (לעזור)','אֶעֱזוֹר','I will help you if you need.'],
+      ['הֵם ___ הַבַּיְתָה מְאוּחָר. (לחזור)','יַחְזְרוּ','They will return home late.']]),
+    E('השלימו בעתיד (ע״ו / ע״י):',[
+      ['בַּשָּׁנָה הַבָּאָה אֲנַחְנוּ ___ בְּתֵל אָבִיב. (לגור)','נָגוּר','Next year we will live in Tel Aviv.'],
+      ['הִיא ___ שִׁיר יָפֶה בַּמְּסִיבָּה. (לשיר)','תָּשִׁיר','She will sing a nice song at the party.'],
+      ['מָתַי אַתֶּם ___ הַבַּיְתָה? (לבוא)','תָּבוֹאוּ','When will you (pl.) come home?']]),
+    E('השלימו בעתיד (ל״ה):',[
+      ['מָחָר אֲנִי ___ מַתָּנָה לְאִימָּא. (לקנות)','אֶקְנֶה','Tomorrow I will buy a present for mom.'],
+      ['הֵם ___ בַּיִת חָדָשׁ בַּשָּׁנָה הַבָּאָה. (לבנות)','יִבְנוּ','They will build a new house next year.'],
+      ['אַתְּ ___ אֶת הַסֶּרֶט הַזֶּה? (לראות)','תִּרְאִי','Will you (f.) see this movie?']]),
+    E('השלימו בעתיד (פ״י):',[
+      ['אֲנִי ___ לְיַד הַחַלּוֹן. (לשבת)','אֵשֵׁב','I will sit by the window.'],
+      ['הַיְּלָדִים ___ בָּרֶגֶל לְבֵית הַסֵּפֶר. (ללכת)','יֵלְכוּ','The children will walk to school.'],
+      ['מָתַי אַתָּה ___ מֵהַבַּיִת? (לצאת)','תֵּצֵא','When will you leave the house?']]),
+    E('השלימו בעתיד (פ״נ):',[
+      ['אֲנִי ___ לְךָ אֶת הַסֵּפֶר מָחָר. (לתת)','אֶתֵּן','I will give you the book tomorrow.'],
+      ['הֵם ___ לְחוּ״ל בַּקַּיִץ. (לנסוע)','יִסְּעוּ','They will travel abroad in the summer.'],
+      ['אַתְּ ___ מוֹנִית אוֹ אוֹטוֹבּוּס? (לקחת)','תִּקְחִי','Will you (f.) take a taxi or a bus?']]),
+    E('השלימו בעתיד (פ״א):',[
+      ['אֲנִי חוֹשֵׁב שֶׁאֲנִי ___ אֶת הָעֲבוֹדָה. (לאהוב)','אוֹהַב','I think I will love this job.'],
+      ['מָחָר אֲנַחְנוּ ___ אֲרוּחַת בּוֹקֶר גְּדוֹלָה. (לאכול)','נֹאכַל','Tomorrow we will eat a big breakfast.'],
+      ['מָה אַתָּה ___ לַמּוֹרֶה? (לומר)','תֹּאמַר','What will you say to the teacher?']]),
+    E('השלימו בעתיד (הפועל לִהְיוֹת):',[
+      ['מָחָר ___ יוֹם יָפֶה. (להיות)','יִהְיֶה','Tomorrow will be a nice day.'],
+      ['אֲנִי בָּטוּחַ שֶׁ___ לְךָ זְמַן. (להיות)','יִהְיֶה','I am sure you will have time.'],
+      ['אֲנַחְנוּ ___ בַּבַּיִת בָּעֶרֶב. (להיות)','נִהְיֶה','We will be at home in the evening.']]),
+    E('כתבו בציווי (חיובי / שלילי):',[
+      ['(אַתָּה, לקום) ___ מוּקְדָּם!','קוּם!','Get up early!'],
+      ['(אַתְּ, לבוא) ___ הֵנָּה!','בּוֹאִי!','Come here!'],
+      ['(אַתֶּם, לרוץ) שלילי: ___ מַהֵר מִדַּיי!','אַל תָּרוּצוּ!','Do not run too fast!']]),
+    E('כתבו בציווי (פ״י / פ״נ):',[
+      ['(אַתָּה, לשבת) ___ בְּבַקָּשָׁה!','שֵׁב!','Sit down, please!'],
+      ['(אַתְּ, לתת) ___ לִי אֶת זֶה!','תְּנִי!','Give me that!'],
+      ['(אַתֶּם, ללכת) ___ הַבַּיְתָה!','לְכוּ!','Go home!']]),
+    E('השלימו בבינוני פעול (בהתאמת מין ומספר):',[
+      ['הַדֶּלֶת ___ . (סגר)','סְגוּרָה','The door is closed.'],
+      ['הַמִּכְתָּבִים כְּבָר ___ . (כתב)','כְּתוּבִים','The letters are already written.'],
+      ['הַבַּיִת ___ מֵאֶבֶן. (בנה)','בָּנוּי','The house is built of stone.']])
   ];
-  fill('paal',paal);
+  var PIEL=[E('השלימו בעתיד (פִּיעֵל):',[
+      ['מָחָר אֲנִי ___ אֶת הַחֶדֶר. (לסדר)','אֲסַדֵּר','Tomorrow I will tidy the room.'],
+      ['הֵם ___ עַל יַד הַיָּם בַּקַּיִץ. (לטייל)','יְטַיְּלוּ','They will travel by the sea in the summer.'],
+      ['אַתְּ ___ בַּטֶּלֶפוֹן אַחַר כָּךְ? (לדבר)','תְּדַבְּרִי','Will you (f.) talk on the phone later?']])];
+  var HIFIL=[E('השלימו בעתיד (הִפְעִיל):',[
+      ['אֲנִי ___ טוֹב יוֹתֵר מָחָר. (להרגיש)','אַרְגִּישׁ','I will feel better tomorrow.'],
+      ['הֵם ___ אֶת הַשִּׁיעוּר בַּשָּׁבוּעַ הַבָּא. (להתחיל)','יַתְחִילוּ','They will start the lesson next week.'],
+      ['מָתַי אַתְּ ___ אוֹתָנוּ? (להזמין)','תַּזְמִינִי','When will you (f.) invite us?']])];
+  var HITPAEL=[E('השלימו בעתיד (הִתְפַּעֵל):',[
+      ['אֲנִי ___ מֵהַחֲדָשׁוֹת הַטּוֹבוֹת. (להתרגש)','אֶתְרַגֵּשׁ','I will get excited by the good news.'],
+      ['הֵם ___ בַּקַּיִץ הַבָּא. (להתחתן)','יִתְחַתְּנוּ','They will get married next summer.'],
+      ['מָתַי אַתָּה ___ אֵלַיי? (להתקשר)','תִּתְקַשֵּׁר','When will you call me?']])];
+  var NIFAL=[
+    E('השלימו בהווה (נִפְעַל):',[
+      ['כָּל בּוֹקֶר הִיא ___ לַמִּשְׂרָד בְּשֶׁמוֹנֶה. (להיכנס)','נִכְנֶסֶת','Every morning she enters the office at eight.'],
+      ['אֲנַחְנוּ ___ בְּבֵית קָפֶה כָּל שָׁבוּעַ. (להיפגש)','נִפְגָּשִׁים','We meet at a café every week.'],
+      ['הֵם ___ בַּבַּיִת עַד מְאוּחָר. (להישאר)','נִשְׁאָרִים','They stay at home until late.']]),
+    E('השלימו בעבר (נִפְעַל):',[
+      ['אֶתְמוֹל הִיא ___ לַמִּשְׂרָד מְאוּחָר. (להיכנס)','נִכְנְסָה','Yesterday she entered the office late.'],
+      ['הַמִּכְתָּב ___ אֶתְמוֹל. (להישלח)','נִשְׁלַח','The letter was sent yesterday.'],
+      ['אֲנַחְנוּ ___ בַּתַּחֲנָה. (להיפגש)','נִפְגַּשְׁנוּ','We met at the station.']]),
+    E('השלימו בעתיד (נִפְעַל):',[
+      ['מָחָר אֲנִי ___ לַפְּגִישָׁה בַּזְּמַן. (להיכנס)','אֶכָּנֵס','Tomorrow I will enter the meeting on time.'],
+      ['הֵם ___ מֵהַדֶּלֶת הָאֲחוֹרִית. (להיכנס)','יִיכָּנְסוּ','They will enter through the back door.'],
+      ['מָתַי אַתְּ ___? (להיכנס)','תִּיכָּנְסִי','When will you (f.) go in?']])
+  ];
+  var PREPS=[
+    E('השלימו בנטיית עַל:',[
+      ['הֵם דִּיבְּרוּ ___ כָּל הָעֶרֶב. (על+אני)','עָלַיי','They talked about me all evening.'],
+      ['חָשַׁבְתִּי ___ הַרְבֵּה. (על+הם)','עֲלֵיהֶם','I thought about them a lot.'],
+      ['מָה שָׁמַעְתָּ ___? (על+היא)','עָלֶיהָ','What did you hear about her?']]),
+    E('השלימו בנטיית אֶל:',[
+      ['כָּתַבְתִּי ___ מִכְתָּב. (אל+אתה)','אֵלֶיךָ','I wrote you a letter.'],
+      ['הִיא בָּאָה ___ לְבִיקּוּר. (אל+אנחנו)','אֵלֵינוּ','She came to us for a visit.'],
+      ['נָסַעְנוּ ___ לֶחָג. (אל+הם)','אֲלֵיהֶם','We traveled to them for the holiday.']]),
+    E('השלימו בנטיית אֵצֶל:',[
+      ['הָיִיתִי ___ אֶתְמוֹל. (אצל+הוא)','אֶצְלוֹ','I was at his place yesterday.'],
+      ['נִשְׁאַרְתִּי לִישׁוֹן ___. (אצל+הם)','אֶצְלָם','I stayed to sleep at their place.'],
+      ['אַתָּה גָּר ___ הַשָּׁבוּעַ. (אצל+אני)','אֶצְלִי','You are staying at my place this week.']]),
+    E('השלימו בנטיית מִן:',[
+      ['קִיבַּלְתִּי מִכְתָּב ___. (מן+היא)','מִמֶּנָּה','I got a letter from her.'],
+      ['הוּא גָּבוֹהַּ יוֹתֵר ___. (מן+אני)','מִמֶּנִּי','He is taller than me.'],
+      ['הֵם בָּרְחוּ ___. (מן+אנחנו)','מֵאִיתָּנוּ','They ran away from us.']]),
+    E('השלימו בנטיית בְּ:',[
+      ['הִיא הִסְתַּכְּלָה ___. (ב+אני)','בִּי','She looked at me.'],
+      ['אֲנִי נִזְכָּר ___ תָּמִיד. (ב+אתה)','בְּךָ','I always remember you.'],
+      ['הֵם בָּטְחוּ ___. (ב+הם)','בָּהֶם','They trusted them.']]),
+    E('השלימו בנטיית כְּמוֹ:',[
+      ['אֵין אַף אֶחָד ___. (כמו+אתה)','כָּמוֹךָ','There is no one like you.'],
+      ['הִיא חֲכָמָה ___. (כמו+הוא)','כָּמוֹהוּ','She is as smart as him.'],
+      ['הֵם רוֹצִים לִהְיוֹת ___. (כמו+אנחנו)','כְּמוֹנוּ','They want to be like us.']]),
+    E('השלימו בנטיית בֵּין:',[
+      ['הַסּוֹד יִישָׁאֵר ___. (בין+אנחנו)','בֵּינֵינוּ','The secret will stay between us.'],
+      ['מָה הַהֶבְדֵּל ___? (בין+הם)','בֵּינֵיהֶם','What is the difference between them?'],
+      ['הַיְּשִׁיבָה הָיְתָה ___ לְבֵינִי. (בין+הוא)','בֵּינוֹ','The meeting was between him and me.']]),
+    E('השלימו בנטיית בִּשְׁבִיל:',[
+      ['קָנִיתִי אֶת זֶה ___. (בשביל+אתה)','בִּשְׁבִילְךָ','I bought this for you.'],
+      ['הֵם עָשׂוּ הַכֹּל ___. (בשביל+אנחנו)','בִּשְׁבִילֵנוּ','They did everything for us.'],
+      ['זֶה ___, לֹא בִּשְׁבִילִי. (בשביל+היא)','בִּשְׁבִילָהּ','This is for her, not for me.']]),
+    E('השלימו בנטיית בִּגְלַל:',[
+      ['אִיחַרְנוּ ___. (בגלל+אתה)','בִּגְלָלְךָ','We were late because of you.'],
+      ['הַכֹּל קָרָה ___. (בגלל+הם)','בִּגְלָלָם','Everything happened because of them.'],
+      ['אַל תִּדְאַג ___. (בגלל+אני)','בִּגְלָלִי','Do not worry because of me.']]),
+    E('השלימו בנטיית בְּלִי = בִּלְעֲדֵי:',[
+      ['אֲנִי לֹא הוֹלֵךְ לְשָׁם ___. (בלי+אתה)','בִּלְעָדֶיךָ','I am not going there without you.'],
+      ['הֵם הִתְחִילוּ ___. (בלי+אנחנו)','בִּלְעָדֵינוּ','They started without us.'],
+      ['אִי אֶפְשָׁר ___. (בלי+היא)','בִּלְעָדֶיהָ','It is impossible without her.']]),
+    E('השלימו במילה עֶצֶם (+ מילת יחס מתאימה):',[
+      ['הִיא דִּיבְּרָה עִם ___. (עצם+היא)','עַצְמָהּ','She talked to herself.'],
+      ['אַתָּה צָרִיךְ לְהַאֲמִין ___. (ב+עצם+אתה)','בְּעַצְמְךָ','You need to believe in yourself.'],
+      ['הֵם עָשׂוּ אֶת זֶה ___. (ב+עצם+הם)','בְּעַצְמָם','They did it by themselves.']])
+  ];
+  var PREP_REVIEW=E('חזרה — השלימו בנטייה (של / ל / את / עם):',[
+      ['הַסֵּפֶר הַזֶּה ___. (של+אני)','שֶׁלִּי','This book is mine.'],
+      ['פָּגַשְׁתִּי ___ אֶתְמוֹל. (את+הוא)','אוֹתוֹ','I met him yesterday.'],
+      ['אֲנִי רוֹצֶה לְדַבֵּר ___. (עם+את)','אִיתָּךְ','I want to talk with you (f.).'],
+      ['תֵּן ___ אֶת הַכֶּסֶף. (ל+הם)','לָהֶם','Give them the money.']]);
+  var NOUNS=[
+    E('השלימו: אותו / אותה / אותם / אותן:',[
+      ['רִינָה וַאֲנִי קָנִינוּ ___ שִׂמְלָה.','אוֹתָהּ','Rina and I bought the same dress.'],
+      ['הֵם לוֹמְדִים בְּ___ בֵּית סֵפֶר.','אוֹתוֹ','They study at the same school.'],
+      ['הֵן קָרְאוּ ___ סְפָרִים.','אוֹתָם','They (f.) read the same books.']]),
+    E('כתבו בצורת הזוגי:',[
+      ['שְׁתֵּי שָׁעוֹת = ___','שְׁעָתַיִים','two hours'],
+      ['שְׁנֵי יָמִים = ___','יוֹמַיִים','two days'],
+      ['שְׁתֵּי פְּעָמִים = ___','פַּעֲמַיִים','twice / two times']]),
+    E('כתבו ברבים (רבים חריגים):',[
+      ['לַיְלָה → ___','לֵילוֹת','nights'],['יוֹם → ___','יָמִים','days'],['שֻׁלְחָן → ___','שֻׁלְחָנוֹת','tables']]),
+    E('כתבו ברבים (סיומות נקבה):',[
+      ['מַחְבֶּרֶת → ___','מַחְבָּרוֹת','notebooks'],['חֲנוּת → ___','חֲנֻיּוֹת','shops'],['כַּפִּית → ___','כַּפִּיּוֹת','teaspoons']]),
+    E('צרו סמיכות:',[
+      ['עוּגָה שֶׁל יוֹם הֻלֶּדֶת = ___ יוֹם הֻלֶּדֶת','עוּגַת','a birthday cake'],
+      ['סְפָרִים שֶׁל הַיְּלָדִים = ___ הַיְּלָדִים','סִפְרֵי','the children’s books'],
+      ['בַּיִת שֶׁל סֵפֶר = ___ סֵפֶר','בֵּית','a school (house of book)']]),
+    E('השלימו (השוואה):',[
+      ['דָּן גָּבוֹהַּ ___ מִיּוֹסִי. (more)','יוֹתֵר','Dan is taller than Yossi.'],
+      ['זֶה הַ___ טוֹב! (the most)','הֲכִי','This is the best!'],
+      ['הִיא חֲכָמָה ___ אֲחוֹתָהּ. (like)','כְּמוֹ','She is as smart as her sister.']])
+  ];
+  var SYNTAX=[
+    E('כתבו בעבר / עתיד (משפט סתמי):',[
+      ['הַיּוֹם כְּדַאי לִנְסוֹעַ → אֶתְמוֹל ___ לִנְסוֹעַ.','כְּדַאי הָיָה','Yesterday it was worth traveling.'],
+      ['הַיּוֹם אֶפְשָׁר לִשְׂחוֹת → מָחָר ___ לִשְׂחוֹת.','יִהְיֶה אֶפְשָׁר','Tomorrow it will be possible to swim.'],
+      ['צָרִיךְ לִלְמוֹד → אֶתְמוֹל ___ לִלְמוֹד.','הָיָה צָרִיךְ','Yesterday one had to study.']]),
+    E('השלימו בעתיד (יש/אין → ?):',[
+      ['יֵשׁ שְׁבִיתָה → מָחָר ___ שְׁבִיתָה.','תִּהְיֶה','Tomorrow there will be a strike.'],
+      ['אֵין שֶׁקֶט → בַּלַּיְלָה לֹא ___ שֶׁקֶט.','יִהְיֶה','At night there will be no quiet.'],
+      ['יֵשׁ אֲנָשִׁים → ___ הַרְבֵּה אֲנָשִׁים.','יִהְיוּ','There will be many people.']]),
+    E('השלימו (שייכות בעתיד):',[
+      ['יֵשׁ לִי זְמַן → מָחָר ___ לִי זְמַן.','יִהְיֶה','Tomorrow I will have time.'],
+      ['יֵשׁ לְךָ אוֹרְחִים → ___ לְךָ אוֹרְחִים.','יִהְיוּ','You will have guests.'],
+      ['אֵין לָנוּ כֶּסֶף → לֹא ___ לָנוּ כֶּסֶף.','יִהְיֶה','We will not have money.']]),
+    E('חברו למשפט אחד עם שֶׁ־ (משפט לוואי):',[
+      ['הָאִישׁ יוֹשֵׁב לְיַד רִינָה. הוּא גָּר בְּצַפַת.','הָאִישׁ, שֶׁיּוֹשֵׁב לְיַד רִינָה, גָּר בְּצַפַת.','The man, who sits next to Rina, lives in Tzfat.'],
+      ['אָכַלְתִּי אֶת הָעוּגָה. אִימָּא הֵכִינָה אוֹתָהּ.','אָכַלְתִּי אֶת הָעוּגָה שֶׁאִימָּא הֵכִינָה.','I ate the cake that mom made.']]),
+    E('השלימו: בגלל / מפני ש / כי / ולכן:',[
+      ['אֲנַחְנוּ עֲיֵפִים ___ הָעֲבוֹדָה. (+ שם עצם)','בִּגְלַל','We are tired because of the work.'],
+      ['אֲנַחְנוּ עֲיֵפִים, ___ עָבַדְנוּ קָשֶׁה. (+ משפט)','מִפְּנֵי שֶׁ / כִּי','We are tired because we worked hard.'],
+      ['לֹא הָיָה אוֹטוֹבּוּס, ___ הָלַכְנוּ בָּרֶגֶל.','וְלָכֵן','There was no bus, so we walked.'],
+      ['הִיא שְׂמֵחָה, ___ קִיבְּלָה מַתָּנָה. (+ משפט)','מִפְּנֵי שֶׁ / כִּי','She is happy because she got a present.']]),
+    E('השלימו בזמן הנכון (תנאי קיים):',[
+      ['אִם ___ לִי מָחָר, אֶקְרָא מִיָּד. (לשלוח, אתה)','תִּשְׁלַח','If you send it to me tomorrow, I will read it right away.'],
+      ['אִם תָּבוֹא מְאוּחָר, אֲנַחְנוּ ___ בִּלְעָדֶיךָ. (ללכת)','נֵלֵךְ','If you come late, we will go without you.'],
+      ['אִם ___ לָבוֹא, תְּטַלְפְּנִי. (לרצות, את)','תִּרְצִי','If you (f.) want to come, call.'],
+      ['אִם ___ גֶּשֶׁם מָחָר, נִישָׁאֵר בַּבַּיִת. (לרדת)','יֵרֵד','If it rains tomorrow, we will stay home.']]),
+    E('השלימו: לפני ש / כש / אחרי ש (משפט זמן):',[
+      ['עָבַדְתִּי בְּבַנְק, ___ נָסַעְתִּי לְחוּ״ל. (before)','לִפְנֵי שֶׁ','I worked at a bank before I traveled abroad.'],
+      ['___ אֲנִי קָם, אֲנִי שׁוֹתֶה קָפֶה. (when)','כְּשֶׁ','When I get up, I drink coffee.'],
+      ['הָלַכְנוּ לִישׁוֹן ___ הַסֶּרֶט נִגְמַר. (after)','אַחֲרֵי שֶׁ','We went to sleep after the movie ended.']]),
+    E('השלימו: כדי + שם הפועל  /  כדי ש + עתיד:',[
+      ['שָׁמַעְנוּ חֲדָשׁוֹת ___ לָדַעַת מָה קוֹרֶה. (אותו נושא)','כְּדֵי','We listened to the news in order to know what is happening.'],
+      ['הִדְלַקְנוּ אוֹר, ___ הֵם יִרְאוּ אוֹתָנוּ. (נושא אחר)','כְּדֵי שֶׁ','We turned on a light so that they would see us.'],
+      ['הִיא לָמְדָה קָשֶׁה ___ לְהַצְלִיחַ.','כְּדֵי','She studied hard in order to succeed.'],
+      ['נָתַתִּי לוֹ מַפְתֵּחַ, ___ הוּא יִיכָּנֵס. (נושא אחר)','כְּדֵי שֶׁ','I gave him a key so that he could get in.']]),
+    E('השלימו (שם הפועל  או  שֶׁ + עתיד):',[
+      ['אֲנִי רוֹצֶה ___ אֶת הַסֶּרֶט. (לראות, אותו נושא)','לִרְאוֹת','I want to see the movie.'],
+      ['הַהוֹרִים רוֹצִים ___ הַיְּלָדִים ___. (לקרוא, נושא אחר)','שֶׁ … יִקְרְאוּ','The parents want the children to read.'],
+      ['הַמְּנַהֵל בִּיקֵּשׁ ___ הָעוֹבְדִים ___ בַּזְּמַן. (לבוא)','שֶׁ … יָבוֹאוּ','The manager asked that the workers come on time.']]),
+    E('השלימו: אלא / אבל:',[
+      ['הוּא לֹא טָס לְאָמֵרִיקָה ___ לְאוֹסְטְרַלְיָה.','אֶלָּא','He did not fly to America but rather to Australia.'],
+      ['רָצִיתִי לָבוֹא, ___ לֹא הָיָה לִי זְמַן.','אֲבָל','I wanted to come, but I had no time.'],
+      ['אֵין לִי בָּעוֹלָם ___ אוֹתָךְ.','אֶלָּא','I have no one in the world but you.']]),
+    E('השלימו באוגד (הוא / היא / הם / הן):',[
+      ['הַשַּׁבָּת ___ יוֹם שֶׁל מְנוּחָה.','הִיא','Shabbat is a day of rest.'],
+      ['יְמֵי רִאשׁוֹן ___ בְּעָיָה בִּשְׁבִילִי.','הֵם','Sundays are a problem for me.'],
+      ['בֶּן־גּוּרְיוֹן ___ רֹאשׁ הַמֶּמְשָׁלָה הָרִאשׁוֹן.','הוּא','Ben-Gurion was the first prime minister.']]),
+    E('צרו תואר הפועל (בְּ + שם עצם):',[
+      ['הוּא נָהַג ___. (זהירות)','בִּזְהִירוּת','He drove carefully.'],
+      ['הֵם קִיבְּלוּ אוֹתָנוּ ___. (שמחה)','בְּשִׂמְחָה','They welcomed us with joy.'],
+      ['הִיא דִּיבְּרָה ___. (שקט)','בְּשֶׁקֶט','She spoke quietly.']]),
+    E('כתבו כפעולה רגילה בעבר (used to):',[
+      ['כָּל קַיִץ אֲנַחְנוּ נוֹסְעִים לַיָּם → כָּל קַיִץ ___ נוֹסְעִים.','הָיִינוּ','Every summer we used to travel to the sea.'],
+      ['בְּיַלְדוּתִי אֲנִי מְשַׂחֵק בֶּחָצֵר → ___ מְשַׂחֵק.','הָיִיתִי','In my childhood I used to play in the yard.'],
+      ['אַבָּא קוֹרֵא עִיתּוֹן כָּל בּוֹקֶר → אַבָּא ___ קוֹרֵא.','הָיָה','Dad used to read a newspaper every morning.']])
+  ];
+  var WORDS=[
+    E('סמנו את חלק הדיבר (ש״ע / ש״ת / פועל / מ״י):',[
+      ['רָץ →','פּוֹעַל','“runs” — a verb'],
+      ['יָפֶה →','שֵׁם תּוֹאַר (ש״ת)','“beautiful” — an adjective'],
+      ['עַל →','מִילַּת יַחַס (מ״י)','“on” — a preposition']]),
+    E('מצאו את המילה במילון (הסירו אות שימוש):',[
+      ['בַּבַּיִת →','בַּיִת','“in the house” → house'],
+      ['כְּשֶׁהָלַכְתִּי →','הָלַךְ','“when I went” → went/walk'],
+      ['וְלָאִישָׁה →','אִישָׁה','“and to the woman” → woman']]),
+    E('השלימו במילת סְתם עם ־שהו:',[
+      ['יֵשׁ ___ בַּדֶּלֶת. (someone)','מִישֶׁהוּ','There is someone at the door.'],
+      ['אֲנִי רוֹצֶה לֶאֱכוֹל ___. (something)','מַשֶּׁהוּ','I want to eat something.'],
+      ['נִיפָּגֵשׁ ___ בַּשָּׁבוּעַ הַבָּא. (sometime)','מָתַישֶׁהוּ','We will meet sometime next week.']]),
+    E('נקדו לפי המשמעות (הומוגרפים):',[
+      ['בְּנֵי הָ___ הַיְּהוּדִי (people)','עַם','the Jewish people'],
+      ['דִּיבַּרְתִּי ___ הֶחָבֵר (with)','עִם','I talked with the friend.'],
+      ['הַמִּזְוָודָה ___ מְאוֹד (heavy)','כְּבֵדָה','The suitcase is very heavy.']]),
+    E('כתבו את הסיומת העברית:',[
+      ['optimism → אוֹפְּטִימִ___','־יזם (אופטימיזם)','optimism'],
+      ['classic → קְלָא___','־י (קלאסי)','classic(al)'],
+      ['information → אִינְפוֹרְמַ___','־ציה (אינפורמציה)','information']])
+  ];
 
-  /* ---------------- PI'EL ---------------- */
-  fill('piel',[
-    {verb:'לְסַדֵּר',gl:'to arrange / tidy',gz:'שלמים',tense:'עתיד',page:133,wide:true,
-     forms:['אֲסַדֵּר','תְּסַדֵּר','תְּסַדְּרִי','יְסַדֵּר','תְּסַדֵּר','נְסַדֵּר','תְּסַדְּרוּ','יְסַדְּרוּ'],
-     note:'Prefix vowel is <i>shva</i>/<i>chataf</i>; middle radical keeps its dagesh. Also <span class="note-he" lang="he" dir="rtl">לקבל · לדבר · לבקש · לטייל · לצייר · לשלם</span>, and 4-letter roots <span class="note-he" lang="he" dir="rtl">לטלפן · לתרגם · לצלצל</span>.'}
-  ]);
+  /* translations for the (non-practice) illustrative examples in the topic cards */
+  var NOUN_EXTR=[
+    'the same book · the same language · we bought the same dress',
+    'hour → two hours · day → two days · year → two years · time → twice',
+    'night → nights · day → days · table → tables',
+    'endings & their plurals (e.g. nonsense → nonsenses)',
+    'cat · cats-of · cat-of (f.) · cats-of (f.)',
+    'he is taller than me · the best'];
+  var SYN_EXTR=[
+    'it was worth wearing a coat · it will be worth selling it',
+    'there is a strike → there will be a strike',
+    'you will have guests · I will not have time',
+    'the man, who sits next to Rina, lives in Tzfat',
+    'we are tired because of the work · …because we worked hard',
+    'if you send it to me now, I will open the computer and read it right away',
+    'I worked at a bank before I traveled abroad',
+    'we turned on the light so that they would see us',
+    'the parents want the children to read',
+    'he did not fly to America but rather to Australia',
+    'Shabbat is a day of fun',
+    'carefully · with joy · with love · with sorrow',
+    'I used to play · they used to sit and talk'];
+  var WORD_EXTR=[
+    'noun · adjective · verb · preposition',
+    'in · the · and · like · when · to · from · that (prefix particles)',
+    'something · someone · sometime · somehow · somewhere',
+    '‘am (people) vs ‘im (with)',
+    '‑ism · ‑ic · ‑tion mapped into Hebrew'];
 
-  /* ---------------- HIF'IL ---------------- */
-  fill('hifil',[
-    {verb:'לְהַרְגִּישׁ',gl:'to feel',gz:'שלמים',tense:'עתיד',page:235,wide:true,
-     forms:['אַרְגִּישׁ','תַּרְגִּישׁ','תַּרְגִּישִׁי','יַרְגִּישׁ','תַּרְגִּישׁ','נַרְגִּישׁ','תַּרְגִּישׁוּ','יַרְגִּישׁוּ'],
-     note:'Also <span class="note-he" lang="he" dir="rtl">להתחיל · להזמין · להסביר · להחליט · להמשיך</span>. <b>Rule:</b> 1st radical א/ע → prefix vowel <i>a-a</i> (<span class="note-he" lang="he" dir="rtl">אַאֲמִין</span>); 1st radical ח behaves like שלמים (<span class="note-he" lang="he" dir="rtl">אַחְלִיט</span>). Irregular Hif\'il verbs met earlier: <span class="note-he" lang="he" dir="rtl">להכיר → מַכִּיר/אַכִּיר · להבין → מֵבִין/אָבִין</span> (p165).'}
-  ]);
+  /* ---------------- the mini exam ---------------- */
+  var EXAM=[
+    {he:'חֵלֶק א׳ · פְּעָלִים',en:'Verbs — pick the binyan & tense',
+     instr:'כתבו את הפועל בזמן ובבניין הנכונים:',
+     items:[
+      ['מָחָר הוּא ___ לְיַד הַבַּיִת שֶׁלִּי. (לעבור)','יַעֲבוֹר','Tomorrow he will pass by my house.'],
+      ['אֲנִי מְקַוֶּוה שֶׁ___ מֶזֶג אֲוִויר יָפֶה בַּטִּיּוּל. (להיות)','יִהְיֶה','I hope the weather will be nice on the trip.'],
+      ['אַתְּ ___ אוֹתִי מָחָר בַּבּוֹקֶר? (להתקשר)','תִּתְקַשְּׁרִי','Will you (f.) call me tomorrow morning?'],
+      ['כְּשֶׁתִּגְדַּל, מָה אַתָּה ___ לִהְיוֹת? (לרצות)','תִּרְצֶה','When you grow up, what will you want to be?'],
+      ['(אַתֶּם, לשים) שלילי: ___ אֶת זֶה כָּאן!','אַל תָּשִׂימוּ!','Do not put that here!'],
+      ['הַמִּכְתָּבִים ___ מָחָר בַּבּוֹקֶר. (להישלח)','יִישָׁלְחוּ','The letters will be sent tomorrow morning.'],
+      ['הַיַּלְדָּה ___ עַל הַכִּיסֵּא לְיַד סַבְתָּא. (לשבת)','תֵּשֵׁב','The girl will sit on the chair next to grandma.']]},
+    {he:'חֵלֶק ב׳ · מִילּוֹת יַחַס',en:'Prepositions — choose & conjugate',
+     instr:'השלימו במילת היחס הנכונה, בנטייה:',
+     items:[
+      ['חִיכִּיתִי לְךָ שָׁעָתַיִים! חָשַׁבְתִּי הַרְבֵּה ___. (על+אתה)','עָלֶיךָ','I waited for you two hours! I thought about you a lot.'],
+      ['אַל תֵּלֵךְ ___! אֲנִי בָּא אִיתְּךָ. (בלי+אני)','בִּלְעָדַיי','Do not go without me! I am coming with you.'],
+      ['הוּא חָכָם בִּדְיּוּק ___. (כמו+אני)','כָּמוֹנִי','He is exactly as smart as me.'],
+      ['קִיבַּלְנוּ מִכְתָּב ___ אֶתְמוֹל. (מן+הם)','מֵהֶם','We got a letter from them yesterday.'],
+      ['הַסּוֹד הַזֶּה יִישָׁאֵר רַק ___. (בין+אנחנו)','בֵּינֵינוּ','This secret will stay just between us.'],
+      ['הוּא כָּעַס ___ כִּי אִיחַרְנוּ. (? + אנחנו)','עָלֵינוּ','He was angry at us because we were late.']]},
+    {he:'חֵלֶק ג׳ · תַּחְבִּיר',en:'Syntax — which connector fits?',
+     instr:'בחרו את מילת הקישור הנכונה:',
+     items:[
+      ['לֹא הָלַכְנוּ לַיָּם ___ יָרַד גֶּשֶׁם כָּל הַיּוֹם.','מִפְּנֵי שֶׁ / כִּי','We did not go to the sea because it rained all day.'],
+      ['הִדְלַקְתִּי אֶת הַטֶּלֵוִיזְיָה ___ הַיְּלָדִים יִרְאוּ אֶת הַתּוֹכְנִית.','כְּדֵי שֶׁ','I turned on the TV so that the children would watch the show.'],
+      ['הוּא לֹא רוֹפֵא ___ מוֹרֶה.','אֶלָּא','He is not a doctor but a teacher.'],
+      ['רָצִיתִי לַעֲזוֹר ___ לֹא יָדַעְתִּי אֵיךְ.','אֲבָל','I wanted to help but I did not know how.'],
+      ['___ תְּסַיֵּים אֶת הָעֲבוֹדָה, נֵצֵא לְטַיֵּיל.','כְּשֶׁ / אַחֲרֵי שֶׁ','When/after you finish the work, we will go out.'],
+      ['___ יִהְיֶה לִי זְמַן מָחָר, אֶעֱזוֹר לְךָ.','אִם','If I have time tomorrow, I will help you.'],
+      ['תִּתְקַשֵּׁר אֵלַיי ___ תַּגִּיעַ הַבַּיְתָה.','כְּשֶׁ','Call me when you get home.']]},
+    {he:'חֵלֶק ד׳ · שֵׁם וְתוֹאַר',en:'Nouns & adjectives',
+     instr:'השלימו:',
+     items:[
+      ['אֲנִי צָרִיךְ ___ לַחְשׁוֹב עַל זֶה. (two days)','יוֹמַיִים','I need two days to think about it.'],
+      ['בַּגַּן יֵשׁ הַרְבֵּה ___. (עץ, רבים)','עֵצִים','In the garden there are many trees.'],
+      ['הֵן לוֹמְדוֹת בְּ___ אוּנִיבֶרְסִיטָה. (the same)','אוֹתָהּ','They (f.) study at the same university.'],
+      ['שָׁכַחְתִּי אֶת ___ הַבַּיִת. (key of — סמיכות)','מַפְתֵּחַ','I forgot the house key.'],
+      ['יְרוּשָׁלַיִם יָפָה, אֲבָל תֵּל אָבִיב ___ גְּדוֹלָה. (more)','יוֹתֵר','Jerusalem is beautiful, but Tel Aviv is bigger.'],
+      ['הַיְּלָדִים הָאֵלֶּה הֵם הַ___ חֲמוּדִים בַּכִּיתָּה! (the most)','הֲכִי','These children are the cutest in the class!']]},
+    {he:'חֵלֶק ה׳ · הֲמָרָה וְתַרְגּוּם',en:'Transform & translate — the tricky part',
+     instr:'המירו את המשפטים או תרגמו לעברית:',
+     items:[
+      ['הַמִּירוּ לֶעָתִיד: “יֵשׁ לָנוּ מִבְחָן מָחָר.”','יִהְיֶה לָנוּ מִבְחָן מָחָר.','We will have a test tomorrow.'],
+      ['הַמִּירוּ לְסָבִיל (נפעל): “הַמּוֹרֶה בָּדַק אֶת הַמִּבְחָנִים.” → הַמִּבְחָנִים ___.','נִבְדְּקוּ','The tests were checked.'],
+      ['הַמִּירוּ לִפְעוּלָה רְגִילָה: “כָּל שַׁבָּת אֲנַחְנוּ הוֹלְכִים לְסַבְתָּא.” → כָּל שַׁבָּת ___ הוֹלְכִים.','הָיִינוּ','Every Shabbat we used to go to grandma’s.'],
+      ['חַבְּרוּ עִם שֶׁ: “זֹאת הַמִּסְעָדָה. אָכַלְנוּ בָּהּ אֶתְמוֹל.”','זֹאת הַמִּסְעָדָה שֶׁאָכַלְנוּ בָּהּ אֶתְמוֹל.','This is the restaurant that we ate at yesterday.'],
+      ['תַּרְגְּמוּ: “If you come early, we will start the movie.”','אִם תָּבוֹא מוּקְדָּם, נַתְחִיל אֶת הַסֶּרֶט.'],
+      ['תַּרְגְּמוּ: “She wants us to help her.”','הִיא רוֹצָה שֶׁנַּעֲזוֹר לָהּ.'],
+      ['השלימו את הקטע: אֶתְמוֹל ___(לרדת) גֶּשֶׁם חָזָק, ___(therefore) נִשְׁאַרְנוּ בַּבַּיִת. ___(when) הַגֶּשֶׁם נִגְמַר, יָצָאנוּ.','יָרַד … וְלָכֵן … כְּשֶׁ','Yesterday heavy rain fell, so we stayed home. When the rain stopped, we went out.']]}
+  ];
 
-  /* ---------------- HITPA'EL ---------------- */
-  fill('hitpael',[
-    {verb:'לְהִתְרַגֵּשׁ',gl:'to get excited',gz:'שלמים',tense:'עתיד',page:203,wide:true,
-     forms:['אֶתְרַגֵּשׁ','תִּתְרַגֵּשׁ','תִּתְרַגְּשִׁי','יִתְרַגֵּשׁ','תִּתְרַגֵּשׁ','נִתְרַגֵּשׁ','תִּתְרַגְּשׁוּ','יִתְרַגְּשׁוּ'],
-     note:'Also <span class="note-he" lang="he" dir="rtl">להתחתן · להתקשר · להתרגל · להתגעגע</span>. <b>Sound changes when the 1st root letter is a sibilant</b> — the ת of the prefix swaps places: <span class="note-he" lang="he" dir="rtl">שׁ/שׂ → הִשְׁתַּמֵּשׁ · צ → הִצְטָרֵף · ס → הִסְתַּכֵּל · ז → הִזְדַּקֵּן</span>.'}
-  ]);
-
-  /* ---------------- NIF'AL ---------------- */
-  fill('nifal',[
-    {verb:'לְהִיכָּנֵס',gl:'to enter — present',gz:'שלמים',tense:'הווה',page:244,
-     forms:['נִכְנָס','נִכְנֶסֶת','נִכְנָסִים','נִכְנָסוֹת'],prons:PRES4,cols:'c4',
-     note:'Infinitive <span class="note-he" lang="he" dir="rtl">לְהִיכָּנֵס</span>. Also <span class="note-he" lang="he" dir="rtl">להישאר · להיפגש · להילחם · להיזכר</span>.'},
-    {verb:'לְהִיכָּנֵס',gl:'to enter — past',gz:'שלמים',tense:'עבר',page:255,
-     forms:['נִכְנַסְתִּי','נִכְנַסְתָּ','נִכְנַסְתְּ','נִכְנַס','נִכְנְסָה','נִכְנַסְנוּ','נִכְנַסְתֶּם','נִכְנְסוּ'],
-     note:'Nif\'al often = the passive of Pa\'al (<span class="note-he" lang="he" dir="rtl">כתב → נכתב</span>). Infinitive from פעל: <span class="note-he" lang="he" dir="rtl">לכתוב → לְהִיכָּתֵב · לזכור → לְהִיזָּכֵר</span> (p257).'},
-    {verb:'לְהִיכָּנֵס',gl:'to enter — future',gz:'שלמים',tense:'עתיד',page:267,
-     forms:['אֶכָּנֵס','תִּיכָּנֵס','תִּיכָּנְסִי','יִיכָּנֵס','תִּיכָּנֵס','נִיכָּנֵס','תִּיכָּנְסוּ','יִיכָּנְסוּ'],
-     note:'Some Nif\'al verbs are active with no Pa\'al pair: <span class="note-he" lang="he" dir="rtl">נכנס · נלחם · נשאר · נזהר · נעלם</span> (p259).'}
-  ]);
-
-  /* ---------------- PREPOSITIONS ---------------- */
-  function prepCard(p){
-    return '<article class="pcard'+(p.wide?' wide':'')+'">'+
-      '<div class="pcard-h"><div class="pcard-title">'+
-        '<span class="he-lg" lang="he" dir="rtl">'+p.verb+'</span>'+
-        '<span class="gloss">'+p.gl+'</span>'+
-      '</div><div class="tags"><span class="pgtag">p'+p.page+'</span></div></div>'+
-      '<div class="grid c5">'+cells(PRON10,p.forms)+'</div>'+
-      (p.note?'<p class="note">'+p.note+'</p>':'')+
-    '</article>';
+  /* ---------------- rendering ---------------- */
+  function itemsHtml(items){
+    return items.map(function(it){
+      var q=it[0], a=it[1], tr=it[2];
+      var trBtn = tr ? '<button class="tr-btn" type="button" aria-label="Show translation">EN</button>' : '';
+      var trLine = tr ? '<div class="tr">'+tr+'</div>' : '';
+      return '<li class="exq"><div class="exq-main"><span class="q" lang="he" dir="rtl">'+q+'</span>'+
+             '<span class="ans" lang="he" dir="rtl" role="button" tabindex="0" aria-label="Reveal answer">'+a+'</span>'+
+             trBtn+'</div>'+trLine+'</li>';
+    }).join('');
   }
-  var preps=[
-    {verb:'עַל',gl:'on / about',page:20,forms:['עָלַיי','עָלֶיךָ','עָלַיִךְ','עָלָיו','עָלֶיהָ','עָלֵינוּ','עֲלֵיכֶם','עֲלֵיכֶן','עֲלֵיהֶם','עֲלֵיהֶן']},
-    {verb:'אֶל',gl:'to / towards',page:264,forms:['אֵלַיי','אֵלֶיךָ','אֵלַיִךְ','אֵלָיו','אֵלֶיהָ','אֵלֵינוּ','אֲלֵיכֶם','אֲלֵיכֶן','אֲלֵיהֶם','אֲלֵיהֶן']},
-    {verb:'אֵצֶל',gl:'at (someone’s place)',page:50,forms:['אֶצְלִי','אֶצְלְךָ','אֶצְלֵךְ','אֶצְלוֹ','אֶצְלָהּ','אֶצְלֵנוּ','אֶצְלְכֶם','אֶצְלְכֶן','אֶצְלָם','אֶצְלָן']},
-    {verb:'מִן / מ־',gl:'from',page:76,forms:['מִמֶּנִּי','מִמְּךָ','מִמֵּךְ','מִמֶּנּוּ','מִמֶּנָּה','מֵאִיתָּנוּ','מִכֶּם','מִכֶּן','מֵהֶם','מֵהֶן'],
-     note:'Note: “from him” and “from us” differ only by tradition — <span class="note-he" lang="he" dir="rtl">הוא מִמֶּנּוּ · אנחנו מֵאִיתָּנוּ</span>. Before a noun: <span class="note-he" lang="he" dir="rtl">מֵהַ… / מִן הַ…</span>.'},
-    {verb:'בְּ',gl:'in / at',page:182,forms:['בִּי','בְּךָ','בָּךְ','בּוֹ','בָּהּ','בָּנוּ','בָּכֶם','בָּכֶן','בָּהֶם','בָּהֶן']},
-    {verb:'כְּמוֹ',gl:'like / as',page:154,forms:['כְּמוֹנִי','כָּמוֹךָ','כָּמוֹךְ','כָּמוֹהוּ','כָּמוֹהָ','כְּמוֹנוּ','כְּמוֹכֶם','כְּמוֹכֶן','כְּמוֹהֶם','כְּמוֹהֶן']},
-    {verb:'בֵּין',gl:'between',page:222,forms:['בֵּינִי','בֵּינְךָ','בֵּינֵךְ','בֵּינוֹ','בֵּינָהּ','בֵּינֵינוּ','בֵּינֵיכֶם','בֵּינֵיכֶן','בֵּינֵיהֶם','בֵּינֵיהֶן'],
-     note:'Used in patterns <span class="note-he" lang="he" dir="rtl">בֵּין… וּבֵין… · בֵּין… לְ…</span>.'},
-    {verb:'בִּשְׁבִיל',gl:'for (the sake of)',page:123,forms:['בִּשְׁבִילִי','בִּשְׁבִילְךָ','בִּשְׁבִילֵךְ','בִּשְׁבִילוֹ','בִּשְׁבִילָהּ','בִּשְׁבִילֵנוּ','בִּשְׁבִילְכֶם','בִּשְׁבִילְכֶן','בִּשְׁבִילָם','בִּשְׁבִילָן']},
+  function practiceBlock(ex){
+    return '<div class="exercise"><div class="ex-h"><span class="ex-tag">תרגול</span>'+
+      '<span class="ex-instr" lang="he" dir="rtl">'+ex.instr+'</span>'+
+      '<button class="seg-toggle" type="button">Show answers</button></div>'+
+      '<ol class="ex-list">'+itemsHtml(ex.items)+'</ol></div>';
+  }
+  function attach(containerId,exArr){
+    var c=document.getElementById(containerId); if(!c) return;
+    var cards=c.querySelectorAll('.pcard, .tcard');
+    for(var i=0;i<cards.length && i<exArr.length;i++){
+      if(exArr[i]) cards[i].insertAdjacentHTML('beforeend', practiceBlock(exArr[i]));
+    }
+  }
+  attach('paal',PAAL); attach('piel',PIEL); attach('hifil',HIFIL);
+  attach('hitpael',HITPAEL); attach('nifal',NIFAL); attach('preps',PREPS);
+  attach('nouns-t',NOUNS); attach('syntax-t',SYNTAX); attach('words-t',WORDS);
+
+  var rev=document.getElementById('preps-review');
+  if(rev) rev.insertAdjacentHTML('afterend','<div class="exwrap">'+practiceBlock(PREP_REVIEW)+'</div>');
+
+  /* translations under the illustrative examples */
+  function injectExTr(id,arr){
+    var c=document.getElementById(id); if(!c) return;
+    var cards=c.querySelectorAll('.tcard');
+    for(var i=0;i<cards.length && i<arr.length;i++){
+      if(!arr[i]) continue;
+      var ex=cards[i].querySelector('.ex');
+      if(ex) ex.insertAdjacentHTML('afterend','<div class="ex-tr">'+arr[i]+'</div>');
+    }
+  }
+  injectExTr('nouns-t',NOUN_EXTR); injectExTr('syntax-t',SYN_EXTR); injectExTr('words-t',WORD_EXTR);
+
+  /* exam */
+  function examBlock(sec){
+    return '<div class="exercise exam-sec"><div class="ex-h"><span class="ex-tag">מבחן</span>'+
+      '<span class="exam-title" lang="he" dir="rtl">'+sec.he+'<span class="en">'+sec.en+'</span></span>'+
+      '<button class="seg-toggle" type="button">Show answers</button></div>'+
+      (sec.instr?'<div class="ex-instr" lang="he" dir="rtl" style="margin:-2px 0 10px">'+sec.instr+'</div>':'')+
+      '<ol class="ex-list">'+itemsHtml(sec.items)+'</ol></div>';
+  }
+  var eb=document.getElementById('exam-body');
+  if(eb) eb.innerHTML=EXAM.map(examBlock).join('');
+
+  /* ---------------- interactions (event delegation) ---------------- */
+  document.addEventListener('click',function(e){
+    var t=e.target; if(!t.closest) return;
+    var ans=t.closest('.ans'); if(ans){ ans.classList.toggle('revealed'); return; }
+    var tb=t.closest('.tr-btn'); if(tb){ var q=tb.closest('.exq'); if(q) q.classList.toggle('tr-open'); tb.classList.toggle('on'); return; }
+    var seg=t.closest('.seg-toggle'); if(seg){ var blk=seg.closest('.exercise'); if(blk){ var on=blk.classList.toggle('show-ans'); seg.textContent=on?'Hide answers':'Show answers'; seg.classList.toggle('on',on);} return; }
+  });
+  document.addEventListener('keydown',function(e){
+    var t=e.target; if(!t||!t.classList) return;
+    if(t.classList.contains('ans') && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); t.classList.toggle('revealed'); }
+  });
+
+  /* global reveal-all toggle in the sticky bar */
+  var nav=document.querySelector('nav.toc');
+  if(nav){
+    var btn=document.createElement('button');
+    btn.type='button'; btn.className='ans-toggle'; btn.textContent='Show all answers';
+    btn.addEventListener('click',function(){
+      var on=document.body.classList.toggle('show-ans');
+      btn.textContent=on?'Hide all answers':'Show all answers';
+      btn.classList.toggle('on',on);
+    });
+    nav.appendChild(btn);
+  }
+
+  /* legend note */
+  var lg=document.querySelector('.legend');
+  if(lg){
+    var d=document.createElement('div');
+    d.innerHTML='<h4>Practice &amp; exam</h4><p>Each topic has a <b>תרגול</b> drill and there is a combined <b>exam</b> at the bottom. Click an answer to reveal it, use a block’s <b>Show answers</b> for the whole set, or open <b>EN</b> for a translation (independent of the answer).</p>';
+    lg.appendChild(d);
+  }
+})();
+</script>
+ׁבִילוֹ','בִּשְׁבִילָהּ','בִּשְׁבִילֵנוּ','בִּשְׁבִילְכֶם','בִּשְׁבִילְכֶן','בִּשְׁבִילָם','בִּשְׁבִילָן']},
     {verb:'בִּגְלַל',gl:'because of',page:86,forms:['בִּגְלָלִי','בִּגְלָלְךָ','בִּגְלָלֵךְ','בִּגְלָלוֹ','בִּגְלָלָהּ','בִּגְלָלֵנוּ','בִּגְלַלְכֶם','בִּגְלַלְכֶן','בִּגְלָלָם','בִּגְלָלָן']},
     {verb:'בְּלִי = בִּלְעֲדֵי',gl:'without',page:140,forms:['בִּלְעָדַיי','בִּלְעָדֶיךָ','בִּלְעָדַיִךְ','בִּלְעָדָיו','בִּלְעָדֶיהָ','בִּלְעָדֵינוּ','בִּלְעֲדֵיכֶם','בִּלְעֲדֵיכֶן','בִּלְעֲדֵיהֶם','בִּלְעֲדֵיהֶן']},
     {verb:'עֶצֶם',gl:'-self (reflexive)',page:214,forms:['עַצְמִי','עַצְמְךָ','עַצְמֵךְ','עַצְמוֹ','עַצְמָהּ','עַצְמֵנוּ','עַצְמְכֶם','עַצְמְכֶן','עַצְמָם','עַצְמָן'],
@@ -580,288 +548,3 @@
 })();
 </script>
 
-<script>
-/* ---------- exercises layer (added on top; does not touch the tables) ---------- */
-(function(){
-  function E(instr,items){return {instr:instr,items:items};}
-
-  /* order matches the cards rendered in each container */
-  var PAAL=[
-    E('השלימו בעתיד:',[
-      ['מחר הוא ___ אֶת הַחֲנוּת בְּשֶׁבַע. (לסגור)','יִסְגּוֹר'],
-      ['אֲנַחְנוּ ___ אֶת הַדֶּלֶת כְּשֶׁנֵּצֵא. (לסגור)','נִסְגּוֹר'],
-      ['מָתַי אַתְּ ___ לִי מִכְתָּב? (לכתוב)','תִּכְתְּבִי']]),
-    E('השלימו בעתיד (אֶפְעַל):',[
-      ['אֲנִי ___ מוּזִיקָה בָּעֶרֶב. (לשמוע)','אֶשְׁמַע'],
-      ['הֵם ___ אֶת הַחֲנוּת מָחָר. (לפתוח)','יִפְתְּחוּ'],
-      ['הַאִם אַתְּ ___ לִי הוֹדָעָה? (לשלוח)','תִּשְׁלְחִי']]),
-    E('השלימו בעתיד (פ׳ גרונית):',[
-      ['מָה אַתָּה ___ עַל הָרַעְיוֹן? (לחשוב)','תַּחְשׁוֹב'],
-      ['אֲנִי ___ לְךָ אִם תִּצְטָרֵךְ. (לעזור)','אֶעֱזוֹר'],
-      ['הֵם ___ הַבַּיְתָה מְאוּחָר. (לחזור)','יַחְזְרוּ']]),
-    E('השלימו בעתיד (ע״ו):',[
-      ['בַּשָּׁנָה הַבָּאָה אֲנַחְנוּ ___ בְּתֵל אָבִיב. (לגור)','נָגוּר'],
-      ['הִיא ___ שִׁיר יָפֶה בַּמְּסִיבָּה. (לשיר)','תָּשִׁיר'],
-      ['מָתַי אַתֶּם ___ הַבַּיְתָה? (לבוא)','תָּבוֹאוּ']]),
-    E('השלימו בעתיד (ל״ה):',[
-      ['מָחָר אֲנִי ___ מַתָּנָה לְאִימָּא. (לקנות)','אֶקְנֶה'],
-      ['הֵם ___ בַּיִת חָדָשׁ בַּשָּׁנָה הַבָּאָה. (לבנות)','יִבְנוּ'],
-      ['אַתְּ ___ אֶת הַסֶּרֶט הַזֶּה? (לראות)','תִּרְאִי']]),
-    E('השלימו בעתיד (פ״י):',[
-      ['אֲנִי ___ לְיַד הַחַלּוֹן. (לשבת)','אֵשֵׁב'],
-      ['הַיְּלָדִים ___ בָּרֶגֶל לְבֵית הַסֵּפֶר. (ללכת)','יֵלְכוּ'],
-      ['מָתַי אַתָּה ___ מֵהַבַּיִת? (לצאת)','תֵּצֵא']]),
-    E('השלימו בעתיד (פ״נ):',[
-      ['אֲנִי ___ לְךָ אֶת הַסֵּפֶר מָחָר. (לתת)','אֶתֵּן'],
-      ['הֵם ___ לְחוּ״ל בַּקַּיִץ. (לנסוע)','יִסְּעוּ'],
-      ['אַתְּ ___ מוֹנִית אוֹ אוֹטוֹבּוּס? (לקחת)','תִּקְחִי']]),
-    E('השלימו בעתיד (פ״א):',[
-      ['אֲנִי חוֹשֵׁב שֶׁאֲנִי ___ אֶת הָעֲבוֹדָה הַזֹּאת. (לאהוב)','אוֹהַב'],
-      ['מָחָר אֲנַחְנוּ ___ אֲרוּחַת בּוֹקֶר גְּדוֹלָה. (לאכול)','נֹאכַל'],
-      ['מָה אַתָּה ___ לַמּוֹרֶה? (לומר)','תֹּאמַר']]),
-    E('השלימו בעתיד (להיות):',[
-      ['מָחָר ___ יוֹם יָפֶה. (להיות)','יִהְיֶה'],
-      ['אֲנִי בָּטוּחַ שֶׁ___ לְךָ זְמַן. (להיות)','יִהְיֶה'],
-      ['אֲנַחְנוּ ___ בַּבַּיִת בָּעֶרֶב. (להיות)','נִהְיֶה']]),
-    E('כתבו בציווי (חיובי/שלילי):',[
-      ['(אַתָּה, לקום) ___ מוּקְדָּם!','קוּם!'],
-      ['(אַתְּ, לבוא) ___ הֵנָּה!','בּוֹאִי!'],
-      ['(אַתֶּם, לרוץ) שלילי: ___ מַהֵר מִדַּיי!','אַל תָּרוּצוּ!']]),
-    E('כתבו בציווי:',[
-      ['(אַתָּה, לשבת) ___ בְּבַקָּשָׁה!','שֵׁב!'],
-      ['(אַתְּ, לתת) ___ לִי אֶת זֶה!','תְּנִי!'],
-      ['(אַתֶּם, ללכת) ___ הַבַּיְתָה!','לְכוּ!']]),
-    E('השלימו בבינוני פעול (בהתאמה):',[
-      ['הַדֶּלֶת ___ . (סגר)','סְגוּרָה'],
-      ['הַמִּכְתָּבִים כְּבָר ___ . (כתב)','כְּתוּבִים'],
-      ['הַבַּיִת ___ מֵאֶבֶן. (בנה)','בָּנוּי']])
-  ];
-  var PIEL=[E('השלימו בעתיד (פיעל):',[
-      ['מָחָר אֲנִי ___ אֶת הַחֶדֶר. (לסדר)','אֲסַדֵּר'],
-      ['הֵם ___ עַל יַד הַיָּם בַּקַּיִץ. (לטייל)','יְטַיְּלוּ'],
-      ['אַתְּ ___ בַּטֶּלֶפוֹן אַחַר כָּךְ? (לדבר)','תְּדַבְּרִי']])];
-  var HIFIL=[E('השלימו בעתיד (הפעיל):',[
-      ['אֲנִי ___ טוֹב יוֹתֵר מָחָר. (להרגיש)','אַרְגִּישׁ'],
-      ['הֵם ___ אֶת הַשִּׁיעוּר בַּשָּׁבוּעַ הַבָּא. (להתחיל)','יַתְחִילוּ'],
-      ['מָתַי אַתְּ ___ אוֹתָנוּ? (להזמין)','תַּזְמִינִי']])];
-  var HITPAEL=[E('השלימו בעתיד (התפעל):',[
-      ['אֲנִי ___ מֵהַחֲדָשׁוֹת הַטּוֹבוֹת. (להתרגש)','אֶתְרַגֵּשׁ'],
-      ['הֵם ___ בַּקַּיִץ הַבָּא. (להתחתן)','יִתְחַתְּנוּ'],
-      ['מָתַי אַתָּה ___ אֵלַיי? (להתקשר)','תִּתְקַשֵּׁר']])];
-  var NIFAL=[
-    E('השלימו בהווה (נפעל):',[
-      ['כָּל בּוֹקֶר הִיא ___ לַמִּשְׂרָד בְּשֶׁמוֹנֶה. (להיכנס)','נִכְנֶסֶת'],
-      ['אֲנַחְנוּ ___ בְּבֵית קָפֶה כָּל שָׁבוּעַ. (להיפגש)','נִפְגָּשִׁים'],
-      ['הֵם ___ בַּבַּיִת עַד מְאוּחָר. (להישאר)','נִשְׁאָרִים']]),
-    E('השלימו בעבר (נפעל):',[
-      ['אֶתְמוֹל הִיא ___ לַמִּשְׂרָד מְאוּחָר. (להיכנס)','נִכְנְסָה'],
-      ['הַמִּכְתָּב ___ אֶתְמוֹל. (להישלח)','נִשְׁלַח'],
-      ['אֲנַחְנוּ ___ בַּתַּחֲנָה. (להיפגש)','נִפְגַּשְׁנוּ']]),
-    E('השלימו בעתיד (נפעל):',[
-      ['מָחָר אֲנִי ___ לַפְּגִישָׁה בַּזְּמַן. (להיכנס)','אֶכָּנֵס'],
-      ['הֵם ___ מֵהַדֶּלֶת הָאֲחוֹרִית. (להיכנס)','יִיכָּנְסוּ'],
-      ['מָתַי אַתְּ ___? (להיכנס)','תִּיכָּנְסִי']])
-  ];
-  var PREPS=[
-    E('השלימו בנטיית עַל:',[
-      ['הֵם דִּיבְּרוּ ___ כָּל הָעֶרֶב. (על+אני)','עָלַיי'],
-      ['חָשַׁבְתִּי ___ הַרְבֵּה. (על+הם)','עֲלֵיהֶם'],
-      ['מָה שָׁמַעְתָּ ___? (על+היא)','עָלֶיהָ']]),
-    E('השלימו בנטיית אֶל:',[
-      ['כָּתַבְתִּי ___ מִכְתָּב. (אל+אתה)','אֵלֶיךָ'],
-      ['הִיא בָּאָה ___ לְבִיקּוּר. (אל+אנחנו)','אֵלֵינוּ'],
-      ['נָסַעְנוּ ___ לֶחָג. (אל+הם)','אֲלֵיהֶם']]),
-    E('השלימו בנטיית אֵצֶל:',[
-      ['הָיִיתִי ___ אֶתְמוֹל. (אצל+הוא)','אֶצְלוֹ'],
-      ['נִשְׁאַרְתִּי לִישׁוֹן ___. (אצל+הם)','אֶצְלָם'],
-      ['אַתָּה גָּר ___ הַשָּׁבוּעַ. (אצל+אני)','אֶצְלִי']]),
-    E('השלימו בנטיית מִן:',[
-      ['קִיבַּלְתִּי מִכְתָּב ___. (מן+היא)','מִמֶּנָּה'],
-      ['הוּא גָּבוֹהַּ יוֹתֵר ___. (מן+אני)','מִמֶּנִּי'],
-      ['הֵם בָּרְחוּ ___. (מן+אנחנו)','מֵאִיתָּנוּ']]),
-    E('השלימו בנטיית בְּ:',[
-      ['הִיא הִסְתַּכְּלָה ___. (ב+אני)','בִּי'],
-      ['אֲנִי נִזְכָּר ___ תָּמִיד. (ב+אתה)','בְּךָ'],
-      ['הֵם בָּטְחוּ ___. (ב+הם)','בָּהֶם']]),
-    E('השלימו בנטיית כְּמוֹ:',[
-      ['אֵין אַף אֶחָד ___. (כמו+אתה)','כָּמוֹךָ'],
-      ['הִיא חֲכָמָה ___. (כמו+הוא)','כָּמוֹהוּ'],
-      ['הֵם רוֹצִים לִהְיוֹת ___. (כמו+אנחנו)','כְּמוֹנוּ']]),
-    E('השלימו בנטיית בֵּין:',[
-      ['הַסּוֹד יִישָׁאֵר ___. (בין+אנחנו)','בֵּינֵינוּ'],
-      ['מָה הַהֶבְדֵּל ___? (בין+הם)','בֵּינֵיהֶם'],
-      ['הַיְּשִׁיבָה הָיְתָה ___ לְבֵינִי. (בין+הוא)','בֵּינוֹ']]),
-    E('השלימו בנטיית בִּשְׁבִיל:',[
-      ['קָנִיתִי אֶת זֶה ___. (בשביל+אתה)','בִּשְׁבִילְךָ'],
-      ['הֵם עָשׂוּ הַכֹּל ___. (בשביל+אנחנו)','בִּשְׁבִילֵנוּ'],
-      ['זֶה ___, לֹא בִּשְׁבִילִי. (בשביל+היא)','בִּשְׁבִילָהּ']]),
-    E('השלימו בנטיית בִּגְלַל:',[
-      ['אִיחַרְנוּ ___. (בגלל+אתה)','בִּגְלָלְךָ'],
-      ['הַכֹּל קָרָה ___. (בגלל+הם)','בִּגְלָלָם'],
-      ['אַל תִּדְאַג ___. (בגלל+אני)','בִּגְלָלִי']]),
-    E('השלימו בנטיית בְּלִי = בִּלְעֲדֵי:',[
-      ['אֲנִי לֹא הוֹלֵךְ לְשָׁם ___. (בלי+אתה)','בִּלְעָדֶיךָ'],
-      ['הֵם הִתְחִילוּ ___. (בלי+אנחנו)','בִּלְעָדֵינוּ'],
-      ['אִי אֶפְשָׁר בְּלִי הִיא → ___. (בלי+היא)','בִּלְעָדֶיהָ']]),
-    E('השלימו במילה עֶצֶם (+ מילת יחס):',[
-      ['הִיא דִּיבְּרָה עִם ___. (עצם+היא)','עַצְמָהּ'],
-      ['אַתָּה צָרִיךְ לְהַאֲמִין ___. (ב+עצם+אתה)','בְּעַצְמְךָ'],
-      ['הֵם עָשׂוּ אֶת זֶה ___. (ב+עצם+הם)','בְּעַצְמָם']])
-  ];
-  var PREP_REVIEW=E('השלימו בנטייה (של / ל / את / עם):',[
-      ['הַסֵּפֶר הַזֶּה ___. (של+אני)','שֶׁלִּי'],
-      ['פָּגַשְׁתִּי ___ אֶתְמוֹל. (את+הוא)','אוֹתוֹ'],
-      ['אֲנִי רוֹצֶה לְדַבֵּר ___. (עם+את)','אִיתָּךְ'],
-      ['תֵּן ___ אֶת הַכֶּסֶף. (ל+הם)','לָהֶם']]);
-  var NOUNS=[
-    E('השלימו: אותו / אותה / אותם / אותן:',[
-      ['רִינָה וַאֲנִי קָנִינוּ ___ שִׂמְלָה.','אוֹתָהּ'],
-      ['הֵם לוֹמְדִים בְּ___ בֵּית סֵפֶר.','אוֹתוֹ'],
-      ['הֵן קָרְאוּ ___ סְפָרִים.','אוֹתָם']]),
-    E('כתבו בצורת הזוגי:',[
-      ['שְׁתֵּי שָׁעוֹת = ___','שְׁעָתַיִים'],
-      ['שְׁנֵי יָמִים = ___','יוֹמַיִים'],
-      ['שְׁתֵּי פְּעָמִים = ___','פַּעֲמַיִים']]),
-    E('כתבו ברבים:',[
-      ['לַיְלָה → ___','לֵילוֹת'],['יוֹם → ___','יָמִים'],['שֻׁלְחָן → ___','שֻׁלְחָנוֹת']]),
-    E('כתבו ברבים (סיומות נקבה):',[
-      ['מַחְבֶּרֶת → ___','מַחְבָּרוֹת'],['חֲנוּת → ___','חֲנֻיּוֹת'],['כַּפִּית → ___','כַּפִּיּוֹת']]),
-    E('צרו סמיכות:',[
-      ['עוּגָה שֶׁל יוֹם הֻלֶּדֶת = ___ יוֹם הֻלֶּדֶת','עוּגַת'],
-      ['סְפָרִים שֶׁל הַיְּלָדִים = ___ הַיְּלָדִים','סִפְרֵי'],
-      ['בַּיִת שֶׁל סֵפֶר = ___ סֵפֶר','בֵּית']]),
-    E('השלימו (השוואה):',[
-      ['דָּן גָּבוֹהַּ ___ מִיּוֹסִי. (more)','יוֹתֵר'],
-      ['זֶה הַ___ טוֹב! (the most)','הֲכִי'],
-      ['הִיא חֲכָמָה ___ אֲחוֹתָהּ. (like)','כְּמוֹ']])
-  ];
-  var SYNTAX=[
-    E('כתבו בעבר/עתיד (משפט סתמי):',[
-      ['הַיּוֹם כְּדַאי לִנְסוֹעַ → אֶתְמוֹל ___ לִנְסוֹעַ.','כְּדַאי הָיָה'],
-      ['הַיּוֹם אֶפְשָׁר לִשְׂחוֹת → מָחָר ___ לִשְׂחוֹת.','יִהְיֶה אֶפְשָׁר'],
-      ['צָרִיךְ לִלְמוֹד → אֶתְמוֹל ___ לִלְמוֹד.','הָיָה צָרִיךְ']]),
-    E('השלימו בעתיד (יש/אין):',[
-      ['יֵשׁ שְׁבִיתָה → מָחָר ___ שְׁבִיתָה.','תִּהְיֶה'],
-      ['אֵין שֶׁקֶט → בַּלַּיְלָה לֹא ___ שֶׁקֶט.','יִהְיֶה'],
-      ['יֵשׁ אֲנָשִׁים → ___ הַרְבֵּה אֲנָשִׁים.','יִהְיוּ']]),
-    E('השלימו (שייכות בעתיד):',[
-      ['יֵשׁ לִי זְמַן → מָחָר ___ לִי זְמַן.','יִהְיֶה'],
-      ['יֵשׁ לְךָ אוֹרְחִים → ___ לְךָ אוֹרְחִים.','יִהְיוּ'],
-      ['אֵין לָנוּ כֶּסֶף → לֹא ___ לָנוּ כֶּסֶף.','יִהְיֶה']]),
-    E('חברו למשפט אחד עם שֶׁ־:',[
-      ['הָאִישׁ יוֹשֵׁב לְיַד רִינָה. הוּא גָּר בְּצַפַת.','הָאִישׁ, שֶׁיּוֹשֵׁב לְיַד רִינָה, גָּר בְּצַפַת.'],
-      ['אָכַלְתִּי אֶת הָעוּגָה. אִימָּא הֵכִינָה אוֹתָהּ.','אָכַלְתִּי אֶת הָעוּגָה שֶׁאִימָּא הֵכִינָה.']]),
-    E('השלימו: בגלל / מפני ש / ולכן:',[
-      ['אֲנַחְנוּ עֲיֵפִים ___ הָעֲבוֹדָה. (+שם עצם)','בִּגְלַל'],
-      ['אֲנַחְנוּ עֲיֵפִים, ___ עָבַדְנוּ קָשֶׁה. (+משפט)','מִפְּנֵי שֶׁ / כִּי'],
-      ['לֹא הָיָה אוֹטוֹבּוּס, ___ הָלַכְנוּ בָּרֶגֶל.','וְלָכֵן']]),
-    E('השלימו בעתיד (תנאי קיים):',[
-      ['אִם ___ לִי מָחָר, אֶקְרָא מִיָּד. (לשלוח, אתה)','תִּשְׁלַח'],
-      ['אִם תָּבוֹא מְאוּחָר, אֲנַחְנוּ ___ בִּלְעָדֶיךָ. (ללכת)','נֵלֵךְ'],
-      ['אִם ___ לָבוֹא, תְּטַלְפְּנִי. (לרצות, את)','תִּרְצִי']]),
-    E('השלימו: לפני ש / כש / אחרי ש:',[
-      ['עָבַדְתִּי בְּבַנְק, ___ נָסַעְתִּי לְחוּ״ל. (before)','לִפְנֵי שֶׁ'],
-      ['___ אֲנִי קָם, אֲנִי שׁוֹתֶה קָפֶה. (when)','כְּשֶׁ'],
-      ['הָלַכְנוּ לִישׁוֹן ___ הַסֶּרֶט נִגְמַר. (after)','אַחֲרֵי שֶׁ']]),
-    E('השלימו: כדי + שם הפועל / כדי ש + עתיד:',[
-      ['שָׁמַעְנוּ חֲדָשׁוֹת ___ לָדַעַת מָה קוֹרֶה. (אותו נושא)','כְּדֵי'],
-      ['הִדְלַקְנוּ אוֹר, ___ הֵם יִרְאוּ אוֹתָנוּ. (נושא אחר)','כְּדֵי שֶׁ'],
-      ['הִיא לָמְדָה קָשֶׁה ___ לְהַצְלִיחַ.','כְּדֵי']]),
-    E('השלימו (שם הפועל או שֶׁ+עתיד):',[
-      ['אֲנִי רוֹצֶה ___ אֶת הַסֶּרֶט. (לראות, אותו נושא)','לִרְאוֹת'],
-      ['הַהוֹרִים רוֹצִים ___ הַיְּלָדִים ___. (לקרוא, נושא אחר)','שֶׁ … יִקְרְאוּ'],
-      ['הַמְּנַהֵל בִּיקֵּשׁ ___ הָעוֹבְדִים ___ בַּזְּמַן. (לבוא)','שֶׁ … יָבוֹאוּ']]),
-    E('השלימו: אלא / אבל:',[
-      ['הוּא לֹא טָס לְאָמֵרִיקָה ___ לְאוֹסְטְרַלְיָה.','אֶלָּא'],
-      ['רָצִיתִי לָבוֹא, ___ לֹא הָיָה לִי זְמַן.','אֲבָל'],
-      ['אֵין לִי בָּעוֹלָם ___ אוֹתָךְ.','אֶלָּא']]),
-    E('השלימו באוגד (הוא/היא/הם/הן):',[
-      ['הַשַּׁבָּת ___ יוֹם שֶׁל מְנוּחָה.','הִיא'],
-      ['יְמֵי רִאשׁוֹן ___ בְּעָיָה בִּשְׁבִילִי.','הֵם'],
-      ['בֶּן־גּוּרְיוֹן ___ רֹאשׁ הַמֶּמְשָׁלָה הָרִאשׁוֹן.','הוּא']]),
-    E('צרו תואר הפועל (בְּ + שם עצם):',[
-      ['הוּא נָהַג ___. (זהירות)','בִּזְהִירוּת'],
-      ['הֵם קִיבְּלוּ אוֹתָנוּ ___. (שמחה)','בְּשִׂמְחָה'],
-      ['הִיא דִּיבְּרָה ___. (שקט)','בְּשֶׁקֶט']]),
-    E('כתבו כפעולה רגילה בעבר (used to):',[
-      ['כָּל קַיִץ אֲנַחְנוּ נוֹסְעִים לַיָּם → כָּל קַיִץ ___ נוֹסְעִים.','הָיִינוּ'],
-      ['בְּיַלְדוּתִי אֲנִי מְשַׂחֵק בֶּחָצֵר → ___ מְשַׂחֵק.','הָיִיתִי'],
-      ['אַבָּא קוֹרֵא עִיתּוֹן כָּל בּוֹקֶר → אַבָּא ___ קוֹרֵא.','הָיָה']])
-  ];
-  var WORDS=[
-    E('סמנו את חלק הדיבר (ש״ע / ש״ת / פועל / מ״י):',[
-      ['רָץ →','פּוֹעַל'],['יָפֶה →','שֵׁם תּוֹאַר (ש״ת)'],['עַל →','מִילַּת יַחַס (מ״י)']]),
-    E('מצאו את המילה במילון (הסירו אות שימוש):',[
-      ['בַּבַּיִת →','בַּיִת'],['כְּשֶׁהָלַכְתִּי →','הָלַךְ'],['וְלָאִישָׁה →','אִישָׁה']]),
-    E('השלימו במילת סְתם עם ־שהו:',[
-      ['יֵשׁ ___ בַּדֶּלֶת. (someone)','מִישֶׁהוּ'],
-      ['אֲנִי רוֹצֶה לֶאֱכוֹל ___. (something)','מַשֶּׁהוּ'],
-      ['נִיפָּגֵשׁ ___ בַּשָּׁבוּעַ הַבָּא. (sometime)','מָתַישֶׁהוּ']]),
-    E('נקדו לפי המשמעות (הומוגרפים):',[
-      ['בְּנֵי הָ___ הַיְּהוּדִי (people) — עם','עַם'],
-      ['דִּיבַּרְתִּי ___ הֶחָבֵר (with) — עם','עִם'],
-      ['הַמִּזְוָודָה ___ מְאוֹד (heavy) — כבד','כְּבֵדָה']]),
-    E('כתבו את הסיומת העברית:',[
-      ['optimism → אוֹפְּטִימִ___','־יזם (אופטימיזם)'],
-      ['classic → קְלָא___ (‑י)','־י (קלאסי)'],
-      ['information → אִינְפוֹרְמַ___','־ציה (אינפורמציה)']])
-  ];
-
-  function exHtml(ex){
-    if(!ex) return '';
-    var items=ex.items.map(function(it){
-      return '<li class="exq"><span class="q" lang="he" dir="rtl">'+it[0]+'</span>'+
-             '<span class="ans" lang="he" dir="rtl" role="button" tabindex="0" aria-label="Reveal answer">'+it[1]+'</span></li>';
-    }).join('');
-    return '<div class="exercise"><div class="ex-h"><span class="ex-tag">תרגול · Practice</span>'+
-           '<span class="ex-instr" lang="he" dir="rtl">'+ex.instr+'</span></div>'+
-           '<ol class="ex-list">'+items+'</ol></div>';
-  }
-  function attach(containerId,exArr){
-    var c=document.getElementById(containerId); if(!c) return;
-    var cards=c.querySelectorAll('.pcard, .tcard');
-    for(var i=0;i<cards.length && i<exArr.length;i++){
-      if(exArr[i]) cards[i].insertAdjacentHTML('beforeend', exHtml(exArr[i]));
-    }
-  }
-  attach('paal',PAAL); attach('piel',PIEL); attach('hifil',HIFIL);
-  attach('hitpael',HITPAEL); attach('nifal',NIFAL); attach('preps',PREPS);
-  attach('nouns-t',NOUNS); attach('syntax-t',SYNTAX); attach('words-t',WORDS);
-
-  var rev=document.getElementById('preps-review');
-  if(rev) rev.insertAdjacentHTML('afterend','<div class="exwrap">'+exHtml(PREP_REVIEW)+'</div>');
-
-  /* reveal answers: click / keyboard */
-  document.addEventListener('click',function(e){
-    var a=e.target.closest && e.target.closest('.ans');
-    if(a) a.classList.toggle('revealed');
-  });
-  document.addEventListener('keydown',function(e){
-    var t=e.target;
-    if(t && t.classList && t.classList.contains('ans') && (e.key==='Enter'||e.key===' ')){
-      e.preventDefault(); t.classList.toggle('revealed');
-    }
-  });
-
-  /* global show/hide toggle in the sticky nav */
-  var nav=document.querySelector('nav.toc');
-  if(nav){
-    var btn=document.createElement('button');
-    btn.type='button'; btn.className='ans-toggle'; btn.textContent='Show all answers';
-    btn.addEventListener('click',function(){
-      var on=document.body.classList.toggle('show-ans');
-      btn.textContent=on?'Hide all answers':'Show all answers';
-      btn.classList.toggle('on',on);
-    });
-    nav.appendChild(btn);
-  }
-
-  /* legend note about exercises */
-  var lg=document.querySelector('.legend');
-  if(lg){
-    var d=document.createElement('div');
-    d.innerHTML='<h4>Exercises</h4><p>Each topic has a <b>תרגול</b> drill. Answers are blurred — <b>click any answer</b> to reveal it, or hit <b>Show all answers</b> in the top bar.</p>';
-    lg.appendChild(d);
-  }
-})();
-</script>
