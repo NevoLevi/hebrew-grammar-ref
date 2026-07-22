@@ -1,3 +1,620 @@
+<title>עברית מן ההתחלה ב׳ — Grammar Reference (to p. 267)</title>
+<style>
+  :root{
+    --bg:#f3f1ea; --panel:#fbfaf6; --card:#ffffff;
+    --ink:#241f1b; --ink-soft:#4b443c; --muted:#857b6e; --faint:#a89e90;
+    --line:#e5dfd2; --line-strong:#d8d0be;
+    --accent:#9c2b23; --accent-ink:#7f231d; --accent-tint:#f3e2de; --accent-tint-2:#efd9d4;
+    --steel:#3c4a5e; --steel-tint:#e5e8ee;
+    --shadow:0 1px 2px rgba(40,30,20,.04),0 3px 10px rgba(40,30,20,.05);
+    --he:'Frank Ruehl','FrankRuehl','David Libre','David','Narkisim','Times New Roman','Arial Hebrew',serif;
+    --serif:'Palatino Linotype','Book Antiqua','Iowan Old Style',Georgia,'Times New Roman',serif;
+    --sans:'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+    --mono:ui-monospace,'Cascadia Code','SF Mono',Consolas,'Liberation Mono',monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#17140f; --panel:#201c16; --card:#24201a;
+      --ink:#ece5d8; --ink-soft:#c9c0b0; --muted:#9a9082; --faint:#766c5f;
+      --line:#362f26; --line-strong:#453d31;
+      --accent:#e0776a; --accent-ink:#e88a7e; --accent-tint:#2e211d; --accent-tint-2:#38251f;
+      --steel:#9fb2cc; --steel-tint:#232a33;
+      --shadow:0 1px 2px rgba(0,0,0,.25),0 4px 14px rgba(0,0,0,.3);
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#f3f1ea; --panel:#fbfaf6; --card:#ffffff;
+    --ink:#241f1b; --ink-soft:#4b443c; --muted:#857b6e; --faint:#a89e90;
+    --line:#e5dfd2; --line-strong:#d8d0be;
+    --accent:#9c2b23; --accent-ink:#7f231d; --accent-tint:#f3e2de; --accent-tint-2:#efd9d4;
+    --steel:#3c4a5e; --steel-tint:#e5e8ee;
+    --shadow:0 1px 2px rgba(40,30,20,.04),0 3px 10px rgba(40,30,20,.05);
+  }
+  :root[data-theme="dark"]{
+    --bg:#17140f; --panel:#201c16; --card:#24201a;
+    --ink:#ece5d8; --ink-soft:#c9c0b0; --muted:#9a9082; --faint:#766c5f;
+    --line:#362f26; --line-strong:#453d31;
+    --accent:#e0776a; --accent-ink:#e88a7e; --accent-tint:#2e211d; --accent-tint-2:#38251f;
+    --steel:#9fb2cc; --steel-tint:#232a33;
+    --shadow:0 1px 2px rgba(0,0,0,.25),0 4px 14px rgba(0,0,0,.3);
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 22px 96px;}
+
+  /* ---------- masthead ---------- */
+  .mast{padding:52px 0 30px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+  .kicker{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);
+    font-weight:600;margin:0 0 14px;}
+  .he-title{font-family:var(--he);direction:rtl;font-size:clamp(2.3rem,6vw,3.7rem);line-height:1.15;
+    font-weight:700;margin:0;color:var(--ink);letter-spacing:.01em;}
+  .en-title{font-family:var(--serif);font-size:clamp(1.05rem,2.4vw,1.45rem);color:var(--ink-soft);
+    font-weight:500;margin:10px 0 0;font-style:italic;text-wrap:balance;}
+  .mast-meta{display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:22px;}
+  .chip{font-size:.76rem;color:var(--ink-soft);background:var(--panel);border:1px solid var(--line);
+    padding:5px 11px;border-radius:999px;}
+  .chip b{color:var(--accent);font-weight:600}
+
+  /* ---------- legend ---------- */
+  .legend{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+    margin:26px 0 34px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px 26px;}
+  .legend h4{margin:0 0 6px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .legend p{margin:0;font-size:.86rem;color:var(--ink-soft)}
+  .legend .heseq{font-family:var(--he);direction:rtl;font-size:1.02rem;color:var(--ink)}
+  .pgtag{font-family:var(--mono);font-size:.74rem;color:var(--accent);background:var(--accent-tint);
+    padding:1px 6px;border-radius:5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+  /* ---------- nav ---------- */
+  nav.toc{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 -22px 40px;padding:11px 22px;
+    display:flex;flex-wrap:wrap;gap:5px 4px;}
+  nav.toc a{font-size:.82rem;color:var(--ink-soft);text-decoration:none;padding:5px 12px;border-radius:7px;
+    font-weight:500;transition:background .15s,color .15s;}
+  nav.toc a:hover{background:var(--accent-tint);color:var(--accent)}
+  nav.toc a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  /* ---------- sections ---------- */
+  section{margin:0 0 60px;scroll-margin-top:64px;}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin:0 0 6px;}
+  .sec-num{font-family:var(--mono);font-size:.8rem;color:var(--accent);font-weight:600}
+  .sec-head h2{font-family:var(--serif);font-size:clamp(1.5rem,3.4vw,2.05rem);margin:0;font-weight:600;
+    letter-spacing:-.01em;text-wrap:balance}
+  .sec-he{font-family:var(--he);direction:rtl;color:var(--accent);font-weight:700}
+  .sec-intro{color:var(--ink-soft);max-width:62ch;margin:2px 0 26px;font-size:.95rem}
+
+  .group-head{display:flex;align-items:center;gap:12px;margin:34px 0 16px;}
+  .group-head .bar{width:3px;height:24px;background:var(--accent);border-radius:2px;flex:none}
+  .group-head h3{margin:0;font-size:1.16rem;font-weight:600;font-family:var(--serif)}
+  .group-head .he{font-family:var(--he);direction:rtl;font-size:1.4rem;font-weight:700;color:var(--ink)}
+  .group-head .en{color:var(--muted);font-size:.9rem;font-weight:500}
+
+  /* ---------- paradigm cards ---------- */
+  .cardgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:15px 15px 6px;
+    box-shadow:var(--shadow);display:flex;flex-direction:column;}
+  .pcard.wide{grid-column:1/-1}
+  .pcard-h{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;
+    padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid var(--line);}
+  .pcard-title{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .he-lg{font-family:var(--he);direction:rtl;font-size:1.72rem;font-weight:700;line-height:1.25;color:var(--accent-ink)}
+  .gloss{font-size:.82rem;color:var(--muted);font-style:italic}
+  .tags{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex:none;text-align:right}
+  .tag{font-family:var(--he);direction:rtl;font-size:.82rem;color:var(--ink-soft);background:var(--panel);
+    border:1px solid var(--line);padding:2px 8px;border-radius:6px;white-space:nowrap}
+  .tag.t{color:var(--accent);background:var(--accent-tint);border-color:transparent;font-weight:600}
+  .tag.gz{color:var(--steel);background:var(--steel-tint);border-color:transparent}
+
+  .grid{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:9px;overflow:hidden;direction:rtl}
+  .grid.c4{grid-template-columns:repeat(4,1fr)}
+  .grid.c5{grid-template-columns:repeat(5,1fr)}
+  .grid.c3{grid-template-columns:repeat(3,1fr)}
+  .grid.c2{grid-template-columns:repeat(2,1fr)}
+  .cell{background:var(--card);padding:8px 6px 9px;display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center}
+  .cell .pron{font-family:var(--he);direction:rtl;font-size:.74rem;color:var(--faint);font-weight:400;line-height:1}
+  .cell .form{font-family:var(--he);direction:rtl;font-size:1.28rem;color:var(--ink);font-weight:600;line-height:1.5}
+  .note{font-size:.82rem;color:var(--ink-soft);margin:11px 2px 8px;padding:9px 11px;background:var(--panel);
+    border-radius:8px;border:1px solid var(--line);line-height:1.5}
+  .note b{color:var(--accent-ink);font-weight:600}
+  .note .he,.note-he{font-family:var(--he);direction:rtl;font-size:1.05rem;unicode-bidi:isolate}
+
+  /* imperative / free-form card */
+  .flline{display:flex;flex-wrap:wrap;gap:6px 8px;direction:rtl;margin:2px 0 12px}
+  .fbadge{font-family:var(--he);direction:rtl;background:var(--panel);border:1px solid var(--line);
+    border-radius:8px;padding:6px 11px;font-size:1.22rem;font-weight:600;color:var(--ink)}
+  .fbadge.neg{color:var(--accent-ink);background:var(--accent-tint);border-color:transparent}
+  .fbadge small{font-family:var(--he);font-size:.7rem;color:var(--faint);font-weight:400;display:block;text-align:center}
+
+  /* ---------- topic cards (prose grammar) ---------- */
+  .topics{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;}
+  .tcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 16px;box-shadow:var(--shadow);
+    display:flex;flex-direction:column;gap:8px}
+  .tcard-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .tcard-h .he{font-family:var(--he);direction:rtl;font-size:1.3rem;font-weight:700;color:var(--ink);line-height:1.3}
+  .tcard-h .en{font-size:.82rem;color:var(--muted);font-style:italic;text-align:right;flex:none}
+  .tcard .rule{font-size:.9rem;color:var(--ink-soft);margin:0}
+  .tcard .rule b{color:var(--accent-ink);font-weight:600}
+  .tcard .ex{font-family:var(--he);direction:rtl;font-size:1.12rem;color:var(--ink);background:var(--panel);
+    border-right:3px solid var(--accent);border-radius:0 7px 7px 0;padding:7px 11px;line-height:1.7;unicode-bidi:plaintext}
+  .tcard .foot{display:flex;justify-content:flex-end;margin-top:auto;padding-top:2px}
+
+  /* ---------- lesson index ---------- */
+  .lessons{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px;}
+  .lcard{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:13px 15px;box-shadow:var(--shadow)}
+  .lcard .lh{display:flex;align-items:baseline;gap:9px;margin-bottom:7px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+  .lcard .ln{font-family:var(--he);direction:rtl;font-weight:700;color:var(--accent-ink);font-size:1.06rem}
+  .lcard .lp{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-inline-start:auto;font-variant-numeric:tabular-nums}
+  .lcard ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px}
+  .lcard li{font-family:var(--he);direction:rtl;font-size:1rem;color:var(--ink-soft);line-height:1.4;
+    padding-inline-start:14px;position:relative}
+  .lcard li::before{content:"◂";position:absolute;inset-inline-start:0;color:var(--accent);font-size:.7rem;top:.28em}
+  .lcard li .en{font-family:var(--sans);font-size:.76rem;color:var(--faint);font-style:italic}
+
+  footer{border-top:1px solid var(--line);margin-top:20px;padding-top:22px;color:var(--muted);font-size:.84rem;line-height:1.6}
+  footer b{color:var(--ink-soft)}
+
+  /* ---------- exercises & exam ---------- */
+  .exercise{margin:13px 0 4px;padding:12px 13px;background:var(--steel-tint);border:1px solid var(--line);
+    border-radius:9px;border-inline-start:3px solid var(--steel)}
+  .ex-h{display:flex;flex-wrap:wrap;align-items:center;gap:7px 10px;margin-bottom:10px}
+  .ex-tag{font-family:var(--sans);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;
+    color:var(--bg);background:var(--steel);padding:3px 8px;border-radius:5px;white-space:nowrap}
+  .ex-instr{font-family:var(--he);direction:rtl;font-size:.92rem;color:var(--ink-soft)}
+  .seg-toggle{margin-inline-start:auto;font-family:var(--sans);font-size:.72rem;font-weight:600;cursor:pointer;
+    color:var(--steel);background:transparent;border:1px solid var(--steel);padding:3px 11px;border-radius:999px;
+    white-space:nowrap;transition:background .14s,color .14s}
+  .seg-toggle:hover,.seg-toggle.on{background:var(--steel);color:var(--bg)}
+  .seg-toggle:focus-visible{outline:2px solid var(--steel);outline-offset:2px}
+  .ex-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+  .exq{display:flex;flex-direction:column;gap:3px}
+  .exq-main{display:flex;flex-wrap:wrap;gap:5px 8px;align-items:baseline;direction:rtl}
+  .exq .q{font-family:var(--he);direction:rtl;font-size:1.1rem;color:var(--ink);line-height:1.6;unicode-bidi:plaintext}
+  .exq .ans{font-family:var(--he);direction:rtl;font-size:1.06rem;font-weight:700;color:var(--steel);
+    background:var(--card);border:1px solid var(--line);padding:1px 9px;border-radius:6px;cursor:pointer;
+    filter:blur(5px);transition:filter .12s ease, box-shadow .12s ease;user-select:none;-webkit-user-select:none;unicode-bidi:plaintext}
+  .exq .ans:hover{box-shadow:0 0 0 2px var(--steel) inset}
+  .exq .ans.revealed,.exercise.show-ans .exq .ans,body.show-ans .exq .ans{filter:none}
+  .exq .ans:focus-visible{outline:2px solid var(--steel);outline-offset:2px;filter:none}
+  .tr-btn{font-family:var(--sans);font-size:.6rem;font-weight:700;letter-spacing:.05em;cursor:pointer;color:var(--muted);
+    background:transparent;border:1px solid var(--line);border-radius:5px;padding:1px 6px;line-height:1.4;white-space:nowrap;
+    transition:color .14s,border-color .14s}
+  .tr-btn:hover,.tr-btn.on{color:var(--ink);border-color:var(--muted)}
+  .tr-btn:focus-visible{outline:2px solid var(--steel);outline-offset:1px}
+  .tr{display:none;font-family:var(--sans);font-size:.82rem;color:var(--muted);font-style:italic;
+    padding-inline-start:9px;border-inline-start:2px solid var(--line);margin-top:1px;line-height:1.4}
+  .exq.tr-open .tr{display:block}
+  .ex-tr{font-family:var(--sans);font-size:.8rem;color:var(--muted);font-style:italic;margin-top:4px;line-height:1.4}
+  .exwrap{margin-top:14px}
+  .ans-toggle{margin-inline-start:auto;font-family:var(--sans);font-size:.8rem;font-weight:600;cursor:pointer;
+    color:var(--bg);background:var(--steel);border:none;padding:6px 13px;border-radius:8px;transition:opacity .15s;white-space:nowrap}
+  .ans-toggle:hover{opacity:.88}
+  .ans-toggle.on{background:var(--accent)}
+  .ans-toggle:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+  /* exam re-skins the exercise block in the accent colour */
+  .exam-sec{background:var(--card);border-inline-start-color:var(--accent);box-shadow:var(--shadow);
+    border-radius:11px;padding:15px 16px;margin:0 0 14px}
+  .exam-sec .ex-tag{background:var(--accent)}
+  .exam-sec .seg-toggle{color:var(--accent);border-color:var(--accent)}
+  .exam-sec .seg-toggle:hover,.exam-sec .seg-toggle.on{background:var(--accent);color:var(--bg)}
+  .exam-sec .exq .ans{color:var(--accent)}
+  .exam-sec .exq .ans:hover{box-shadow:0 0 0 2px var(--accent) inset}
+  .exam-sec.show-ans .exq .ans{filter:none}
+  .exam-title{font-family:var(--he);direction:rtl;font-weight:700;font-size:1.14rem;color:var(--ink)}
+  .exam-title .en{font-family:var(--sans);font-weight:500;font-size:.8rem;color:var(--muted);margin-inline-start:8px}
+
+  .fade{opacity:0;transform:translateY(8px);animation:rise .5s ease forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.fade{animation:none;opacity:1;transform:none}}
+
+  @media (max-width:560px){
+    .grid.c4{grid-template-columns:repeat(2,1fr)}
+    .grid.c5{grid-template-columns:repeat(2,1fr)}
+    .grid.c3{grid-template-columns:repeat(3,1fr)}
+    .cell .form{font-size:1.18rem}
+    nav.toc{gap:3px}
+    nav.toc a{padding:5px 9px;font-size:.78rem}
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="mast">
+    <p class="kicker">Hebrew Grammar · Study Reference</p>
+    <h1 class="he-title" lang="he" dir="rtl">עברית מן ההתחלה ב׳</h1>
+    <p class="en-title">Everything grammatical taught through page 267 — the binyanim across every tense &amp; root-type, the imperative, the passive &amp; Nif'al, all preposition conjugations, and the syntax of clauses.</p>
+    <div class="mast-meta">
+      <span class="chip">Chayat · Israeli · Kobliner</span>
+      <span class="chip">Lessons <b>1–10</b> complete · <b>11</b> (Nif'al) in progress</span>
+      <span class="chip">pp. <b>1–267</b></span>
+      <span class="chip">Vocabulary excluded — grammar only</span>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Contents">
+    <a href="#verbs">① Verbs &amp; Binyanim</a>
+    <a href="#prepositions">② Prepositions</a>
+    <a href="#nouns">③ Nouns &amp; Adjectives</a>
+    <a href="#syntax">④ Syntax</a>
+    <a href="#words">⑤ Word-study</a>
+    <a href="#lessons">⑥ Lesson index</a>
+    <a href="#exam">⑦ Mini exam</a>
+  </nav>
+
+  <div class="legend">
+    <div>
+      <h4>Reading the tables</h4>
+      <p>Every table reads <b>right-to-left</b>. Cells run in pronoun order:</p>
+      <p class="heseq" lang="he" dir="rtl">אֲנִי · אַתָּה · אַתְּ · הוּא · הִיא · אֲנַחְנוּ · אַתֶּם/ן · הֵם/ן</p>
+    </div>
+    <div>
+      <h4>Page tags</h4>
+      <p>A tag like <span class="pgtag">p90</span> is the printed book page where the point is taught. Nikud (vowels) shown throughout.</p>
+    </div>
+    <div>
+      <h4>Focus of this volume</h4>
+      <p>The through-line is the <b>future tense (עתיד)</b> built out binyan-by-binyan, plus the imperative and the whole Nif'al system.</p>
+    </div>
+  </div>
+
+  <!-- ===================== VERBS ===================== -->
+  <section id="verbs">
+    <div class="sec-head"><span class="sec-num">01</span>
+      <h2>The Verb System <span class="sec-he" lang="he" dir="rtl">· הַפּוֹעַל</span></h2></div>
+    <p class="sec-intro">The heart of the book: each binyan is carried into the <b>future</b>, across sound roots and the weak root-types (גְּזָרוֹת). Then the imperative and the passive participle, and finally the Nif'al in all three tenses.</p>
+
+    <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">פָּעַל / קַל</span> <span class="en">— Pa'al · future, imperative &amp; passive participle</span></h3></div>
+    <div class="cardgrid" id="paal"></div>
+
+    <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">פִּיעֵל</span> <span class="en">— Pi'el · future</span></h3></div>
+    <div class="cardgrid" id="piel"></div>
+
+    <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">הִפְעִיל</span> <span class="en">— Hif'il · future</span></h3></div>
+    <div class="cardgrid" id="hifil"></div>
+
+    <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">הִתְפַּעֵל</span> <span class="en">— Hitpa'el · future</span></h3></div>
+    <div class="cardgrid" id="hitpael"></div>
+
+    <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">נִפְעַל</span> <span class="en">— Nif'al · present · past · future (Lesson 11)</span></h3></div>
+    <div class="cardgrid" id="nifal"></div>
+  </section>
+
+  <!-- ===================== PREPOSITIONS ===================== -->
+  <section id="prepositions">
+    <div class="sec-head"><span class="sec-num">02</span>
+      <h2>Prepositions &amp; their conjugation <span class="sec-he" lang="he" dir="rtl">· נְטִיַּית מִילּוֹת הַיַּחַס</span></h2></div>
+    <p class="sec-intro">Each preposition takes pronoun endings. Full paradigms below in the order <span class="note-he" lang="he" dir="rtl">אֲנִי · אַתָּה · אַתְּ · הוּא · הִיא · אֲנַחְנוּ · אַתֶּם · אַתֶּן · הֵם · הֵן</span>.</p>
+    <div class="cardgrid" id="preps"></div>
+
+    <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">חֲזָרָה</span> <span class="en">— review paradigms carried over from Part A</span></h3></div>
+    <div class="cardgrid" id="preps-review"></div>
+  </section>
+
+  <!-- ===================== NOUNS ===================== -->
+  <section id="nouns">
+    <div class="sec-head"><span class="sec-num">03</span>
+      <h2>Nouns &amp; Adjectives <span class="sec-he" lang="he" dir="rtl">· שֵׁם עֶצֶם וְשֵׁם תּוֹאַר</span></h2></div>
+    <p class="sec-intro">Number, gender, the dual, feminine plural patterns, the construct chain, and comparison.</p>
+    <div class="topics" id="nouns-t"></div>
+  </section>
+
+  <!-- ===================== SYNTAX ===================== -->
+  <section id="syntax">
+    <div class="sec-head"><span class="sec-num">04</span>
+      <h2>Syntax — sentences &amp; clauses <span class="sec-he" lang="he" dir="rtl">· תַּחְבִּיר</span></h2></div>
+    <p class="sec-intro">How clauses combine: relative, causal, conditional, temporal, purpose and object clauses, the copula, and the impersonal.</p>
+    <div class="topics" id="syntax-t"></div>
+  </section>
+
+  <!-- ===================== WORD STUDY ===================== -->
+  <section id="words">
+    <div class="sec-head"><span class="sec-num">05</span>
+      <h2>Word-study &amp; morphology <span class="sec-he" lang="he" dir="rtl">· מִילּוֹן וְצוּרוֹת</span></h2></div>
+    <p class="sec-intro">Parts of speech, prefix particles, indefinite words, homographs.</p>
+    <div class="topics" id="words-t"></div>
+  </section>
+
+  <!-- ===================== LESSONS ===================== -->
+  <section id="lessons">
+    <div class="sec-head"><span class="sec-num">06</span>
+      <h2>Lesson-by-lesson index <span class="sec-he" lang="he" dir="rtl">· נוֹשְׂאִים לְשׁוֹנִיִּים</span></h2></div>
+    <p class="sec-intro">The grammar as the book packages it — each lesson's summary box (נוֹשְׂאִים לְשׁוֹנִיִּים), in order.</p>
+    <div class="lessons" id="lessons-g"></div>
+  </section>
+
+  <!-- ===================== EXAM ===================== -->
+  <section id="exam">
+    <div class="sec-head"><span class="sec-num">07</span>
+      <h2>Mini exam — all topics combined <span class="sec-he" lang="he" dir="rtl">· מִבְחָן מְסַכֵּם</span></h2></div>
+    <p class="sec-intro">Five parts drawing on everything above. It's meant to make you <em>choose</em> — which binyan, which preposition, which connector — not just fill a slot you were handed. Each part has its own <b>Show answers</b>, and every sentence has an <b>EN</b> translation you can open for a hint.</p>
+    <div id="exam-body"></div>
+  </section>
+
+  <footer>
+    <p><b>Scope &amp; method.</b> Compiled from a page-by-page pass of pp. 1–267 of <i>עברית מן ההתחלה החדש · חלק ב׳</i>. Only grammar is listed — vocabulary, reading passages, songs and culture texts are omitted, except where a form illustrates a rule. Verb paradigms are given in full; page tags mark where each point is taught. Nikud follows the textbook's conventions.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var PRON8=['אֲנִי','אַתָּה','אַתְּ','הוּא','הִיא','אֲנַחְנוּ','אַתֶּם/ן','הֵם/ן'];
+  var PRON10=['אֲנִי','אַתָּה','אַתְּ','הוּא','הִיא','אֲנַחְנוּ','אַתֶּם','אַתֶּן','הֵם','הֵן'];
+  var PRES4=['ז׳ יחיד','נ׳ יחיד','ז׳ רבים','נ׳ רבים'];
+
+  function esc(s){return s;}
+  function cells(prons,forms){
+    var h='';
+    for(var i=0;i<forms.length;i++){
+      h+='<div class="cell"><span class="pron" lang="he" dir="rtl">'+prons[i]+'</span>'+
+         '<span class="form" lang="he" dir="rtl">'+forms[i]+'</span></div>';
+    }
+    return h;
+  }
+  function tagHtml(v){
+    var t='';
+    if(v.gz) t+='<span class="tag gz" lang="he" dir="rtl">'+v.gz+'</span>';
+    if(v.tense) t+='<span class="tag t" lang="he" dir="rtl">'+v.tense+'</span>';
+    t+='<span class="pgtag">p'+v.page+'</span>';
+    return t;
+  }
+  function paraCard(v){
+    var prons = v.prons || (v.forms.length===10?PRON10:(v.forms.length===4?PRES4:PRON8));
+    var cols = v.cols || (v.forms.length===10?'c5':(v.forms.length===4?'c4':'c4'));
+    return '<article class="pcard'+(v.wide?' wide':'')+'">'+
+      '<div class="pcard-h"><div class="pcard-title">'+
+        '<span class="he-lg" lang="he" dir="rtl">'+v.verb+'</span>'+
+        (v.gl?'<span class="gloss">'+v.gl+'</span>':'')+
+      '</div><div class="tags">'+tagHtml(v)+'</div></div>'+
+      '<div class="grid '+cols+'">'+cells(prons,v.forms)+'</div>'+
+      (v.note?'<p class="note">'+v.note+'</p>':'')+
+    '</article>';
+  }
+  function fill(id,arr){var el=document.getElementById(id);if(el)el.innerHTML=arr.map(paraCard).join('');}
+
+  /* ---------------- PA'AL ---------------- */
+  var paal=[
+    {verb:'לִסְגּוֹר',gl:'to close',gz:'שלמים',tense:'עתיד',page:109,
+     forms:['אֶסְגּוֹר','תִּסְגּוֹר','תִּסְגְּרִי','יִסְגּוֹר','תִּסְגּוֹר','נִסְגּוֹר','תִּסְגְּרוּ','יִסְגְּרוּ'],
+     note:'The main future pattern <b>אֶפְעוֹל</b> (theme vowel <i>o</i>). Same shape: <span class="note-he" lang="he" dir="rtl">לכתוב · לזכור · לשמור · לגמור · לפגוש</span>.'},
+    {verb:'לִשְׁמוֹעַ',gl:'to hear',gz:'ל׳/ע׳ גרונית',tense:'עתיד',page:114,
+     forms:['אֶשְׁמַע','תִּשְׁמַע','תִּשְׁמְעִי','יִשְׁמַע','תִּשְׁמַע','נִשְׁמַע','תִּשְׁמְעוּ','יִשְׁמְעוּ'],
+     note:'When a guttural (א ה ח ע) is 2nd/3rd radical → pattern <b>אֶפְעַל</b> (theme vowel <i>a</i>). Also <span class="note-he" lang="he" dir="rtl">לפתוח · לשלוח · לשכוח · לצחוק · ללמוד</span>.'},
+    {verb:'לַחְשׁוֹב',gl:'to think',gz:'פ׳ גרונית',tense:'עתיד',page:111,
+     forms:['אֶחְשׁוֹב','תַּחְשׁוֹב','תַּחְשְׁבִי','יַחְשׁוֹב','תַּחְשׁוֹב','נַחְשׁוֹב','תַּחְשְׁבוּ','יַחְשְׁבוּ'],
+     note:'1st-radical guttural takes an <i>a</i>-prefix. With א/ה/ע a reduced vowel appears: <span class="note-he" lang="he" dir="rtl">לַעֲזוֹר → אֶעֱזוֹר, יַעֲזוֹר · לַהֲרוֹג → אֶהֱרוֹג</span>.'},
+    {verb:'לָגוּר',gl:'to live / reside',gz:'ע״ו (נחי ע״ו)',tense:'עתיד',page:90,
+     forms:['אָגוּר','תָּגוּר','תָּגוּרִי','יָגוּר','תָּגוּר','נָגוּר','תָּגוּרוּ','יָגוּרוּ'],
+     note:'Hollow verbs keep the middle vowel. ע״י works the same: <span class="note-he" lang="he" dir="rtl">לָשִׁיר → אָשִׁיר · לָשִׂים → אָשִׂים · לָבוֹא → אָבוֹא</span>.'},
+    {verb:'לִקְנוֹת',gl:'to buy',gz:'ל״ה / ל״י',tense:'עתיד',page:151,
+     forms:['אֶקְנֶה','תִּקְנֶה','תִּקְנִי','יִקְנֶה','תִּקְנֶה','נִקְנֶה','תִּקְנוּ','יִקְנוּ'],
+     note:'Final-ה verbs end in <span class="note-he" lang="he" dir="rtl">־ֶה</span>. Also <span class="note-he" lang="he" dir="rtl">לשתות · לראות · לרצות · לבנות</span>. Guttural 1st radical: <span class="note-he" lang="he" dir="rtl">לעשות → אֶעֱשֶׂה · לחלות → אֶחֱלֶה</span>.'},
+    {verb:'לָשֶׁבֶת',gl:'to sit',gz:'פ״י',tense:'עתיד',page:180,
+     forms:['אֵשֵׁב','תֵּשֵׁב','תֵּשְׁבִי','יֵשֵׁב','תֵּשֵׁב','נֵשֵׁב','תֵּשְׁבוּ','יֵשְׁבוּ'],
+     note:'The initial י drops; prefix vowel is <i>tsere</i> (ֵ). Also <span class="note-he" lang="he" dir="rtl">לצאת → אֵצֵא · לרדת → אֵרֵד · ללכת → אֵלֵךְ · לדעת → אֵדַע</span>.'},
+    {verb:'לָתֵת',gl:'to give',gz:'פ״נ',tense:'עתיד',page:180,
+     forms:['אֶתֵּן','תִּתֵּן','תִּתְּנִי','יִתֵּן','תִּתֵּן','נִתֵּן','תִּתְּנוּ','יִתְּנוּ'],
+     note:'The נ assimilates (dagesh). Also <span class="note-he" lang="he" dir="rtl">לנסוע → אֶסַּע · לקחת → אֶקַּח</span> (behaves like פ״נ).'},
+    {verb:'לֶאֱהוֹב',gl:'to love',gz:'פ״א',tense:'עתיד',page:165,
+     forms:['אוֹהַב','תֹּאהַב','תֹּאהֲבִי','יֹאהַב','תֹּאהַב','נֹאהַב','תֹּאהֲבוּ','יֹאהֲבוּ'],
+     note:'1st-radical א → <i>o</i>-vowel; in 1st-person sing. the two alefs merge (אוֹהַב). Also <span class="note-he" lang="he" dir="rtl">לומר → אוֹמַר · לאכול → אוֹכַל</span>.'},
+    {verb:'לִהְיוֹת',gl:'to be',gz:'',tense:'עתיד',page:148,
+     forms:['אֶהְיֶה','תִּהְיֶה','תִּהְיִי','יִהְיֶה','תִּהְיֶה','נִהְיֶה','תִּהְיוּ','יִהְיוּ'],
+     note:'The future of “to be” drives future nominal sentences, future <i>have</i>, and impersonal/purpose clauses.'},
+    {verb:'קוּם! · אַל תָּקוּם!',gl:'imperative & negative — hollow',gz:'ע״ו',tense:'ציווי',page:94,wide:true,
+     forms:['קוּם','קוּמִי','קוּמוּ','אַל תָּקוּם','אַל תָּקוּמִי','אַל תָּקוּמוּ'],
+     prons:['אתה','את','אתם/ן','אתה','את','אתם/ן'],cols:'c3',
+     note:'Positive = short stem; negative = <b>אַל</b> + future. Also <span class="note-he" lang="he" dir="rtl">זוּז! רוּץ! שִׂים! בּוֹא!</span> — and <span class="note-he" lang="he" dir="rtl">בּוֹא/בּוֹאִי/בּוֹאוּ + עתיד</span> = “let’s…” (<span class="note-he" lang="he" dir="rtl">בוא נשיר יחד</span>).'},
+    {verb:'שֵׁב! · צֵא! · תֵּן!',gl:'imperative — פ״י & פ״נ',gz:'פ״י / פ״נ',tense:'ציווי',page:178,wide:true,
+     forms:['שֵׁב','צֵא','תֵּן','רֵד','לֵךְ','קַח','סַע','דַּע'],
+     prons:['לשבת','לצאת','לתת','לרדת','ללכת','לקחת','לנסוע','לדעת'],cols:'c4',
+     note:'The imperative is the future minus its prefix. Feminine/plural add endings: <span class="note-he" lang="he" dir="rtl">שְׁבִי! שְׁבוּ! · תְּנִי! תְּנוּ! · לְכִי! לְכוּ! · קְחִי! קְחוּ!</span>.'},
+    {verb:'סָגוּר',gl:'passive participle (verbal adjective)',gz:'בינוני פעול',tense:'ת׳ הפועל',page:207,wide:true,
+     forms:['סָגוּר','סְגוּרָה','סְגוּרִים','סְגוּרוֹת'],prons:PRES4,cols:'c4',
+     note:'Pattern <b>CaCuC</b> — an adjective from a Pa\'al verb: <span class="note-he" lang="he" dir="rtl">כָּתוּב · פָּתוּחַ · עָסוּק · יָדוּעַ · תָּפוּס</span>. Final-ה verbs: <span class="note-he" lang="he" dir="rtl">בָּנוּי · עָשׂוּי · תָּלוּי</span> (p208).'}
+  ];
+  fill('paal',paal);
+
+  /* ---------------- PI'EL ---------------- */
+  fill('piel',[
+    {verb:'לְסַדֵּר',gl:'to arrange / tidy',gz:'שלמים',tense:'עתיד',page:133,wide:true,
+     forms:['אֲסַדֵּר','תְּסַדֵּר','תְּסַדְּרִי','יְסַדֵּר','תְּסַדֵּר','נְסַדֵּר','תְּסַדְּרוּ','יְסַדְּרוּ'],
+     note:'Prefix vowel is <i>shva</i>/<i>chataf</i>; middle radical keeps its dagesh. Also <span class="note-he" lang="he" dir="rtl">לקבל · לדבר · לבקש · לטייל · לצייר · לשלם</span>, and 4-letter roots <span class="note-he" lang="he" dir="rtl">לטלפן · לתרגם · לצלצל</span>.'}
+  ]);
+
+  /* ---------------- HIF'IL ---------------- */
+  fill('hifil',[
+    {verb:'לְהַרְגִּישׁ',gl:'to feel',gz:'שלמים',tense:'עתיד',page:235,wide:true,
+     forms:['אַרְגִּישׁ','תַּרְגִּישׁ','תַּרְגִּישִׁי','יַרְגִּישׁ','תַּרְגִּישׁ','נַרְגִּישׁ','תַּרְגִּישׁוּ','יַרְגִּישׁוּ'],
+     note:'Also <span class="note-he" lang="he" dir="rtl">להתחיל · להזמין · להסביר · להחליט · להמשיך</span>. <b>Rule:</b> 1st radical א/ע → prefix vowel <i>a-a</i> (<span class="note-he" lang="he" dir="rtl">אַאֲמִין</span>); 1st radical ח behaves like שלמים (<span class="note-he" lang="he" dir="rtl">אַחְלִיט</span>). Irregular Hif\'il verbs met earlier: <span class="note-he" lang="he" dir="rtl">להכיר → מַכִּיר/אַכִּיר · להבין → מֵבִין/אָבִין</span> (p165).'}
+  ]);
+
+  /* ---------------- HITPA'EL ---------------- */
+  fill('hitpael',[
+    {verb:'לְהִתְרַגֵּשׁ',gl:'to get excited',gz:'שלמים',tense:'עתיד',page:203,wide:true,
+     forms:['אֶתְרַגֵּשׁ','תִּתְרַגֵּשׁ','תִּתְרַגְּשִׁי','יִתְרַגֵּשׁ','תִּתְרַגֵּשׁ','נִתְרַגֵּשׁ','תִּתְרַגְּשׁוּ','יִתְרַגְּשׁוּ'],
+     note:'Also <span class="note-he" lang="he" dir="rtl">להתחתן · להתקשר · להתרגל · להתגעגע</span>. <b>Sound changes when the 1st root letter is a sibilant</b> — the ת of the prefix swaps places: <span class="note-he" lang="he" dir="rtl">שׁ/שׂ → הִשְׁתַּמֵּשׁ · צ → הִצְטָרֵף · ס → הִסְתַּכֵּל · ז → הִזְדַּקֵּן</span>.'}
+  ]);
+
+  /* ---------------- NIF'AL ---------------- */
+  fill('nifal',[
+    {verb:'לְהִיכָּנֵס',gl:'to enter — present',gz:'שלמים',tense:'הווה',page:244,
+     forms:['נִכְנָס','נִכְנֶסֶת','נִכְנָסִים','נִכְנָסוֹת'],prons:PRES4,cols:'c4',
+     note:'Infinitive <span class="note-he" lang="he" dir="rtl">לְהִיכָּנֵס</span>. Also <span class="note-he" lang="he" dir="rtl">להישאר · להיפגש · להילחם · להיזכר</span>.'},
+    {verb:'לְהִיכָּנֵס',gl:'to enter — past',gz:'שלמים',tense:'עבר',page:255,
+     forms:['נִכְנַסְתִּי','נִכְנַסְתָּ','נִכְנַסְתְּ','נִכְנַס','נִכְנְסָה','נִכְנַסְנוּ','נִכְנַסְתֶּם','נִכְנְסוּ'],
+     note:'Nif\'al often = the passive of Pa\'al (<span class="note-he" lang="he" dir="rtl">כתב → נכתב</span>). Infinitive from פעל: <span class="note-he" lang="he" dir="rtl">לכתוב → לְהִיכָּתֵב · לזכור → לְהִיזָּכֵר</span> (p257).'},
+    {verb:'לְהִיכָּנֵס',gl:'to enter — future',gz:'שלמים',tense:'עתיד',page:267,
+     forms:['אֶכָּנֵס','תִּיכָּנֵס','תִּיכָּנְסִי','יִיכָּנֵס','תִּיכָּנֵס','נִיכָּנֵס','תִּיכָּנְסוּ','יִיכָּנְסוּ'],
+     note:'Some Nif\'al verbs are active with no Pa\'al pair: <span class="note-he" lang="he" dir="rtl">נכנס · נלחם · נשאר · נזהר · נעלם</span> (p259).'}
+  ]);
+
+  /* ---------------- PREPOSITIONS ---------------- */
+  function prepCard(p){
+    return '<article class="pcard'+(p.wide?' wide':'')+'">'+
+      '<div class="pcard-h"><div class="pcard-title">'+
+        '<span class="he-lg" lang="he" dir="rtl">'+p.verb+'</span>'+
+        '<span class="gloss">'+p.gl+'</span>'+
+      '</div><div class="tags"><span class="pgtag">p'+p.page+'</span></div></div>'+
+      '<div class="grid c5">'+cells(PRON10,p.forms)+'</div>'+
+      (p.note?'<p class="note">'+p.note+'</p>':'')+
+    '</article>';
+  }
+  var preps=[
+    {verb:'עַל',gl:'on / about',page:20,forms:['עָלַיי','עָלֶיךָ','עָלַיִךְ','עָלָיו','עָלֶיהָ','עָלֵינוּ','עֲלֵיכֶם','עֲלֵיכֶן','עֲלֵיהֶם','עֲלֵיהֶן']},
+    {verb:'אֶל',gl:'to / towards',page:264,forms:['אֵלַיי','אֵלֶיךָ','אֵלַיִךְ','אֵלָיו','אֵלֶיהָ','אֵלֵינוּ','אֲלֵיכֶם','אֲלֵיכֶן','אֲלֵיהֶם','אֲלֵיהֶן']},
+    {verb:'אֵצֶל',gl:'at (someone’s place)',page:50,forms:['אֶצְלִי','אֶצְלְךָ','אֶצְלֵךְ','אֶצְלוֹ','אֶצְלָהּ','אֶצְלֵנוּ','אֶצְלְכֶם','אֶצְלְכֶן','אֶצְלָם','אֶצְלָן']},
+    {verb:'מִן / מ־',gl:'from',page:76,forms:['מִמֶּנִּי','מִמְּךָ','מִמֵּךְ','מִמֶּנּוּ','מִמֶּנָּה','מֵאִיתָּנוּ','מִכֶּם','מִכֶּן','מֵהֶם','מֵהֶן'],
+     note:'Note: “from him” and “from us” differ only by tradition — <span class="note-he" lang="he" dir="rtl">הוא מִמֶּנּוּ · אנחנו מֵאִיתָּנוּ</span>. Before a noun: <span class="note-he" lang="he" dir="rtl">מֵהַ… / מִן הַ…</span>.'},
+    {verb:'בְּ',gl:'in / at',page:182,forms:['בִּי','בְּךָ','בָּךְ','בּוֹ','בָּהּ','בָּנוּ','בָּכֶם','בָּכֶן','בָּהֶם','בָּהֶן']},
+    {verb:'כְּמוֹ',gl:'like / as',page:154,forms:['כְּמוֹנִי','כָּמוֹךָ','כָּמוֹךְ','כָּמוֹהוּ','כָּמוֹהָ','כְּמוֹנוּ','כְּמוֹכֶם','כְּמוֹכֶן','כְּמוֹהֶם','כְּמוֹהֶן']},
+    {verb:'בֵּין',gl:'between',page:222,forms:['בֵּינִי','בֵּינְךָ','בֵּינֵךְ','בֵּינוֹ','בֵּינָהּ','בֵּינֵינוּ','בֵּינֵיכֶם','בֵּינֵיכֶן','בֵּינֵיהֶם','בֵּינֵיהֶן'],
+     note:'Used in patterns <span class="note-he" lang="he" dir="rtl">בֵּין… וּבֵין… · בֵּין… לְ…</span>.'},
+    {verb:'בִּשְׁבִיל',gl:'for (the sake of)',page:123,forms:['בִּשְׁבִילִי','בִּשְׁבִילְךָ','בִּשְׁבִילֵךְ','בִּשְׁבִילוֹ','בִּשְׁבִילָהּ','בִּשְׁבִילֵנוּ','בִּשְׁבִילְכֶם','בִּשְׁבִילְכֶן','בִּשְׁבִילָם','בִּשְׁבִילָן']},
+    {verb:'בִּגְלַל',gl:'because of',page:86,forms:['בִּגְלָלִי','בִּגְלָלְךָ','בִּגְלָלֵךְ','בִּגְלָלוֹ','בִּגְלָלָהּ','בִּגְלָלֵנוּ','בִּגְלַלְכֶם','בִּגְלַלְכֶן','בִּגְלָלָם','בִּגְלָלָן']},
+    {verb:'בְּלִי = בִּלְעֲדֵי',gl:'without',page:140,forms:['בִּלְעָדַיי','בִּלְעָדֶיךָ','בִּלְעָדַיִךְ','בִּלְעָדָיו','בִּלְעָדֶיהָ','בִּלְעָדֵינוּ','בִּלְעֲדֵיכֶם','בִּלְעֲדֵיכֶן','בִּלְעֲדֵיהֶם','בִּלְעֲדֵיהֶן']},
+    {verb:'עֶצֶם',gl:'-self (reflexive)',page:214,forms:['עַצְמִי','עַצְמְךָ','עַצְמֵךְ','עַצְמוֹ','עַצְמָהּ','עַצְמֵנוּ','עַצְמְכֶם','עַצְמְכֶן','עַצְמָם','עַצְמָן'],
+     note:'Follows a verb + preposition: <span class="note-he" lang="he" dir="rtl">בְּעַצְמִי · אֶת עַצְמִי · עַל עַצְמוֹ · מֵעַצְמָהּ</span>.'}
+  ];
+  (function(){var el=document.getElementById('preps');if(el)el.innerHTML=preps.map(prepCard).join('');})();
+
+  /* review prepositions (Part A) */
+  function reviewCard(p){
+    var pr=['אֲנִי','אַתָּה','אַתְּ','הוּא','הִיא','אֲנַחְנוּ','אַתֶּם','הֵם'];
+    return '<article class="pcard">'+
+      '<div class="pcard-h"><div class="pcard-title">'+
+        '<span class="he-lg" lang="he" dir="rtl">'+p.verb+'</span><span class="gloss">'+p.gl+'</span>'+
+      '</div><div class="tags"><span class="pgtag">p'+p.page+'</span></div></div>'+
+      '<div class="grid c4">'+cells(pr,p.forms)+'</div></article>';
+  }
+  var review=[
+    {verb:'שֶׁל',gl:'of (possession)',page:10,forms:['שֶׁלִּי','שֶׁלְּךָ','שֶׁלָּךְ','שֶׁלּוֹ','שֶׁלָּהּ','שֶׁלָּנוּ','שֶׁלָּכֶם','שֶׁלָּהֶם']},
+    {verb:'לְ',gl:'to / for',page:10,forms:['לִי','לְךָ','לָךְ','לוֹ','לָהּ','לָנוּ','לָכֶם','לָהֶם']},
+    {verb:'אֶת',gl:'object marker',page:11,forms:['אוֹתִי','אוֹתְךָ','אוֹתָךְ','אוֹתוֹ','אוֹתָהּ','אוֹתָנוּ','אֶתְכֶם','אוֹתָם']},
+    {verb:'עִם',gl:'with',page:12,forms:['אִיתִּי','אִיתְּךָ','אִיתָּךְ','אִיתּוֹ','אִיתָּהּ','אִיתָּנוּ','אִיתְּכֶם','אִיתָּם']}
+  ];
+  (function(){var el=document.getElementById('preps-review');if(el)el.innerHTML=review.map(reviewCard).join('');})();
+
+  /* ---------------- TOPIC CARDS ---------------- */
+  function topicCard(t){
+    return '<article class="tcard">'+
+      '<div class="tcard-h"><span class="he" lang="he" dir="rtl">'+t.he+'</span><span class="en">'+t.en+'</span></div>'+
+      '<p class="rule">'+t.rule+'</p>'+
+      (t.ex?'<div class="ex" lang="he" dir="rtl">'+t.ex+'</div>':'')+
+      '<div class="foot"><span class="pgtag">p'+t.page+'</span></div>'+
+    '</article>';
+  }
+  function fillT(id,arr){var el=document.getElementById(id);if(el)el.innerHTML=arr.map(topicCard).join('');}
+
+  fillT('nouns-t',[
+    {he:'אוֹתוֹ · אוֹתָהּ · אוֹתָם · אוֹתָן',en:'“the same”',page:14,
+     rule:'Identity word before a (definite) noun, agreeing in gender &amp; number. Two senses: the very same thing, or an identical one.',
+     ex:'אוֹתוֹ הַסֵּפֶר · אוֹתָהּ הַשָּׂפָה · קָנִינוּ אוֹתָהּ שִׂמְלָה'},
+    {he:'צוּרַת הַזּוּגִי',en:'the dual',page:39,
+     rule:'A special “two of” ending <b>־ַיִם</b>, not productive — mainly time words, body parts and a few fixed nouns.',
+     ex:'שָׁעָה→שְׁעָתַיִים · יוֹם→יוֹמַיִים · שָׁנָה→שְׁנָתַיִים · פַּעַם→פַּעֲמַיִים'},
+    {he:'רַבִּים חֲרִיגִים',en:'irregular plurals',page:42,
+     rule:'Some nouns pluralise against their gender / with a stem change.',
+     ex:'לַיְלָה→לֵילוֹת · יוֹם→יָמִים · שֻׁלְחָן→שֻׁלְחָנוֹת'},
+    {he:'סִיּוֹמוֹת הַנְּקֵבָה',en:'feminine endings & their plurals',page:122,
+     rule:'Feminine singular endings and how each forms the plural.',
+     ex:'־ָה→־וֹת · ־ִית→־יּוֹת · ־ֶת→־וֹת · ־וּת→־ֻיּוֹת (שְׁטוּת→שְׁטֻיּוֹת)'},
+    {he:'צֵירוּף סְמִיכוּת',en:'construct state',page:188,
+     rule:'The first noun changes form. Endings on the head noun: masc-sg <b>0</b>, masc-pl <b>־ֵי</b>, fem-sg <b>־ַת</b>, fem-pl <b>־וֹת</b>.',
+     ex:'חָתוּל · חֲתוּלֵי · חֲתוּלַת · חֲתוּלוֹת'},
+    {he:'הַשְׁוָואָה',en:'comparison',page:206,
+     rule:'“More/less” with <b>יוֹתֵר / פָּחוֹת</b>, superlative with <b>הֲכִי</b>, likeness with <b>כְּמוֹ / כְּ־</b>.',
+     ex:'הוּא גָּבוֹהַּ יוֹתֵר מִמֶּנִּי · הֲכִי טוֹב'}
+  ]);
+
+  fillT('syntax-t',[
+    {he:'מִשְׁפָּטִים סְתָמִיִּים',en:'impersonal',page:22,
+     rule:'<b>כְּדַאי / צָרִיךְ / (אִי)אֶפְשָׁר / אָסוּר / מוּתָּר</b> + infinitive. Past adds <b>הָיָה</b>, future adds <b>יִהְיֶה</b>.',
+     ex:'כְּדַאי הָיָה לִלְבּוֹשׁ מְעִיל · כְּדַאי יִהְיֶה לִמְכּוֹר אוֹתָהּ'},
+    {he:'מִשְׁפָּט שֵׁמָנִי · יֵשׁ / אֵין',en:'nominal sentence, 3 tenses',page:38,
+     rule:'The verb “to be” across tenses: past <b>הָיָה/הָיְתָה/הָיוּ</b>, present <b>יֵשׁ/אֵין</b>, future <b>יִהְיֶה/תִּהְיֶה/יִהְיוּ</b>.',
+     ex:'יֵשׁ שְׁבִיתָה → תִּהְיֶה שְׁבִיתָה'},
+    {he:'מִשְׁפְּטֵי שַׁיָּיכוּת בֶּעָתִיד',en:'future “to have”',page:53,
+     rule:'“Will have” = <b>יִהְיֶה / תִּהְיֶה / יִהְיוּ + לְ־</b>; the verb agrees with the thing owned.',
+     ex:'יִהְיוּ לָכֶם אוֹרְחִים · לֹא יִהְיֶה לִי זְמַן'},
+    {he:'מִשְׁפְּטֵי לְוַאי · שֶׁ־ / אֲשֶׁר',en:'relative clause',page:63,
+     rule:'Join two sentences with <b>שֶׁ־</b> (formal <b>אֲשֶׁר</b>); the shared noun drops, commas frame the clause.',
+     ex:'הָאִישׁ, שֶׁיּוֹשֵׁב לְיַד רִינָה, גָּר בִּצְפַת'},
+    {he:'מִילּוֹת קִישּׁוּר שֶׁל סִיבָּה',en:'causal clause',page:80,
+     rule:'<b>בִּגְלַל</b> + noun, but <b>מִפְּנֵי שֶׁ־ / כִּי</b> + clause; result with <b>וְלָכֵן</b>. Note: <b>כי</b> can’t open a sentence.',
+     ex:'אֲנַחְנוּ עֲיֵפִים בִּגְלַל הָעֲבוֹדָה · …מִפְּנֵי שֶׁעָבַדְנוּ קָשֶׁה'},
+    {he:'מִשְׁפְּטֵי תְּנַאי קַיָּים',en:'real conditional',page:114,
+     rule:'<b>אִם</b> + future … future (also infinitive / present / past after אם).',
+     ex:'אִם תִּשְׁלַח לִי מָחָר, אֶקְרָא אֶת זֶה מִיָּד'},
+    {he:'מִשְׁפְּטֵי זְמַן',en:'temporal clause',page:129,
+     rule:'Time connectors <b>לִפְנֵי שֶׁ־ · כְּשֶׁ־ / כַּאֲשֶׁר · אַחֲרֵי שֶׁ־</b> (either clause order).',
+     ex:'עָבַדְתִּי בְּבַנְק, לִפְנֵי שֶׁנָּסַעְתִּי לְחוּ״ל'},
+    {he:'תֵּיאוּר תַּכְלִית · מִשְׁפְּטֵי תַּכְלִית',en:'purpose',page:169,
+     rule:'Same subject → <b>כְּדֵי + infinitive</b>. Different subject → <b>כְּדֵי שֶׁ־ + future</b>.',
+     ex:'הִדְלַקְנוּ אוֹר, כְּדֵי שֶׁהֵם יִרְאוּ אוֹתָנוּ'},
+    {he:'דֶּרֶךְ הָאִיוּוּי · מִשְׁפַּט מוּשָׂא',en:'subjunctive object clause',page:158,
+     rule:'After <b>לִרְצוֹת / לְבַקֵּשׁ</b>: <b>שֶׁ־ + future</b> if subjects differ; infinitive if same.',
+     ex:'הַהוֹרִים רוֹצִים שֶׁהַיְּלָדִים יִקְרְאוּ'},
+    {he:'לֹא… אֶלָּא…',en:'“not X but rather Y”',page:224,
+     rule:'Correction after a negative; also exclusive <b>אֶלָּא</b> = “only”. Contrast with plain adversative <b>אֲבָל</b>.',
+     ex:'הוּא לֹא טָס לְאָמֵרִיקָה אֶלָּא לְאוֹסְטְרַלְיָה'},
+    {he:'הָאוֹגֵד',en:'the copula',page:230,
+     rule:'In a nominal sentence a linking <b>הוּא / הִיא / הֵם / הֵן</b> agrees with the subject (past הָיָה…, future יִהְיֶה…).',
+     ex:'הַשַּׁבָּת הִיא יוֹם שֶׁל כֵּיף'},
+    {he:'תּוֹאַר הַפּוֹעַל',en:'adverbs',page:249,
+     rule:'Many adverbs are formed from <b>בְּ + שם עצם</b>.',
+     ex:'בִּזְהִירוּת · בְּשִׂמְחָה · בְּאַהֲבָה · בְּצַעַר'},
+    {he:'פְּעוּלָה רְגִילָה',en:'habitual past',page:19,
+     rule:'“Used to…” = <b>הָיָה (past) + present participle</b>.',
+     ex:'הָיִיתִי מְשַׂחֵק · הֵם הָיוּ יוֹשְׁבִים וּמְדַבְּרִים'}
+  ]);
+
+  fillT('words-t',[
+    {he:'חֶלְקֵי הַדִּיבֵּר',en:'parts of speech',page:35,
+     rule:'Labelling words: <b>ש״ע</b> noun · <b>ש״ת</b> adjective · <b>פועל</b> verb · <b>מ״י</b> preposition.',
+     ex:'שֵׁם עֶצֶם · שֵׁם תּוֹאַר · פּוֹעַל · מִילַּת יַחַס'},
+    {he:'אוֹתִיּוֹת הַשִּׁימּוּשׁ · מִילִּיּוֹת',en:'prefix particles',page:72,
+     rule:'The attached letters <b>מ ש ה ו כ ל ב</b> (and כְּשֶׁ־) prefix a word — strip them to find the dictionary entry.',
+     ex:'בְּ… · הַ… · וְ… · כְּ… · כְּשֶׁ… · לְ… · מִ… · שֶׁ…'},
+    {he:'מִילּוֹת סְתָם עִם ־שֶׁהוּ',en:'indefinite words',page:74,
+     rule:'“some-” words built with <b>־שֶׁ + הוּ</b>.',
+     ex:'מַשֶּׁהוּ · מִישֶׁהוּ · מָתַישֶׁהוּ · אֵיכְשֶׁהוּ · אֵיפְשֶׁהוּ'},
+    {he:'הוֹמוֹגְרָפִים',en:'homographs',page:218,
+     rule:'Same consonants, different vowels &amp; meaning — the nikud disambiguates.',
+     ex:'עַם (people) · עִם (with)'},
+    {he:'“עִבְרִיתִיזְם”',en:'foreign-word morphology',page:45,
+     rule:'How international suffixes map into Hebrew.',
+     ex:'‑ism → ־איזם · ‑ic → ־י · ‑tion → ־ציה'}
+  ]);
+
+  /* ---------------- LESSON INDEX ---------------- */
+  function lessonCard(l){
+    var items=l.items.map(function(it){return '<li>'+it+'</li>';}).join('');
+    return '<article class="lcard"><div class="lh"><span class="ln" lang="he" dir="rtl">'+l.n+
+      '</span><span class="lp">→ p'+l.p+'</span></div><ul>'+items+'</ul></article>';
+  }
+  var lessons=[
+    {n:'שיעור 1',p:37,items:['נטיית עַל','פְּעוּלָה הֶרְגֵּלִית <span class="en">habitual present</span>','משפטים סתמיים <span class="en">impersonal · 3 tenses</span>','אֶת → אוֹתוֹ + שם עצם','חלקי הדיבר · סדר א״ב']},
+    {n:'שיעור 2',p:62,items:['נטיית אֵצֶל','צורת הזוגי','יֵשׁ/אֵין בעתיד','משפטי שייכות בעתיד','“עבריתיזם”']},
+    {n:'שיעור 3',p:79,items:['נטיית מִן / מ־','משפטי לוואי · שֶׁ־ <span class="en">relative</span>','אותיות השימוש','מילות ־שהו']},
+    {n:'שיעור 4',p:99,items:['נטיית בִּגְלַל','פָּעַל ע״ו עתיד','ציווי ע״ו + ציווי שלילי','מילות קישור של סיבה','בּוֹא + עתיד = “let’s”']},
+    {n:'שיעור 5',p:127,items:['פָּעַל שלמים עתיד · אֶפְעוֹל / אֶפְעַל','פָּעַל פ׳/ע׳/ל׳ גרונית עתיד','נטיית בִּשְׁבִיל','משפטי תנאי קיים','סיומות שם עצם בנקבה']},
+    {n:'שיעור 6',p:147,items:['פִּיעֵל עתיד','נטיית בְּלִי = בִּלְעֲדֵי','משפטי זמן','מיליות']},
+    {n:'שיעור 7',p:168,items:['לִהְיוֹת עתיד','פָּעַל ל״ה עתיד (+ גרונית)','נטיית כְּמוֹ','דרך האיווי / משפט מושא']},
+    {n:'שיעור 8',p:191,items:['פָּעַל פ״י/פ״נ · ציווי + עתיד','נטיית בְּ','תיאור תכלית + משפטי תכלית','צירוף סמיכות']},
+    {n:'שיעור 9',p:221,items:['הִתְפַּעֵל עתיד + שינויי צליל','בינוני פעול <span class="en">passive participle</span>','הפועל לָתֵת · עבר','נטיית עֶצֶם','הומוגרפים']},
+    {n:'שיעור 10',p:243,items:['נטיית בֵּין','הִפְעִיל שלמים עתיד','תחביר: לֹא… אֶלָּא…','הָאוֹגֵד']},
+    {n:'שיעור 11',p:267,items:['נִפְעַל שלמים · הווה + שם הפועל','נִפְעַל · עבר','נִפְעַל · עתיד','פעיל מול סביל <span class="en">active/passive</span>','נטיית אֶל · תואר הפועל']}
+  ];
+  (function(){var el=document.getElementById('lessons-g');if(el)el.innerHTML=lessons.map(lessonCard).join('');})();
+
+  /* subtle staggered reveal */
+  try{
+    var secs=document.querySelectorAll('section, .mast, .legend');
+    for(var i=0;i<secs.length;i++){secs[i].classList.add('fade');secs[i].style.animationDelay=(i*0.04)+'s';}
+  }catch(e){}
+})();
+</script>
+
 <script>
 /* ---------- exercises + exam + translations (layer on top; tables untouched) ---------- */
 (function(){
@@ -402,149 +1019,3 @@
   }
 })();
 </script>
-ׁבִילוֹ','בִּשְׁבִילָהּ','בִּשְׁבִילֵנוּ','בִּשְׁבִילְכֶם','בִּשְׁבִילְכֶן','בִּשְׁבִילָם','בִּשְׁבִילָן']},
-    {verb:'בִּגְלַל',gl:'because of',page:86,forms:['בִּגְלָלִי','בִּגְלָלְךָ','בִּגְלָלֵךְ','בִּגְלָלוֹ','בִּגְלָלָהּ','בִּגְלָלֵנוּ','בִּגְלַלְכֶם','בִּגְלַלְכֶן','בִּגְלָלָם','בִּגְלָלָן']},
-    {verb:'בְּלִי = בִּלְעֲדֵי',gl:'without',page:140,forms:['בִּלְעָדַיי','בִּלְעָדֶיךָ','בִּלְעָדַיִךְ','בִּלְעָדָיו','בִּלְעָדֶיהָ','בִּלְעָדֵינוּ','בִּלְעֲדֵיכֶם','בִּלְעֲדֵיכֶן','בִּלְעֲדֵיהֶם','בִּלְעֲדֵיהֶן']},
-    {verb:'עֶצֶם',gl:'-self (reflexive)',page:214,forms:['עַצְמִי','עַצְמְךָ','עַצְמֵךְ','עַצְמוֹ','עַצְמָהּ','עַצְמֵנוּ','עַצְמְכֶם','עַצְמְכֶן','עַצְמָם','עַצְמָן'],
-     note:'Follows a verb + preposition: <span class="note-he" lang="he" dir="rtl">בְּעַצְמִי · אֶת עַצְמִי · עַל עַצְמוֹ · מֵעַצְמָהּ</span>.'}
-  ];
-  (function(){var el=document.getElementById('preps');if(el)el.innerHTML=preps.map(prepCard).join('');})();
-
-  /* review prepositions (Part A) */
-  function reviewCard(p){
-    var pr=['אֲנִי','אַתָּה','אַתְּ','הוּא','הִיא','אֲנַחְנוּ','אַתֶּם','הֵם'];
-    return '<article class="pcard">'+
-      '<div class="pcard-h"><div class="pcard-title">'+
-        '<span class="he-lg" lang="he" dir="rtl">'+p.verb+'</span><span class="gloss">'+p.gl+'</span>'+
-      '</div><div class="tags"><span class="pgtag">p'+p.page+'</span></div></div>'+
-      '<div class="grid c4">'+cells(pr,p.forms)+'</div></article>';
-  }
-  var review=[
-    {verb:'שֶׁל',gl:'of (possession)',page:10,forms:['שֶׁלִּי','שֶׁלְּךָ','שֶׁלָּךְ','שֶׁלּוֹ','שֶׁלָּהּ','שֶׁלָּנוּ','שֶׁלָּכֶם','שֶׁלָּהֶם']},
-    {verb:'לְ',gl:'to / for',page:10,forms:['לִי','לְךָ','לָךְ','לוֹ','לָהּ','לָנוּ','לָכֶם','לָהֶם']},
-    {verb:'אֶת',gl:'object marker',page:11,forms:['אוֹתִי','אוֹתְךָ','אוֹתָךְ','אוֹתוֹ','אוֹתָהּ','אוֹתָנוּ','אֶתְכֶם','אוֹתָם']},
-    {verb:'עִם',gl:'with',page:12,forms:['אִיתִּי','אִיתְּךָ','אִיתָּךְ','אִיתּוֹ','אִיתָּהּ','אִיתָּנוּ','אִיתְּכֶם','אִיתָּם']}
-  ];
-  (function(){var el=document.getElementById('preps-review');if(el)el.innerHTML=review.map(reviewCard).join('');})();
-
-  /* ---------------- TOPIC CARDS ---------------- */
-  function topicCard(t){
-    return '<article class="tcard">'+
-      '<div class="tcard-h"><span class="he" lang="he" dir="rtl">'+t.he+'</span><span class="en">'+t.en+'</span></div>'+
-      '<p class="rule">'+t.rule+'</p>'+
-      (t.ex?'<div class="ex" lang="he" dir="rtl">'+t.ex+'</div>':'')+
-      '<div class="foot"><span class="pgtag">p'+t.page+'</span></div>'+
-    '</article>';
-  }
-  function fillT(id,arr){var el=document.getElementById(id);if(el)el.innerHTML=arr.map(topicCard).join('');}
-
-  fillT('nouns-t',[
-    {he:'אוֹתוֹ · אוֹתָהּ · אוֹתָם · אוֹתָן',en:'“the same”',page:14,
-     rule:'Identity word before a (definite) noun, agreeing in gender &amp; number. Two senses: the very same thing, or an identical one.',
-     ex:'אוֹתוֹ הַסֵּפֶר · אוֹתָהּ הַשָּׂפָה · קָנִינוּ אוֹתָהּ שִׂמְלָה'},
-    {he:'צוּרַת הַזּוּגִי',en:'the dual',page:39,
-     rule:'A special “two of” ending <b>־ַיִם</b>, not productive — mainly time words, body parts and a few fixed nouns.',
-     ex:'שָׁעָה→שְׁעָתַיִים · יוֹם→יוֹמַיִים · שָׁנָה→שְׁנָתַיִים · פַּעַם→פַּעֲמַיִים'},
-    {he:'רַבִּים חֲרִיגִים',en:'irregular plurals',page:42,
-     rule:'Some nouns pluralise against their gender / with a stem change.',
-     ex:'לַיְלָה→לֵילוֹת · יוֹם→יָמִים · שֻׁלְחָן→שֻׁלְחָנוֹת'},
-    {he:'סִיּוֹמוֹת הַנְּקֵבָה',en:'feminine endings & their plurals',page:122,
-     rule:'Feminine singular endings and how each forms the plural.',
-     ex:'־ָה→־וֹת · ־ִית→־יּוֹת · ־ֶת→־וֹת · ־וּת→־ֻיּוֹת (שְׁטוּת→שְׁטֻיּוֹת)'},
-    {he:'צֵירוּף סְמִיכוּת',en:'construct state',page:188,
-     rule:'The first noun changes form. Endings on the head noun: masc-sg <b>0</b>, masc-pl <b>־ֵי</b>, fem-sg <b>־ַת</b>, fem-pl <b>־וֹת</b>.',
-     ex:'חָתוּל · חֲתוּלֵי · חֲתוּלַת · חֲתוּלוֹת'},
-    {he:'הַשְׁוָואָה',en:'comparison',page:206,
-     rule:'“More/less” with <b>יוֹתֵר / פָּחוֹת</b>, superlative with <b>הֲכִי</b>, likeness with <b>כְּמוֹ / כְּ־</b>.',
-     ex:'הוּא גָּבוֹהַּ יוֹתֵר מִמֶּנִּי · הֲכִי טוֹב'}
-  ]);
-
-  fillT('syntax-t',[
-    {he:'מִשְׁפָּטִים סְתָמִיִּים',en:'impersonal',page:22,
-     rule:'<b>כְּדַאי / צָרִיךְ / (אִי)אֶפְשָׁר / אָסוּר / מוּתָּר</b> + infinitive. Past adds <b>הָיָה</b>, future adds <b>יִהְיֶה</b>.',
-     ex:'כְּדַאי הָיָה לִלְבּוֹשׁ מְעִיל · כְּדַאי יִהְיֶה לִמְכּוֹר אוֹתָהּ'},
-    {he:'מִשְׁפָּט שֵׁמָנִי · יֵשׁ / אֵין',en:'nominal sentence, 3 tenses',page:38,
-     rule:'The verb “to be” across tenses: past <b>הָיָה/הָיְתָה/הָיוּ</b>, present <b>יֵשׁ/אֵין</b>, future <b>יִהְיֶה/תִּהְיֶה/יִהְיוּ</b>.',
-     ex:'יֵשׁ שְׁבִיתָה → תִּהְיֶה שְׁבִיתָה'},
-    {he:'מִשְׁפְּטֵי שַׁיָּיכוּת בֶּעָתִיד',en:'future “to have”',page:53,
-     rule:'“Will have” = <b>יִהְיֶה / תִּהְיֶה / יִהְיוּ + לְ־</b>; the verb agrees with the thing owned.',
-     ex:'יִהְיוּ לָכֶם אוֹרְחִים · לֹא יִהְיֶה לִי זְמַן'},
-    {he:'מִשְׁפְּטֵי לְוַאי · שֶׁ־ / אֲשֶׁר',en:'relative clause',page:63,
-     rule:'Join two sentences with <b>שֶׁ־</b> (formal <b>אֲשֶׁר</b>); the shared noun drops, commas frame the clause.',
-     ex:'הָאִישׁ, שֶׁיּוֹשֵׁב לְיַד רִינָה, גָּר בִּצְפַת'},
-    {he:'מִילּוֹת קִישּׁוּר שֶׁל סִיבָּה',en:'causal clause',page:80,
-     rule:'<b>בִּגְלַל</b> + noun, but <b>מִפְּנֵי שֶׁ־ / כִּי</b> + clause; result with <b>וְלָכֵן</b>. Note: <b>כי</b> can’t open a sentence.',
-     ex:'אֲנַחְנוּ עֲיֵפִים בִּגְלַל הָעֲבוֹדָה · …מִפְּנֵי שֶׁעָבַדְנוּ קָשֶׁה'},
-    {he:'מִשְׁפְּטֵי תְּנַאי קַיָּים',en:'real conditional',page:114,
-     rule:'<b>אִם</b> + future … future (also infinitive / present / past after אם).',
-     ex:'אִם תִּשְׁלַח לִי מָחָר, אֶקְרָא אֶת זֶה מִיָּד'},
-    {he:'מִשְׁפְּטֵי זְמַן',en:'temporal clause',page:129,
-     rule:'Time connectors <b>לִפְנֵי שֶׁ־ · כְּשֶׁ־ / כַּאֲשֶׁר · אַחֲרֵי שֶׁ־</b> (either clause order).',
-     ex:'עָבַדְתִּי בְּבַנְק, לִפְנֵי שֶׁנָּסַעְתִּי לְחוּ״ל'},
-    {he:'תֵּיאוּר תַּכְלִית · מִשְׁפְּטֵי תַּכְלִית',en:'purpose',page:169,
-     rule:'Same subject → <b>כְּדֵי + infinitive</b>. Different subject → <b>כְּדֵי שֶׁ־ + future</b>.',
-     ex:'הִדְלַקְנוּ אוֹר, כְּדֵי שֶׁהֵם יִרְאוּ אוֹתָנוּ'},
-    {he:'דֶּרֶךְ הָאִיוּוּי · מִשְׁפַּט מוּשָׂא',en:'subjunctive object clause',page:158,
-     rule:'After <b>לִרְצוֹת / לְבַקֵּשׁ</b>: <b>שֶׁ־ + future</b> if subjects differ; infinitive if same.',
-     ex:'הַהוֹרִים רוֹצִים שֶׁהַיְּלָדִים יִקְרְאוּ'},
-    {he:'לֹא… אֶלָּא…',en:'“not X but rather Y”',page:224,
-     rule:'Correction after a negative; also exclusive <b>אֶלָּא</b> = “only”. Contrast with plain adversative <b>אֲבָל</b>.',
-     ex:'הוּא לֹא טָס לְאָמֵרִיקָה אֶלָּא לְאוֹסְטְרַלְיָה'},
-    {he:'הָאוֹגֵד',en:'the copula',page:230,
-     rule:'In a nominal sentence a linking <b>הוּא / הִיא / הֵם / הֵן</b> agrees with the subject (past הָיָה…, future יִהְיֶה…).',
-     ex:'הַשַּׁבָּת הִיא יוֹם שֶׁל כֵּיף'},
-    {he:'תּוֹאַר הַפּוֹעַל',en:'adverbs',page:249,
-     rule:'Many adverbs are formed from <b>בְּ + שם עצם</b>.',
-     ex:'בִּזְהִירוּת · בְּשִׂמְחָה · בְּאַהֲבָה · בְּצַעַר'},
-    {he:'פְּעוּלָה רְגִילָה',en:'habitual past',page:19,
-     rule:'“Used to…” = <b>הָיָה (past) + present participle</b>.',
-     ex:'הָיִיתִי מְשַׂחֵק · הֵם הָיוּ יוֹשְׁבִים וּמְדַבְּרִים'}
-  ]);
-
-  fillT('words-t',[
-    {he:'חֶלְקֵי הַדִּיבֵּר',en:'parts of speech',page:35,
-     rule:'Labelling words: <b>ש״ע</b> noun · <b>ש״ת</b> adjective · <b>פועל</b> verb · <b>מ״י</b> preposition.',
-     ex:'שֵׁם עֶצֶם · שֵׁם תּוֹאַר · פּוֹעַל · מִילַּת יַחַס'},
-    {he:'אוֹתִיּוֹת הַשִּׁימּוּשׁ · מִילִּיּוֹת',en:'prefix particles',page:72,
-     rule:'The attached letters <b>מ ש ה ו כ ל ב</b> (and כְּשֶׁ־) prefix a word — strip them to find the dictionary entry.',
-     ex:'בְּ… · הַ… · וְ… · כְּ… · כְּשֶׁ… · לְ… · מִ… · שֶׁ…'},
-    {he:'מִילּוֹת סְתָם עִם ־שֶׁהוּ',en:'indefinite words',page:74,
-     rule:'“some-” words built with <b>־שֶׁ + הוּ</b>.',
-     ex:'מַשֶּׁהוּ · מִישֶׁהוּ · מָתַישֶׁהוּ · אֵיכְשֶׁהוּ · אֵיפְשֶׁהוּ'},
-    {he:'הוֹמוֹגְרָפִים',en:'homographs',page:218,
-     rule:'Same consonants, different vowels &amp; meaning — the nikud disambiguates.',
-     ex:'עַם (people) · עִם (with)'},
-    {he:'“עִבְרִיתִיזְם”',en:'foreign-word morphology',page:45,
-     rule:'How international suffixes map into Hebrew.',
-     ex:'‑ism → ־איזם · ‑ic → ־י · ‑tion → ־ציה'}
-  ]);
-
-  /* ---------------- LESSON INDEX ---------------- */
-  function lessonCard(l){
-    var items=l.items.map(function(it){return '<li>'+it+'</li>';}).join('');
-    return '<article class="lcard"><div class="lh"><span class="ln" lang="he" dir="rtl">'+l.n+
-      '</span><span class="lp">→ p'+l.p+'</span></div><ul>'+items+'</ul></article>';
-  }
-  var lessons=[
-    {n:'שיעור 1',p:37,items:['נטיית עַל','פְּעוּלָה הֶרְגֵּלִית <span class="en">habitual present</span>','משפטים סתמיים <span class="en">impersonal · 3 tenses</span>','אֶת → אוֹתוֹ + שם עצם','חלקי הדיבר · סדר א״ב']},
-    {n:'שיעור 2',p:62,items:['נטיית אֵצֶל','צורת הזוגי','יֵשׁ/אֵין בעתיד','משפטי שייכות בעתיד','“עבריתיזם”']},
-    {n:'שיעור 3',p:79,items:['נטיית מִן / מ־','משפטי לוואי · שֶׁ־ <span class="en">relative</span>','אותיות השימוש','מילות ־שהו']},
-    {n:'שיעור 4',p:99,items:['נטיית בִּגְלַל','פָּעַל ע״ו עתיד','ציווי ע״ו + ציווי שלילי','מילות קישור של סיבה','בּוֹא + עתיד = “let’s”']},
-    {n:'שיעור 5',p:127,items:['פָּעַל שלמים עתיד · אֶפְעוֹל / אֶפְעַל','פָּעַל פ׳/ע׳/ל׳ גרונית עתיד','נטיית בִּשְׁבִיל','משפטי תנאי קיים','סיומות שם עצם בנקבה']},
-    {n:'שיעור 6',p:147,items:['פִּיעֵל עתיד','נטיית בְּלִי = בִּלְעֲדֵי','משפטי זמן','מיליות']},
-    {n:'שיעור 7',p:168,items:['לִהְיוֹת עתיד','פָּעַל ל״ה עתיד (+ גרונית)','נטיית כְּמוֹ','דרך האיווי / משפט מושא']},
-    {n:'שיעור 8',p:191,items:['פָּעַל פ״י/פ״נ · ציווי + עתיד','נטיית בְּ','תיאור תכלית + משפטי תכלית','צירוף סמיכות']},
-    {n:'שיעור 9',p:221,items:['הִתְפַּעֵל עתיד + שינויי צליל','בינוני פעול <span class="en">passive participle</span>','הפועל לָתֵת · עבר','נטיית עֶצֶם','הומוגרפים']},
-    {n:'שיעור 10',p:243,items:['נטיית בֵּין','הִפְעִיל שלמים עתיד','תחביר: לֹא… אֶלָּא…','הָאוֹגֵד']},
-    {n:'שיעור 11',p:267,items:['נִפְעַל שלמים · הווה + שם הפועל','נִפְעַל · עבר','נִפְעַל · עתיד','פעיל מול סביל <span class="en">active/passive</span>','נטיית אֶל · תואר הפועל']}
-  ];
-  (function(){var el=document.getElementById('lessons-g');if(el)el.innerHTML=lessons.map(lessonCard).join('');})();
-
-  /* subtle staggered reveal */
-  try{
-    var secs=document.querySelectorAll('section, .mast, .legend');
-    for(var i=0;i<secs.length;i++){secs[i].classList.add('fade');secs[i].style.animationDelay=(i*0.04)+'s';}
-  }catch(e){}
-})();
-</script>
-
