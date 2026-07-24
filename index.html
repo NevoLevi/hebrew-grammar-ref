@@ -246,6 +246,27 @@
   .exam-title{font-family:var(--he);direction:rtl;font-weight:700;font-size:1.14rem;color:var(--ink)}
   .exam-title .en{font-family:var(--sans);font-weight:500;font-size:.8rem;color:var(--muted);margin-inline-start:8px}
 
+  /* ---------- binyan cheat sheet ---------- */
+  .cheat{scroll-margin-top:66px;margin:0 0 30px}
+  .cheat-glance{background:var(--accent-tint);border:1px solid var(--accent-tint-2);border-radius:11px;padding:12px 15px;margin:0 0 16px;font-family:var(--sans);font-size:.88rem;color:var(--ink-soft);line-height:1.7}
+  .cheat-glance b{color:var(--accent-ink)}
+  .cheat-glance .he{font-family:var(--he);direction:rtl;font-size:1.05rem;unicode-bidi:isolate;color:var(--ink)}
+  .cs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:13px}
+  .cs-card{background:var(--card);border:1px solid var(--line);border-inline-start:3px solid var(--accent);
+    border-radius:12px;padding:12px 14px;box-shadow:var(--shadow)}
+  .cs-head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:8px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+  .cs-name{font-family:var(--he);direction:rtl;font-size:1.45rem;font-weight:700;color:var(--accent-ink)}
+  .cs-en{font-family:var(--sans);font-size:.76rem;color:var(--muted)}
+  .cs-tell{font-family:var(--he);direction:rtl;font-size:.9rem;color:var(--ink-soft);margin-inline-start:auto;
+    background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 8px;white-space:nowrap}
+  .cs-tbl{width:100%;border-collapse:collapse;direction:rtl}
+  .cs-tbl th{font-family:var(--he);font-size:.8rem;color:var(--accent);font-weight:700;text-align:right;
+    padding:3px 0 3px 9px;white-space:nowrap;vertical-align:baseline;width:1%}
+  .cs-tbl td{font-family:var(--he);direction:rtl;font-size:1.1rem;color:var(--ink);padding:3px 0;line-height:1.55}
+  .cs-key{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);margin:9px 0 0;line-height:1.55}
+  .cs-key b{color:var(--accent-ink);font-weight:600}
+  .cs-key .he{font-family:var(--he);direction:rtl;font-size:1.02rem;unicode-bidi:isolate;font-weight:600;color:var(--ink)}
+
   .fade{opacity:0;transform:translateY(8px);animation:rise .5s ease forwards}
   @keyframes rise{to{opacity:1;transform:none}}
   @media (prefers-reduced-motion:reduce){.fade{animation:none;opacity:1;transform:none}}
@@ -275,6 +296,7 @@
   </header>
 
   <nav class="toc" aria-label="Contents">
+    <a href="#cheatsheet">★ Binyan cheat sheet</a>
     <a href="#verbs">① Verbs &amp; Binyanim</a>
     <a href="#prepositions">② Prepositions</a>
     <a href="#nouns">③ Nouns &amp; Adjectives</a>
@@ -305,6 +327,61 @@
     <div class="sec-head"><span class="sec-num">01</span>
       <h2>The Verb System <span class="sec-he" lang="he" dir="rtl">· הַפּוֹעַל</span></h2></div>
     <p class="sec-intro">The whole verb system, across both books. <b>Part 1</b> gave the <b>present</b> and <b>past</b> of every binyan; <b>Part 2</b> adds the <b>future</b>, the <b>imperative</b>, the passive participle and the whole <b>Nif'al</b>. Each card is one full paradigm — and the exam links straight back to these tables.</p>
+
+    <div id="cheatsheet" class="cheat">
+      <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">דַּף עֵזֶר · בִּנְיָנִים</span> <span class="en">— cheat sheet: tell them apart &amp; conjugate</span></h3></div>
+      <div class="cheat-glance">
+        <b>Spot the binyan by the present-tense prefix:</b>&nbsp; <span class="he" lang="he" dir="rtl">כּוֹתֵב</span> ∅ = פָּעַל &nbsp;·&nbsp; <span class="he" lang="he" dir="rtl">מְ</span>דַבֵּר = פִּיעֵל &nbsp;·&nbsp; <span class="he" lang="he" dir="rtl">מַ</span>סְבִּיר = הִפְעִיל &nbsp;·&nbsp; <span class="he" lang="he" dir="rtl">מִתְ</span>לַבֵּשׁ = הִתְפַּעֵל &nbsp;·&nbsp; <span class="he" lang="he" dir="rtl">נִ</span>כְנָס = נִפְעַל.<br>
+        <b>Future “I” (אֲנִי) prefix:</b>&nbsp; <span class="he" lang="he" dir="rtl">אֶ</span> (פָּעַל · הִתְפַּעֵל · נִפְעַל) · <span class="he" lang="he" dir="rtl">אֲ</span> (פִּיעֵל) · <span class="he" lang="he" dir="rtl">אַ</span> (הִפְעִיל). &nbsp;<b>Where is the י?</b>&nbsp; between root-letters 2–3 → <b>הִפְעִיל</b>; an extra one right after the future prefix → <b>נִפְעַל</b>.
+      </div>
+      <div class="cs-grid">
+        <article class="cs-card">
+          <div class="cs-head"><span class="cs-name" lang="he" dir="rtl">פָּעַל</span><span class="cs-en">Qal · “plain”</span><span class="cs-tell" lang="he" dir="rtl">הווה: ∅</span></div>
+          <table class="cs-tbl">
+            <tr><th lang="he" dir="rtl">עבר</th><td lang="he" dir="rtl">כָּתַב · כָּתַבְתִּי · כָּתְבוּ</td></tr>
+            <tr><th lang="he" dir="rtl">הווה</th><td lang="he" dir="rtl">כּוֹתֵב · כּוֹתֶבֶת</td></tr>
+            <tr><th lang="he" dir="rtl">עתיד</th><td lang="he" dir="rtl">אֶכְתּוֹב · יִכְתּוֹב · תִּכְתְּבִי</td></tr>
+          </table>
+          <p class="cs-key">No prefix — past is the <b>bare root</b> (<span class="he" lang="he" dir="rtl">כָּתַב</span>). Present has an <b>“o”</b> after root-1 (<span class="he" lang="he" dir="rtl">כּוֹ</span>). Future = אית״ן + <b>o</b> (<span class="he" lang="he" dir="rtl">יִכְתּוֹב</span>) or <b>a</b> when guttural (<span class="he" lang="he" dir="rtl">יִשְׁמַע</span>). No extra letters in the root.</p>
+        </article>
+        <article class="cs-card">
+          <div class="cs-head"><span class="cs-name" lang="he" dir="rtl">פִּיעֵל</span><span class="cs-en">Pi‘el · intensive</span><span class="cs-tell" lang="he" dir="rtl">הווה: מְ</span></div>
+          <table class="cs-tbl">
+            <tr><th lang="he" dir="rtl">עבר</th><td lang="he" dir="rtl">דִּיבֵּר · דִּיבַּרְתִּי · דִּיבְּרוּ</td></tr>
+            <tr><th lang="he" dir="rtl">הווה</th><td lang="he" dir="rtl">מְדַבֵּר · מְדַבֶּרֶת</td></tr>
+            <tr><th lang="he" dir="rtl">עתיד</th><td lang="he" dir="rtl">אֲדַבֵּר · יְדַבֵּר · תְּדַבְּרִי</td></tr>
+          </table>
+          <p class="cs-key">Present starts <b><span class="he" lang="he" dir="rtl">מְ</span></b> (shva). Middle root is <b>doubled</b> (dagesh), vowels <b>i–e</b> (<span class="he" lang="he" dir="rtl">דִּיבֵּר</span>). In 1st/2nd-person past the middle → <b>“a”</b> (<span class="he" lang="he" dir="rtl">דִּיבַּרְתִּי</span>). Future prefix takes shva; “I” = <b><span class="he" lang="he" dir="rtl">אֲ</span></b>.</p>
+        </article>
+        <article class="cs-card">
+          <div class="cs-head"><span class="cs-name" lang="he" dir="rtl">הִפְעִיל</span><span class="cs-en">Hif‘il · causative</span><span class="cs-tell" lang="he" dir="rtl">הווה: מַ</span></div>
+          <table class="cs-tbl">
+            <tr><th lang="he" dir="rtl">עבר</th><td lang="he" dir="rtl">הִסְבִּיר · הִסְבִּירָה · <em>אך:</em> הִסְבַּרְתִּי</td></tr>
+            <tr><th lang="he" dir="rtl">הווה</th><td lang="he" dir="rtl">מַסְבִּיר · מַסְבִּירָה</td></tr>
+            <tr><th lang="he" dir="rtl">עתיד</th><td lang="he" dir="rtl">אַסְבִּיר · יַסְבִּיר · תַּסְבִּירִי</td></tr>
+          </table>
+          <p class="cs-key">Recognise by <b><span class="he" lang="he" dir="rtl">לְהַ־</span></b> (patach), present <b><span class="he" lang="he" dir="rtl">מַ־</span></b>, future <b><span class="he" lang="he" dir="rtl">אַ־</span></b>. A <b>י</b> (“i”) sits between root 2–3 in present, future &amp; <b>3rd-person past</b> (<span class="he" lang="he" dir="rtl">הִסְבִּיר · מַסְבִּיר · יַסְבִּיר</span>) — but it <b>drops</b> in 1st/2nd past and root-2 becomes <b>“a”</b>: <span class="he" lang="he" dir="rtl">הִסְבַּרְתִּי</span>.</p>
+        </article>
+        <article class="cs-card">
+          <div class="cs-head"><span class="cs-name" lang="he" dir="rtl">הִתְפַּעֵל</span><span class="cs-en">Hitpa‘el · reflexive</span><span class="cs-tell" lang="he" dir="rtl">הווה: מִתְ</span></div>
+          <table class="cs-tbl">
+            <tr><th lang="he" dir="rtl">עבר</th><td lang="he" dir="rtl">הִתְלַבֵּשׁ · הִתְלַבַּשְׁתִּי · הִתְלַבְּשׁוּ</td></tr>
+            <tr><th lang="he" dir="rtl">הווה</th><td lang="he" dir="rtl">מִתְלַבֵּשׁ · מִתְלַבֶּשֶׁת</td></tr>
+            <tr><th lang="he" dir="rtl">עתיד</th><td lang="he" dir="rtl">אֶתְלַבֵּשׁ · יִתְלַבֵּשׁ · תִּתְלַבְּשִׁי</td></tr>
+          </table>
+          <p class="cs-key">Prefix <b><span class="he" lang="he" dir="rtl">הִתְ־</span></b> (past) / <b><span class="he" lang="he" dir="rtl">מִתְ־</span></b> (present). Middle doubled, vowels <b>a–e</b>. If root-1 is a <b>sibilant</b> it swaps with the ת: <b><span class="he" lang="he" dir="rtl">ש → הִשְׁתּ</span></b> (<span class="he" lang="he" dir="rtl">הִשְׁתַּמֵּשׁ</span>), <span class="he" lang="he" dir="rtl">צ → הִצְטּ · ס → הִסְתּ · ז → הִזְדּ</span>.</p>
+        </article>
+        <article class="cs-card">
+          <div class="cs-head"><span class="cs-name" lang="he" dir="rtl">נִפְעַל</span><span class="cs-en">Nif‘al · passive / middle</span><span class="cs-tell" lang="he" dir="rtl">הווה: נִ</span></div>
+          <table class="cs-tbl">
+            <tr><th lang="he" dir="rtl">עבר</th><td lang="he" dir="rtl">נִכְנַס · נִכְנַסְתִּי · נִכְנְסוּ</td></tr>
+            <tr><th lang="he" dir="rtl">הווה</th><td lang="he" dir="rtl">נִכְנָס · נִכְנֶסֶת</td></tr>
+            <tr><th lang="he" dir="rtl">עתיד</th><td lang="he" dir="rtl">אֶכָּנֵס · יִיכָּנֵס · תִּיכָּנְסוּ</td></tr>
+          </table>
+          <p class="cs-key">Starts <b><span class="he" lang="he" dir="rtl">נִ־</span></b> in past &amp; present (<span class="he" lang="he" dir="rtl">נִכְנַס / נִכְנָס</span>). The <b>future</b> is a <b>“donkey” i–a</b> sound with an <b>extra י</b> after the אית״ן letter, and root-1 is doubled: <span class="he" lang="he" dir="rtl">אֶכָּנֵס · <b>יִי</b>כָּנֵס · <b>תִּי</b>כָּנְסִי</span>.</p>
+        </article>
+      </div>
+    </div>
 
     <div class="group-head"><span class="bar"></span><h3><span class="he" lang="he" dir="rtl">הוֹוֶה · חֵלֶק א׳</span> <span class="en">— Present tense of every binyan (Part 1)</span></h3></div>
     <div class="cardgrid" id="v-present"></div>
